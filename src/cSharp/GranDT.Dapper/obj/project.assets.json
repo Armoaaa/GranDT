@@ -46,6 +46,16 @@
             "related": ".xml"
           }
         }
+      },
+      "GranDT.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/GranDT.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GranDT.Core.dll": {}
+        }
       }
     }
   },
@@ -169,11 +179,17 @@
         "mysqlconnector.2.3.7.nupkg.sha512",
         "mysqlconnector.nuspec"
       ]
+    },
+    "GranDT.Core/1.0.0": {
+      "type": "project",
+      "path": "../GranDT.Core/GranDT.Core.csproj",
+      "msbuildProject": "../GranDT.Core/GranDT.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
       "Dapper >= 2.1.35",
+      "GranDT.Core >= 1.0.0",
       "MySqlConnector >= 2.3.7"
     ]
   },
@@ -208,7 +224,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "c:\\Users\\armoa\\Desktop\\Proyectos\\Escuela\\Repositorios\\GranDT\\src\\cSharp\\GranDT.Core\\GranDT.Core.csproj": {
+              "projectPath": "c:\\Users\\armoa\\Desktop\\Proyectos\\Escuela\\Repositorios\\GranDT\\src\\cSharp\\GranDT.Core\\GranDT.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

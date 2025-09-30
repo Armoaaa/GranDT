@@ -1,0 +1,12 @@
+c:\Users\armoa\Desktop\Proyectos\Escuela\Repositorios\GranDT\src\cSharp\GranDT.Core\bin\Debug\net9.0\GranDT.Core.deps.json
+c:\Users\armoa\Desktop\Proyectos\Escuela\Repositorios\GranDT\src\cSharp\GranDT.Core\bin\Debug\net9.0\GranDT.Core.dll
+c:\Users\armoa\Desktop\Proyectos\Escuela\Repositorios\GranDT\src\cSharp\GranDT.Core\bin\Debug\net9.0\GranDT.Core.pdb
+c:\Users\armoa\Desktop\Proyectos\Escuela\Repositorios\GranDT\src\cSharp\GranDT.Core\obj\Debug\net9.0\GranDT.Core.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\armoa\Desktop\Proyectos\Escuela\Repositorios\GranDT\src\cSharp\GranDT.Core\obj\Debug\net9.0\GranDT.Core.AssemblyInfoInputs.cache
+c:\Users\armoa\Desktop\Proyectos\Escuela\Repositorios\GranDT\src\cSharp\GranDT.Core\obj\Debug\net9.0\GranDT.Core.AssemblyInfo.cs
+c:\Users\armoa\Desktop\Proyectos\Escuela\Repositorios\GranDT\src\cSharp\GranDT.Core\obj\Debug\net9.0\GranDT.Core.csproj.CoreCompileInputs.cache
+c:\Users\armoa\Desktop\Proyectos\Escuela\Repositorios\GranDT\src\cSharp\GranDT.Core\obj\Debug\net9.0\GranDT.Core.sourcelink.json
+c:\Users\armoa\Desktop\Proyectos\Escuela\Repositorios\GranDT\src\cSharp\GranDT.Core\obj\Debug\net9.0\GranDT.Core.dll
+c:\Users\armoa\Desktop\Proyectos\Escuela\Repositorios\GranDT\src\cSharp\GranDT.Core\obj\Debug\net9.0\refint\GranDT.Core.dll
+c:\Users\armoa\Desktop\Proyectos\Escuela\Repositorios\GranDT\src\cSharp\GranDT.Core\obj\Debug\net9.0\GranDT.Core.pdb
+c:\Users\armoa\Desktop\Proyectos\Escuela\Repositorios\GranDT\src\cSharp\GranDT.Core\obj\Debug\net9.0\ref\GranDT.Core.dll
