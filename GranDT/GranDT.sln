@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36203.30 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GranDT", "GranDT.csproj", "{A768DFE9-E7BE-4403-852F-B115A8460ABD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A768DFE9-E7BE-4403-852F-B115A8460ABD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A768DFE9-E7BE-4403-852F-B115A8460ABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A768DFE9-E7BE-4403-852F-B115A8460ABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A768DFE9-E7BE-4403-852F-B115A8460ABD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EBD2FF05-C1FF-4FDE-954B-07969C40CAB2}
+	EndGlobalSection
+EndGlobal
