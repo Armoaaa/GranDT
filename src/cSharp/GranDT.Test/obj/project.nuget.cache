@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cqg5TZF7T/E=",
+  "dgSpecHash": "0ipIutIuQLE=",
   "success": true,
-  "projectFilePath": "c:\\Users\\armoa\\Desktop\\Proyectos\\Escuela\\Repositorios\\GranDT\\src\\cSharp\\GranDT.Test\\GranDT.Test.csproj",
+  "projectFilePath": "C:\\Users\\armoa\\Desktop\\Proyectos\\Escuela\\Repositorios\\GranDT\\src\\cSharp\\GranDT.Test\\GranDT.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\armoa\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\armoa\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",

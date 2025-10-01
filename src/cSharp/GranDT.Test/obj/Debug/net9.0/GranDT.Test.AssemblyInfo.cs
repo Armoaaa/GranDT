@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GranDT.Test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55ef3d6f33e92ee051a81b6db5b2bbd498668cdd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ae4f15d99ab94258c43ddeef6afe3d678866855")]
 [assembly: System.Reflection.AssemblyProductAttribute("GranDT.Test")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GranDT.Test")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

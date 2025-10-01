@@ -1,22 +1,22 @@
-DROP DATABASE IF EXISTS `Gran DT`;
-CREATE SCHEMA IF NOT EXISTS `Gran DT` ;
-USE `Gran DT` ;
+DROP DATABASE IF EXISTS `GranDT`;
+CREATE SCHEMA IF NOT EXISTS `GranDT` ;
+USE `GranDT` ;
 
 -- -----------------------------------------------------
--- Table `Gran DT`.`Tipo`
+-- Table `GranDT`.`Tipo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gran DT`.`Tipo` (
-  `idTipo` INT UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `GranDT`.`Tipo` (
+  `idTipo` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(50) NULL,
   PRIMARY KEY (`idTipo`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gran DT`.`Equipos`
+-- Table `GranDT`.`Equipos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gran DT`.`Equipos` (
-  `idEquipos` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `GranDT`.`Equipos` (
+  `idEquipos` INT NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idEquipos`),
   UNIQUE INDEX `Nombre_UNIQUE` (`Nombre` ASC) VISIBLE)
@@ -24,38 +24,38 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gran DT`.`Futbolista`
+-- Table `GranDT`.`Futbolista`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gran DT`.`Futbolista` (
-  `idFutbolista` INT UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `GranDT`.`Futbolista` (
+  `idFutbolista` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(45) NULL,
   `Apellido` VARCHAR(45) NULL,
   `Apodo` VARCHAR(45) NULL,
   `FechadeNacimiento` DATE NULL,
-  `Cotizacion` DECIMAL UNSIGNED NULL,
+  `Cotizacion` DECIMAL  NULL,
   `idTipo` INT UNSIGNED NOT NULL,
-  `Equipos_idEquipos` INT NOT NULL,
-  PRIMARY KEY (`idFutbolista`, `idTipo`, `Equipos_idEquipos`),
+  `idEquipos` INT NOT NULL,
+  PRIMARY KEY (`idFutbolista`, `idTipo`, `idEquipos`),
   INDEX `fk_Futbolista_Tipo1_idx` (`idTipo` ASC) VISIBLE,
-  INDEX `fk_Futbolista_Equipos1_idx` (`Equipos_idEquipos` ASC) VISIBLE,
+  INDEX `fk_Futbolista_Equipos1_idx` (`idEquipos` ASC) VISIBLE,
   CONSTRAINT `fk_Futbolista_Tipo`
     FOREIGN KEY (`idTipo`)
-    REFERENCES `Gran DT`.`Tipo` (`idTipo`)
+    REFERENCES `GranDT`.`Tipo` (`idTipo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Futbolista_Equipos1`
-    FOREIGN KEY (`Equipos_idEquipos`)
-    REFERENCES `Gran DT`.`Equipos` (`idEquipos`)
+    FOREIGN KEY (`idEquipos`)
+    REFERENCES `GranDT`.`Equipos` (`idEquipos`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gran DT`.`Usuario`
+-- Table `GranDT`.`Usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gran DT`.`Usuario` (
-  `idUsuario` INT UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `GranDT`.`Usuario` (
+  `idUsuario` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(45) NOT NULL,
   `Apellido` VARCHAR(45) NOT NULL,
   `Email` VARCHAR(90) NOT NULL,
@@ -68,10 +68,10 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gran DT`.`Plantillas`
+-- Table `GranDT`.`Plantillas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gran DT`.`Plantillas` (
-  `idPlantillas` INT UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `GranDT`.`Plantillas` (
+  `idPlantillas` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `Presupuesto` DECIMAL NULL,
   `NombrePlantilla` VARCHAR(50) NULL,
   `idUsuario` INT UNSIGNED NOT NULL,
@@ -81,16 +81,16 @@ CREATE TABLE IF NOT EXISTS `Gran DT`.`Plantillas` (
   UNIQUE INDEX `NombrePlantilla_UNIQUE` (`NombrePlantilla` ASC) VISIBLE,
   CONSTRAINT `fk_Plantillas_Usuario1`
     FOREIGN KEY (`idUsuario`)
-    REFERENCES `Gran DT`.`Usuario` (`idUsuario`)
+    REFERENCES `GranDT`.`Usuario` (`idUsuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gran DT`.`PlantillaTitular`
+-- Table `GranDT`.`PlantillaTitular`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gran DT`.`PlantillaTitular` (
+CREATE TABLE IF NOT EXISTS `GranDT`.`PlantillaTitular` (
   `idFutbolista` INT UNSIGNED NOT NULL,
   `idPlantillas` INT UNSIGNED NOT NULL,
   `esTitular` TINYINT NULL,
@@ -98,39 +98,39 @@ CREATE TABLE IF NOT EXISTS `Gran DT`.`PlantillaTitular` (
   INDEX `fk_PlantillaJugador_Plantillas1_idx` (`idPlantillas` ASC) VISIBLE,
   CONSTRAINT `fk_PlantillaJugador_Futbolista1`
     FOREIGN KEY (`idFutbolista`)
-    REFERENCES `Gran DT`.`Futbolista` (`idFutbolista`)
+    REFERENCES `GranDT`.`Futbolista` (`idFutbolista`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_PlantillaJugador_Plantillas1`
     FOREIGN KEY (`idPlantillas`)
-    REFERENCES `Gran DT`.`Plantillas` (`idPlantillas`)
+    REFERENCES `GranDT`.`Plantillas` (`idPlantillas`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gran DT`.`Puntuacion`
+-- Table `GranDT`.`Puntuacion`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gran DT`.`Puntuacion` (
-  `idPuntuacion` INT UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `GranDT`.`Puntuacion` (
+  `idPuntuacion` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `fechaNro` TINYINT NOT NULL,
-  `Puntuacion` DECIMAL UNSIGNED NULL,
+  `Puntuacion` DECIMAL NULL,
   `idFutbolista` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`idPuntuacion`, `idFutbolista`),
   INDEX `fk_Puntuacion_Futbolista1_idx` (`idFutbolista` ASC) VISIBLE,
   CONSTRAINT `fk_Puntuacion_Futbolista1`
     FOREIGN KEY (`idFutbolista`)
-    REFERENCES `Gran DT`.`Futbolista` (`idFutbolista`)
+    REFERENCES `GranDT`.`Futbolista` (`idFutbolista`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Gran DT`.`PlantillaSuplente`
+-- Table `GranDT`.`PlantillaSuplente`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Gran DT`.`PlantillaSuplente` (
+CREATE TABLE IF NOT EXISTS `GranDT`.`PlantillaSuplente` (
   `idFutbolista` INT UNSIGNED NOT NULL,
   `idPlantillas` INT UNSIGNED NOT NULL,
   `esSuplente` TINYINT NULL,
@@ -138,12 +138,12 @@ CREATE TABLE IF NOT EXISTS `Gran DT`.`PlantillaSuplente` (
   INDEX `fk_PlantillaJugador_Plantillas1_idx` (`idPlantillas` ASC) VISIBLE,
   CONSTRAINT `fk_PlantillaJugador_Futbolista10`
     FOREIGN KEY (`idFutbolista`)
-    REFERENCES `Gran DT`.`Futbolista` (`idFutbolista`)
+    REFERENCES `GranDT`.`Futbolista` (`idFutbolista`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_PlantillaJugador_Plantillas10`
     FOREIGN KEY (`idPlantillas`)
-    REFERENCES `Gran DT`.`Plantillas` (`idPlantillas`)
+    REFERENCES `GranDT`.`Plantillas` (`idPlantillas`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
