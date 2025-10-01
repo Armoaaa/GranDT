@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GranDT.Dapper")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ae4f15d99ab94258c43ddeef6afe3d678866855")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6175ef5aa370eabf89d36b89135fee9d037399fc")]
 [assembly: System.Reflection.AssemblyProductAttribute("GranDT.Dapper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GranDT.Dapper")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

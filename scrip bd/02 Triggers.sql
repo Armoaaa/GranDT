@@ -31,9 +31,7 @@ CREATE TRIGGER befInsUsuario
 BEFORE INSERT ON Usuario
 FOR EACH ROW
 BEGIN
-    IF CHAR_LENGTH(NEW.contraseña) <> 64 THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La contraseña debe tener 64 caracteres (encriptada)';
-    END IF;
+
 
     IF (SELECT COUNT(*) FROM Usuario) >= 2000 THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se pueden cargar más de 2000 usuarios';
