@@ -13,10 +13,3 @@ namespace GranDT.Core
     }
 }
 
-// `idUsuario` INT UNSIGNED NOT NULL,
-//  `Nombre` VARCHAR(45) NOT NULL,
-//  `Apellido` VARCHAR(45) NOT NULL,
-//  `Email` VARCHAR(90) NOT NULL,
-//  `FechadeNacimiento` DATE NULL,
-//  `Contraseña` VARCHAR(64) NOT NULL,
-//  `esAdmin` TINYINT NULL COMMENT '

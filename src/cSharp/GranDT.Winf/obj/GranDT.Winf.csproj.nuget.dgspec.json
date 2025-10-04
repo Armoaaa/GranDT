@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\armoa\\Desktop\\Proyectos\\Escuela\\Repositorios\\GranDT\\src\\cSharp\\GranDT.Winf\\GranDT.Winf.csproj": {}
+    "C:\\Users\\armoa\\Desktop\\Proyectos\\Escuela\\Repositorios\\GranDT\\src\\cSharp\\GranDT.Winf\\GranDT.Winf.csproj": {}
   },
   "projects": {
-    "c:\\Users\\armoa\\Desktop\\Proyectos\\Escuela\\Repositorios\\GranDT\\src\\cSharp\\GranDT.Winf\\GranDT.Winf.csproj": {
+    "C:\\Users\\armoa\\Desktop\\Proyectos\\Escuela\\Repositorios\\GranDT\\src\\cSharp\\GranDT.Winf\\GranDT.Winf.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\armoa\\Desktop\\Proyectos\\Escuela\\Repositorios\\GranDT\\src\\cSharp\\GranDT.Winf\\GranDT.Winf.csproj",
+        "projectUniqueName": "C:\\Users\\armoa\\Desktop\\Proyectos\\Escuela\\Repositorios\\GranDT\\src\\cSharp\\GranDT.Winf\\GranDT.Winf.csproj",
         "projectName": "GranDT.Winf",
-        "projectPath": "c:\\Users\\armoa\\Desktop\\Proyectos\\Escuela\\Repositorios\\GranDT\\src\\cSharp\\GranDT.Winf\\GranDT.Winf.csproj",
+        "projectPath": "C:\\Users\\armoa\\Desktop\\Proyectos\\Escuela\\Repositorios\\GranDT\\src\\cSharp\\GranDT.Winf\\GranDT.Winf.csproj",
         "packagesPath": "C:\\Users\\armoa\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\armoa\\Desktop\\Proyectos\\Escuela\\Repositorios\\GranDT\\src\\cSharp\\GranDT.Winf\\obj\\",
+        "outputPath": "C:\\Users\\armoa\\Desktop\\Proyectos\\Escuela\\Repositorios\\GranDT\\src\\cSharp\\GranDT.Winf\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

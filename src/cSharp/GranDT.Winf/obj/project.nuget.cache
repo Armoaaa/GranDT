@@ -1,18 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "INJ37+0jKZ4=",
+  "dgSpecHash": "wOz1yIR5TcE=",
   "success": true,
-  "projectFilePath": "c:\\Users\\armoa\\Desktop\\Proyectos\\Escuela\\Repositorios\\GranDT\\src\\cSharp\\GranDT.Winf\\GranDT.Winf.csproj",
+  "projectFilePath": "C:\\Users\\armoa\\Desktop\\Proyectos\\Escuela\\Repositorios\\GranDT\\src\\cSharp\\GranDT.Winf\\GranDT.Winf.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\armoa\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
     "C:\\Users\\armoa\\.nuget\\packages\\mysqlconnector\\2.3.7\\mysqlconnector.2.3.7.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Error al obtener los datos de vulnerabilidad del paquete: No se puede cargar el índice de servicio del origen https://api.nuget.org/v3/index.json."
-    }
-  ]
+  "logs": []
 }
