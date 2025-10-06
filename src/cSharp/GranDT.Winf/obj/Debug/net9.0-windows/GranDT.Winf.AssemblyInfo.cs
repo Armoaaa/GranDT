@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GranDT.Winf")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+83cb7dc45b76b6ecac229a648300ea54b0eedc3a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+860179775479ff294051507eec3c1065982d56a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("GranDT.Winf")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GranDT.Winf")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
