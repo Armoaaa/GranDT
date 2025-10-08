@@ -1,0 +1,17 @@
+C:\Users\Lab20-PC02\source\repos\GranDT\bin\Debug\net8.0-windows\GranDT.exe
+C:\Users\Lab20-PC02\source\repos\GranDT\bin\Debug\net8.0-windows\GranDT.deps.json
+C:\Users\Lab20-PC02\source\repos\GranDT\bin\Debug\net8.0-windows\GranDT.runtimeconfig.json
+C:\Users\Lab20-PC02\source\repos\GranDT\bin\Debug\net8.0-windows\GranDT.dll
+C:\Users\Lab20-PC02\source\repos\GranDT\bin\Debug\net8.0-windows\GranDT.pdb
+C:\Users\Lab20-PC02\source\repos\GranDT\obj\Debug\net8.0-windows\GranDT.Form1.resources
+C:\Users\Lab20-PC02\source\repos\GranDT\obj\Debug\net8.0-windows\GranDT.Properties.Resources.resources
+C:\Users\Lab20-PC02\source\repos\GranDT\obj\Debug\net8.0-windows\GranDT.csproj.GenerateResource.cache
+C:\Users\Lab20-PC02\source\repos\GranDT\obj\Debug\net8.0-windows\GranDT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lab20-PC02\source\repos\GranDT\obj\Debug\net8.0-windows\GranDT.AssemblyInfoInputs.cache
+C:\Users\Lab20-PC02\source\repos\GranDT\obj\Debug\net8.0-windows\GranDT.AssemblyInfo.cs
+C:\Users\Lab20-PC02\source\repos\GranDT\obj\Debug\net8.0-windows\GranDT.csproj.CoreCompileInputs.cache
+C:\Users\Lab20-PC02\source\repos\GranDT\obj\Debug\net8.0-windows\GranDT.dll
+C:\Users\Lab20-PC02\source\repos\GranDT\obj\Debug\net8.0-windows\refint\GranDT.dll
+C:\Users\Lab20-PC02\source\repos\GranDT\obj\Debug\net8.0-windows\GranDT.pdb
+C:\Users\Lab20-PC02\source\repos\GranDT\obj\Debug\net8.0-windows\GranDT.genruntimeconfig.cache
+C:\Users\Lab20-PC02\source\repos\GranDT\obj\Debug\net8.0-windows\ref\GranDT.dll
