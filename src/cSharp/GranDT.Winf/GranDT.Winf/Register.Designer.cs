@@ -32,10 +32,10 @@
             Nombre = new TextBox();
             Nacimiento = new TextBox();
             Email = new TextBox();
-            Contraseña = new TextBox();
+            Contrasena = new TextBox();
             NombreTxt = new Label();
             NacimientoTxt = new Label();
-            ContraseñaTxt = new Label();
+            ContrasenaTxt = new Label();
             EmailTxt = new Label();
             ApellidoTxt = new Label();
             Registrarse = new Button();
@@ -73,13 +73,13 @@
             Email.TabIndex = 3;
             Email.TextChanged += Email_TextChanged;
             // 
-            // Contraseña
+            // Contrasena
             // 
-            Contraseña.Location = new Point(308, 224);
-            Contraseña.Name = "Contraseña";
-            Contraseña.Size = new Size(222, 23);
-            Contraseña.TabIndex = 4;
-            Contraseña.TextChanged += Contraseña_TextChanged;
+            Contrasena.Location = new Point(308, 224);
+            Contrasena.Name = "Contrasena";
+            Contrasena.Size = new Size(222, 23);
+            Contrasena.TabIndex = 4;
+            Contrasena.TextChanged += Contrasena_TextChanged;
             // 
             // NombreTxt
             // 
@@ -99,14 +99,14 @@
             NacimientoTxt.TabIndex = 6;
             NacimientoTxt.Text = "Fecha de nacimiento";
             // 
-            // ContraseñaTxt
+            // ContrasenaTxt
             // 
-            ContraseñaTxt.AutoSize = true;
-            ContraseñaTxt.Location = new Point(311, 206);
-            ContraseñaTxt.Name = "ContraseñaTxt";
-            ContraseñaTxt.Size = new Size(67, 15);
-            ContraseñaTxt.TabIndex = 8;
-            ContraseñaTxt.Text = "Contraseña";
+            ContrasenaTxt.AutoSize = true;
+            ContrasenaTxt.Location = new Point(311, 206);
+            ContrasenaTxt.Name = "ContrasenaTxt";
+            ContrasenaTxt.Size = new Size(67, 15);
+            ContrasenaTxt.TabIndex = 8;
+            ContrasenaTxt.Text = "Contrasena";
             // 
             // EmailTxt
             // 
@@ -128,9 +128,9 @@
             // 
             // Registrarse
             // 
-            Registrarse.Location = new Point(432, 269);
+            Registrarse.Location = new Point(562, 185);
             Registrarse.Name = "Registrarse";
-            Registrarse.Size = new Size(75, 23);
+            Registrarse.Size = new Size(208, 98);
             Registrarse.TabIndex = 10;
             Registrarse.Text = "Registrarse";
             Registrarse.UseVisualStyleBackColor = true;
@@ -143,11 +143,11 @@
             ClientSize = new Size(800, 450);
             Controls.Add(Registrarse);
             Controls.Add(ApellidoTxt);
-            Controls.Add(ContraseñaTxt);
+            Controls.Add(ContrasenaTxt);
             Controls.Add(EmailTxt);
             Controls.Add(NacimientoTxt);
             Controls.Add(NombreTxt);
-            Controls.Add(Contraseña);
+            Controls.Add(Contrasena);
             Controls.Add(Email);
             Controls.Add(Nacimiento);
             Controls.Add(Nombre);
@@ -164,10 +164,10 @@
         private TextBox Nombre;
         private TextBox Nacimiento;
         private TextBox Email;
-        private TextBox Contraseña;
+        private TextBox Contrasena;
         private Label NombreTxt;
         private Label NacimientoTxt;
-        private Label ContraseñaTxt;
+        private Label ContrasenaTxt;
         private Label EmailTxt;
         private Label ApellidoTxt;
         private Button Registrarse;
