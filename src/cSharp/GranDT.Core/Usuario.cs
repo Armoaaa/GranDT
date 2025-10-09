@@ -8,7 +8,7 @@ namespace GranDT.Core
         public required string Apellido { get; set; }
         public required string Email { get; set; }
         public DateTime FechadeNacimiento { get; set; }
-        public required string Contraseña { get; set; }
+        public required string Contrasena { get; set; }
         public bool esAdmin { get; set; }
     }
 }

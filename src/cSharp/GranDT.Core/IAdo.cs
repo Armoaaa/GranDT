@@ -9,7 +9,7 @@ namespace GranDT.Core
         int AltaTipo(string nombre);
         int AltaEquipo(string nombre);
         int AltaFutbolista(string nombre, string apellido, string apodo, DateTime? fechaNacimiento, decimal? cotizacion, int idTipo, int idEquipos);
-        int AltaUsuario(string nombre, string apellido, string email, DateTime? fechaNacimiento, string contraseña, byte? esAdmin);
+        int AltaUsuario(string nombre, string apellido, string email, DateTime? fechaNacimiento, string contrasena, byte? esAdmin);
         int AltaPlantilla(decimal? presupuesto, string nombrePlantilla, int idUsuario, byte? cantidadJugadores);
         void AltaPlantillaTitular(int idFutbolista, int idPlantillas, byte? esTitular);
         void AltaPlantillaSuplente(int idFutbolista, int idPlantillas, byte? esSuplente);

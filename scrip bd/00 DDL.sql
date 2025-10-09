@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `GranDT`.`Usuario` (
   `Apellido` VARCHAR(45) NOT NULL,
   `Email` VARCHAR(90) NOT NULL,
   `FechadeNacimiento` DATE NULL,
-  `Contraseña` VARCHAR(64) NOT NULL,
+  `Contrasena` VARCHAR(64) NOT NULL,
   `esAdmin` TINYINT NULL COMMENT 'Prefiero poner solo un campo de esAdmin para la simplicidad y menos joins pero sacrificamos rendimiento',
   PRIMARY KEY (`idUsuario`),
   UNIQUE INDEX `Email_UNIQUE` (`Email` ASC) VISIBLE)

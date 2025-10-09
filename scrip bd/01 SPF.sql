@@ -36,13 +36,13 @@ CREATE PROCEDURE altaUsuario(
     IN Apellido VARCHAR(45),
     IN Email VARCHAR(90),
     IN FechadeNacimiento DATE,
-    IN Contraseña CHAR(64),
+    IN Contrasena CHAR(64),
     IN esAdmin TINYINT,
     OUT idUsuario_generado INT
 )
 BEGIN
-    INSERT INTO Usuario (Nombre, Apellido, Email, FechadeNacimiento, Contraseña, esAdmin)
-    VALUES (Nombre, Apellido, Email, FechadeNacimiento, Contraseña, esAdmin);
+    INSERT INTO Usuario (Nombre, Apellido, Email, FechadeNacimiento, Contrasena, esAdmin)
+    VALUES (Nombre, Apellido, Email, FechadeNacimiento, Contrana, esAdmin);
     SET idUsuario_generado = LAST_INSERT_ID();
 END;
 //

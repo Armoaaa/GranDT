@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using Dapper;
+
 using GranDT.Core;
 
 namespace GranDT.Dapper;
@@ -44,14 +45,14 @@ public class AdoDapper : IAdo
         return parametros.Get<int>("@idFutbolista_generado");
     }
 
-    public int AltaUsuario(string nombre, string apellido, string email, DateTime? fechaNacimiento, string contraseña, byte? esAdmin)
+    public int AltaUsuario(string nombre, string apellido, string email, DateTime? fechaNacimiento, string contrasena, byte? esAdmin)
     {
         var parametros = new DynamicParameters();
         parametros.Add("@Nombre", nombre);
         parametros.Add("@Apellido", apellido);
         parametros.Add("@Email", email);
         parametros.Add("@FechadeNacimiento", fechaNacimiento);
-        parametros.Add("@Contraseña", contraseña);
+        parametros.Add("@Contrasena", contrasena);
         parametros.Add("@esAdmin", esAdmin);
         parametros.Add("@idUsuario_generado", dbType: DbType.Int32, direction: ParameterDirection.Output);
         _conexion.Execute("altaUsuario", parametros, commandType: CommandType.StoredProcedure);
