@@ -7,10 +7,6 @@ namespace GranDT.Winf
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void Contraseña_TextChanged(object sender, EventArgs e)
         {
@@ -18,6 +14,26 @@ namespace GranDT.Winf
         }
 
         private void Nombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Apellido_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Email_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Registrarse_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Nacimiento_TextChanged(object sender, EventArgs e)
         {
 
         }

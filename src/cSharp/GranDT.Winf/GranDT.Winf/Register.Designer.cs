@@ -38,6 +38,7 @@
             ContraseñaTxt = new Label();
             EmailTxt = new Label();
             ApellidoTxt = new Label();
+            Registrarse = new Button();
             SuspendLayout();
             // 
             // Apellido
@@ -46,6 +47,7 @@
             Apellido.Name = "Apellido";
             Apellido.Size = new Size(100, 23);
             Apellido.TabIndex = 0;
+            Apellido.TextChanged += Apellido_TextChanged;
             // 
             // Nombre
             // 
@@ -61,6 +63,7 @@
             Nacimiento.Name = "Nacimiento";
             Nacimiento.Size = new Size(222, 23);
             Nacimiento.TabIndex = 2;
+            Nacimiento.TextChanged += Nacimiento_TextChanged;
             // 
             // Email
             // 
@@ -68,6 +71,7 @@
             Email.Name = "Email";
             Email.Size = new Size(222, 23);
             Email.TabIndex = 3;
+            Email.TextChanged += Email_TextChanged;
             // 
             // Contraseña
             // 
@@ -85,7 +89,6 @@
             NombreTxt.Size = new Size(51, 15);
             NombreTxt.TabIndex = 5;
             NombreTxt.Text = "Nombre";
-            NombreTxt.Click += label1_Click;
             // 
             // NacimientoTxt
             // 
@@ -123,11 +126,22 @@
             ApellidoTxt.TabIndex = 9;
             ApellidoTxt.Text = "Apellido";
             // 
+            // Registrarse
+            // 
+            Registrarse.Location = new Point(432, 269);
+            Registrarse.Name = "Registrarse";
+            Registrarse.Size = new Size(75, 23);
+            Registrarse.TabIndex = 10;
+            Registrarse.Text = "Registrarse";
+            Registrarse.UseVisualStyleBackColor = true;
+            Registrarse.Click += Registrarse_Click;
+            // 
             // Register
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(Registrarse);
             Controls.Add(ApellidoTxt);
             Controls.Add(ContraseñaTxt);
             Controls.Add(EmailTxt);
@@ -156,5 +170,6 @@
         private Label ContraseñaTxt;
         private Label EmailTxt;
         private Label ApellidoTxt;
+        private Button Registrarse;
     }
 }
