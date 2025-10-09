@@ -7,8 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GranDT.Dapper", "GranDT.Dap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GranDT.Core", "GranDT.Core\GranDT.Core.csproj", "{6405A9F8-22CD-4A6D-982B-FA6FF01263AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GranDT.Winf", "GranDT.Winf\GranDT.Winf.csproj", "{BBFAB237-1AA5-44B5-AA0E-B8B197BAEBA3}"
-EndProject
+
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GranDT.Test", "GranDT.Test\GranDT.Test.csproj", "{3BCC3676-7A22-4F59-AD5A-55D2E7B6CABE}"
 EndProject
 Global

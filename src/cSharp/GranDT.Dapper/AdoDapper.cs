@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using Dapper;
-using MySqlConnector;
 using GranDT.Core;
 
 namespace GranDT.Dapper;
