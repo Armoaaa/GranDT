@@ -1,5 +1,5 @@
 DELIMITER //
-CREATE TRIGGER befInsTipo
+CREATE TRIGGER BITlimit
 BEFORE INSERT ON Tipo
 FOR EACH ROW
 BEGIN
@@ -11,7 +11,7 @@ END;
 DELIMITER ;
 
 DELIMITER //
-CREATE TRIGGER befInsFutbolista
+CREATE TRIGGER BIFlimit
 BEFORE INSERT ON Futbolista
 FOR EACH ROW
 BEGIN
@@ -27,12 +27,10 @@ END;
 DELIMITER ;
 
 DELIMITER //
-CREATE TRIGGER befInsUsuario
+CREATE TRIGGER BIUlimitecargado
 BEFORE INSERT ON Usuario
 FOR EACH ROW
 BEGIN
-
-
     IF (SELECT COUNT(*) FROM Usuario) >= 2000 THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se pueden cargar más de 2000 usuarios';
     END IF;
@@ -41,7 +39,19 @@ END;
 DELIMITER ;
 
 DELIMITER //
-CREATE TRIGGER befInsPlantilla
+CREATE TRIGGER BIUEncriptar
+BEFORE UPDATE ON Usuario
+FOR EACH ROW
+BEGIN
+    IF NEW.Contrasena <> OLD.Contrasena THEN
+        SET NEW.Contrasena = SHA2(NEW.Contrasena, 256);
+    END IF;
+END;
+//
+DELIMITER;
+
+DELIMITER //
+CREATE TRIGGER BIPpresupuesto
 BEFORE INSERT ON Plantillas
 FOR EACH ROW
 BEGIN
@@ -51,52 +61,24 @@ BEGIN
 END;
 //
 DELIMITER ;
-
 DELIMITER //
-CREATE TRIGGER befInsTitularChk
+CREATE TRIGGER BIPTlimit
 BEFORE INSERT ON PlantillaTitular
 FOR EACH ROW
 BEGIN
-    IF EXISTS (
-        SELECT 1 FROM PlantillaSuplente
-        WHERE idFutbolista = NEW.idFutbolista
-          AND idPlantillas = NEW.idPlantillas
-    ) THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Jugador ya está en esa plantilla como suplente';
-    END IF;
-
-    IF (
-        SELECT COUNT(*) FROM (
-            SELECT idFutbolista FROM PlantillaTitular WHERE idPlantillas = NEW.idPlantillas
-            UNION ALL
-            SELECT idFutbolista FROM PlantillaSuplente WHERE idPlantillas = NEW.idPlantillas
-        ) t
-    ) >= 20 THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se pueden tener más de 20 jugadores en la plantilla';
-    END IF;
-END;
-//
-DELIMITER ;
-
-DELIMITER //
-CREATE TRIGGER befInsSuplenteChk
-BEFORE INSERT ON PlantillaSuplente
-FOR EACH ROW
-BEGIN
+    -- Validar que no se duplique el jugador dentro de la misma plantilla
     IF EXISTS (
         SELECT 1 FROM PlantillaTitular
         WHERE idFutbolista = NEW.idFutbolista
           AND idPlantillas = NEW.idPlantillas
     ) THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Jugador ya está en esa plantilla como titular';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Jugador ya está en esa plantilla';
     END IF;
 
+    -- Validar que no se exceda el límite máximo de jugadores por plantilla
     IF (
-        SELECT COUNT(*) FROM (
-            SELECT idFutbolista FROM PlantillaTitular WHERE idPlantillas = NEW.idPlantillas
-            UNION ALL
-            SELECT idFutbolista FROM PlantillaSuplente WHERE idPlantillas = NEW.idPlantillas
-        ) t
+        SELECT COUNT(*) FROM PlantillaTitular
+        WHERE idPlantillas = NEW.idPlantillas
     ) >= 20 THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se pueden tener más de 20 jugadores en la plantilla';
     END IF;
@@ -128,7 +110,7 @@ END;
 //
 DELIMITER ;
 DELIMITER //
-CREATE TRIGGER befInsEquipo
+CREATE TRIGGER BIElimit
 BEFORE INSERT ON Equipos
 FOR EACH ROW
 BEGIN
