@@ -42,7 +42,7 @@ CREATE PROCEDURE altaUsuario(
 )
 BEGIN
     INSERT INTO Usuario (Nombre, Apellido, Email, FechadeNacimiento, Contrasena, esAdmin)
-    VALUES (UnNombre, UnApellido, UnEmail, UnFechadeNacimiento, UnContrana, UnesAdmin);
+    VALUES (UnNombre, UnApellido, UnEmail, UnFechadeNacimiento, UnContrasena, UnesAdmin);
     SET AIidUsuario = LAST_INSERT_ID();
 END;
 //

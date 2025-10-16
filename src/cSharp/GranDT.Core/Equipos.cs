@@ -7,7 +7,7 @@ namespace GranDT.Core
 {
     public class Equipos
     {
-        public required uint IdEquipos { get; set; }
-        public required string Nombre { get; set; }
+        public uint IdEquipos { get; set; }
+        public string Nombre { get; set; }
     }
 }

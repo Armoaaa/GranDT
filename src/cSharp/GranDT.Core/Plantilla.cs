@@ -1,14 +1,13 @@
+namespace GranDT.Core;
 
-
-namespace GranDT.Core
+public class Plantilla
 {
-    public class Plantilla
-    {
-        public  required uint idPlantillas { get; set; }
-        public  Decimal? Presupuesto { get; set; }
-        public string? NombrePlantilla { get; set; }
-        public required Usuario usuario { get; set; }
-        public byte? esAdmin { get; set; }
-    }
+    public uint idPlantillas { get; set; }
+    public Decimal? Presupuesto { get; set; }
+    public string? NombrePlantilla { get; set; }
+    public uint IdUsuario { get; set; }
+    public byte? esAdmin { get; set; }
+    public IEnumerable<Futbolista> Titulares { get; set; } = [];
+    public IEnumerable<Futbolista> Suplentes { get; set; } = [];
 }
 
