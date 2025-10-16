@@ -23,6 +23,5 @@ namespace GranDT.Core
         // Eliminar
         void EliminarPlantilla(int idPlantillas, int idUsuario);
         void EliminarPlantillaTitular(int idFutbolista, int idPlantillas);
-        void EliminarPlantillaSuplente(int idFutbolista, int idPlantillas);
     }
 }
