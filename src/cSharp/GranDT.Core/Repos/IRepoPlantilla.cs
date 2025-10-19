@@ -3,14 +3,14 @@ namespace GranDT.Core.Repos;
 public interface IRepoPlantilla
 {
 
-    int AltaPlantilla(Plantilla plantilla);
-    int ActualizarPlantilla(Plantilla plantilla);
-    int EliminarPlantilla(Plantilla plantilla);
+    int altaPlantilla(Plantilla plantilla);
+    int actualizarPlantilla(Plantilla plantilla);
+    int eliminarPlantilla(Plantilla plantilla);
 
 
-    int AltaJugador(Plantilla plantilla, Futbolista futbolista, bool esTitular);
-    int ActualizarJugador(Plantilla plantilla, Futbolista futbolista, bool esTitular);
-    int EliminarJugador(Plantilla plantilla, Futbolista futbolista);
+    int altaJugador(Plantilla plantilla, Futbolista futbolista, bool esTitular);
+    int actualizarJugador(Plantilla plantilla, Futbolista futbolista, bool esTitular);
+    int eliminarJugador(Plantilla plantilla, Futbolista futbolista);
 
     // traer titulares o suplentes
     Plantilla? GetDetallePlantilla(uint idPlantillas);

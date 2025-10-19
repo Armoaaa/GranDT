@@ -38,4 +38,25 @@ public class RepoFutbolista : IRepoFutbolista
         return conn.Execute("CALL AltaPuntuacion(@FechaNro, @Puntuacion, @IdFutbolista);",
               new { FechaNro = puntuacion.FechaNro, Puntuacion = puntuacion.Puntos, IdFutbolista = futbolista.IdFutbolista });
     }
+
+    // Métodos minúscula para cumplir la interfaz IRepoFutbolista
+    public int altaTipo(string nombre)
+    {
+        return AltaTipo(nombre);
+    }
+
+    public int altaFutbolista(Futbolista futbolista)
+    {
+        return AltaFutbolista(futbolista);
+    }
+
+    public int altaEquipo(string nombre)
+    {
+        return AltaEquipo(nombre);
+    }
+
+    public int altaPuntuacion(Futbolista futbolista, Puntuacion puntuacion)
+    {
+        return AltaPuntuacion(futbolista, puntuacion);
+    }
 }
