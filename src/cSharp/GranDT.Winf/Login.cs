@@ -24,5 +24,30 @@ namespace GranDT.Winf
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Reguistrarse_Click(object sender, EventArgs e)
+        {
+            Equipos EquiposForm = new Equipos();
+            EquiposForm.Show();
+            this.Hide();
+
+            // Cuando el Login se cierre, cerrar también este formulario
+            EquiposForm.FormClosed += (s, args) => this.Close();
+        }
+
+        private void Atras_Click(object sender, EventArgs e)
+        {
+            Inicio InicioForm = new Inicio();
+            InicioForm.Show();
+            this.Hide();
+
+            // Cuando el Login se cierre, cerrar también este formulario
+            InicioForm.FormClosed += (s, args) => this.Close();
+        }
     }
 }
