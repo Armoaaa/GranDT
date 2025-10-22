@@ -5,26 +5,19 @@ namespace GranDT.Core.Data;
 
 public class DapperContext
 {
-    private readonly string _connectionString;
+    // Cadena por defecto simplificada según tu ejemplo.
+    private readonly string _connectionString = "Server=localhost;User ID=root;Password=root;Database=5to_rosita_fresita;";
 
+    public DapperContext() { }
+
+    // Permite pasar una cadena de conexión alternativa si se desea.
     public DapperContext(string connectionString)
     {
-        _connectionString = connectionString;
+        if (!string.IsNullOrWhiteSpace(connectionString))
+            _connectionString = connectionString;
     }
 
-    // Constructor por defecto: intenta leer la cadena de conexión desde variable de entorno 'GRANDT_CONN' o appsettings.json
-    public DapperContext()
-    {
-        var env = Environment.GetEnvironmentVariable("GRANDT_CONN");
-        if (!string.IsNullOrWhiteSpace(env))
-        {
-            _connectionString = env;
-            return;
-        }
-
-        throw new InvalidOperationException("No connection string provided. Set GRANDT_CONN environment variable or instantiate DapperContext with a connection string.");
-    }
-
+    // Versión mínima: crea y devuelve una MySqlConnection usando la cadena.
     public IDbConnection CreateConnection()
         => new MySqlConnection(_connectionString);
 }

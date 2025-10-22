@@ -7,6 +7,8 @@ namespace GranDT.Core.Repos;
 public class RepoFutbolista : IRepoFutbolista
 {
     private readonly DapperContext _context;
+    
+    
 
     public RepoFutbolista(DapperContext context)
     {
