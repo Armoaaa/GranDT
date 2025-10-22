@@ -28,13 +28,37 @@ partial class Inicio
     /// </summary>
     private void InitializeComponent()
     {
+        Reguistrarse = new Button();
+        Login = new Button();
         SuspendLayout();
+        // 
+        // Reguistrarse
+        // 
+        Reguistrarse.Location = new Point(464, 295);
+        Reguistrarse.Name = "Reguistrarse";
+        Reguistrarse.Size = new Size(120, 42);
+        Reguistrarse.TabIndex = 0;
+        Reguistrarse.Text = "Reguistrarse";
+        Reguistrarse.UseVisualStyleBackColor = true;
+        Reguistrarse.Click += Reguistrarse_Click;
+        // 
+        // Login
+        // 
+        Login.Location = new Point(213, 295);
+        Login.Name = "Login";
+        Login.Size = new Size(120, 42);
+        Login.TabIndex = 1;
+        Login.Text = "Login";
+        Login.UseVisualStyleBackColor = true;
+        Login.Click += Login_Click;
         // 
         // Inicio
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(800, 450);
+        Controls.Add(Login);
+        Controls.Add(Reguistrarse);
         Name = "Inicio";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "GranDT";
@@ -42,4 +66,7 @@ partial class Inicio
     }
 
     #endregion
+
+    private Button Reguistrarse;
+    private Button Login;
 }

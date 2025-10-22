@@ -15,6 +15,35 @@ namespace GranDT.Winf
         public Reguistro()
         {
             InitializeComponent();
+            var screen = Screen.PrimaryScreen.WorkingArea;
+            this.Width = (int)(screen.Width * 0.6);  // 60% del ancho de pantalla
+            this.Height = (int)(screen.Height * 0.7); // 70% del alto de pantalla
+        }
+
+        private void Reguistro_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Reguistrarse_Click(object sender, EventArgs e)
+        {
+            Equipos EquiposForm = new Equipos();
+            EquiposForm.Show();
+            this.Hide();
+
+            // Cuando el Login se cierre, cerrar también este formulario
+            EquiposForm.FormClosed += (s, args) => this.Close();
+        }
+
+        private void Atras_Click(object sender, EventArgs e)
+        {
+            Inicio InicioForm = new Inicio();
+            InicioForm.Show();
+            this.Hide();
+
+            // Cuando el Login se cierre, cerrar también este formulario
+            InicioForm.FormClosed += (s, args) => this.Close();
         }
     }
 }
+
