@@ -1,41 +1,34 @@
-using Dapper;
-using GranDT.Core.Data;
 using System.Data;
+using Dapper;
+using GranDT.Core;
+using GranDT.Core.Repos;
 
-namespace GranDT.Core.Repos;
+namespace GranDT.Dapper;
 
-public class RepoUsuario : IRepoUsuario
+public class RepoUsuario : Repo, IRepoUsuario
 {
-    private readonly DapperContext _context;
+    // Recibe la conexión (inyectada por la capa de tests/servicio)
+    public RepoUsuario(IDbConnection conexion) : base(conexion) { }
 
-    public RepoUsuario(DapperContext context)
-    {
-        _context = context;
-    }
+    private static readonly string _spAltaUsuario = "altaUsuario";
 
     public int AltaUsuario(Usuario usuario)
     {
-        using var conn = _context.CreateConnection();
+        var p = new DynamicParameters();
+        p.Add("UnNombre", usuario.Nombre);
+        p.Add("UnApellido", usuario.Apellido);
+        p.Add("UnEmail", usuario.Email);
+        p.Add("UnFechadeNacimiento", usuario.FechadeNacimiento);
+        p.Add("UnContrasena", usuario.Contrasena);
+        p.Add("UnesAdmin", usuario.esAdmin ? 1 : 0);
+        p.Add("AIidUsuario", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-        var parameters = new DynamicParameters();
-        parameters.Add("Nombre", usuario.Nombre);
-        parameters.Add("Apellido", usuario.Apellido);
-        parameters.Add("Email", usuario.Email);
-        parameters.Add("FechaNacimiento", usuario.FechadeNacimiento);
-        parameters.Add("Contrasena", usuario.Contrasena);
-        parameters.Add("EsAdmin", usuario.esAdmin);
+        _conexion.Execute(
+            _spAltaUsuario,
+            p,
+            commandType: CommandType.StoredProcedure
+        );
 
-        parameters.Add("AIidUsuario", dbType: DbType.Int32, direction: ParameterDirection.Output);
-
-        conn.Execute("CALL altaUsuario(@Nombre, @Apellido, @Email, @FechaNacimiento, @Contrasena, @EsAdmin, @AIidUsuario);", parameters);
-
-        var id = parameters.Get<int>("AIidUsuario");
-        usuario.IdUsuario = (uint)id;
-        return id;
-    }
-
-    public int altaUsuario(Usuario usuario)
-    {
-        return AltaUsuario(usuario);
+        return p.Get<int>("AIidUsuario");
     }
 }

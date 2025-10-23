@@ -1,36 +1,36 @@
-using System;
+using GranDT.Core;
+using GranDT.Core.Repos;
+using GranDT.Dapper;
 using Xunit;
-using Xunit.Sdk;
 
 namespace GranDT.Test;
 
-public class RepoUsuarioTests
+public class RepoUsuarioTests : TestRepo
 {
-    [Fact]
-    public void AltaUsuario_Integration_WhenConnectionProvided()
+    // Repo que vamos a usar en este test
+    readonly IRepoUsuario repoUsuario;
+
+    // Este test usa la conexión provista por la clase base TestRepo
+    public RepoUsuarioTests() : base()
+        => repoUsuario = new RepoUsuario(_conexion);
+
+    [Theory]
+    [InlineData("Juan", "Pérez", "juan@test.com", "2000-01-01", "password123", false)]
+    [InlineData("Maria", "González", "maria@test.com", "1995-05-05", "pass456", true)]
+    public void AltaUsuario_CreaUsuario(string nombre, string apellido, string email, string fechaNacimiento, string contrasena, bool esAdmin)
     {
-        var conn = Environment.GetEnvironmentVariable("GRANDT_TEST_CONN");
-        if (string.IsNullOrWhiteSpace(conn))
+        var usuario = new Usuario
         {
-            // No hay cadena de conexión configurada: salimos sin fallar la prueba (se considera omitida en este entorno).
-            return;
-        }
-
-        var context = new GranDT.Core.Data.DapperContext(conn);
-        var repo = new GranDT.Core.Repos.RepoUsuario(context);
-
-        var usuario = new GranDT.Core.Usuario
-        {
-            Nombre = "Test",
-            Apellido = "User",
-            Email = $"test+{Guid.NewGuid():N}@example.local",
-            FechadeNacimiento = DateTime.UtcNow,
-            Contrasena = "dummyhash",
-            esAdmin = false
+            Nombre = nombre,
+            Apellido = apellido,
+            Email = email,
+            FechadeNacimiento = DateTime.Parse(fechaNacimiento),
+            Contrasena = contrasena,
+            esAdmin = esAdmin
         };
 
-        // Ejecuta el método; si el procedimiento está correcto debe devolver >= 0 (número de filas afectadas).
-        var result = repo.AltaUsuario(usuario);
-        Assert.True(result >= 0, "La llamada a AltaUsuario debe devolver un número de filas afectadas >= 0");
+        var id = repoUsuario.AltaUsuario(usuario);
+
+        Assert.True(id > 0);
     }
 }

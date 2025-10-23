@@ -1,31 +1,23 @@
 using Dapper;
-using GranDT.Core.Data;
 using System.Data;
 using System.Linq;
+using GranDT.Dapper;
 
 namespace GranDT.Core.Repos;
 
-public class RepoPlantilla : IRepoPlantilla
+public class RepoPlantilla : Repo, IRepoPlantilla
 {
-    private readonly DapperContext _context;
-
-    public RepoPlantilla(DapperContext context)
-    {
-        _context = context;
-    }
+    public RepoPlantilla(IDbConnection conexion) : base(conexion) { }
 
     public int AltaPlantilla(Plantilla plantilla)
     {
-        using var conn = _context.CreateConnection();
-        return conn.Execute("CALL AltaPlantilla(@Presupuesto, @NombrePlantilla, @IdUsuario, @CantidadJugadores);", plantilla);
+    return _conexion.Execute("CALL AltaPlantilla(@Presupuesto, @NombrePlantilla, @IdUsuario, @CantidadJugadores);", plantilla);
     }
 
     // Implementación que cumple la firma de la interfaz IRepoPlantilla
     public int altaPlantilla(Plantilla plantilla)
     {
-        using var conn = _context.CreateConnection();
-
-        var parameters = new DynamicParameters();
+    var parameters = new DynamicParameters();
         // parámetros de entrada
         parameters.Add("UnPresupuesto", plantilla.Presupuesto);
         parameters.Add("UnNombrePlantilla", plantilla.NombrePlantilla);
@@ -44,7 +36,7 @@ public class RepoPlantilla : IRepoPlantilla
         parameters.Add("AIidPlantilla", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
         // Ejecutamos el procedimiento almacenado
-        conn.Execute("CALL altaPlantilla(@UnPresupuesto, @UnNombrePlantilla, @UnidUsuario, @UnCantidadJugadores, @AIidPlantilla);", parameters);
+    _conexion.Execute("CALL altaPlantilla(@UnPresupuesto, @UnNombrePlantilla, @UnidUsuario, @UnCantidadJugadores, @AIidPlantilla);", parameters);
 
         var id = parameters.Get<int>("AIidPlantilla");
         // actualizar el objeto con el id generado
@@ -54,41 +46,35 @@ public class RepoPlantilla : IRepoPlantilla
 
     public int ActualizarPlantilla(Plantilla plantilla)
     {
-        using var conn = _context.CreateConnection();
-        return conn.Execute("CALL ActualizarPlantilla(@IdPlantillas, @IdUsuario, @Presupuesto, @NombrePlantilla, @CantidadJugadores);", plantilla);
+    return _conexion.Execute("CALL ActualizarPlantilla(@IdPlantillas, @IdUsuario, @Presupuesto, @NombrePlantilla, @CantidadJugadores);", plantilla);
     }
 
     public int EliminarPlantilla(Plantilla plantilla)
     {
-        using var conn = _context.CreateConnection();
-        return conn.Execute("CALL EliminarPlantilla(@IdPlantillas, @IdUsuario);", plantilla);
+    return _conexion.Execute("CALL EliminarPlantilla(@IdPlantillas, @IdUsuario);", plantilla);
     }
 
     public int AltaJugador(Plantilla plantilla, Futbolista futbolista, bool esTitular)
     {
-        using var conn = _context.CreateConnection();
-        return conn.Execute("CALL AltaPlantillaJugador(@IdFutbolista, @IdPlantilla, @EsTitular);",
+        return _conexion.Execute("CALL AltaPlantillaJugador(@IdFutbolista, @IdPlantilla, @EsTitular);",
             new { IdFutbolista = futbolista.IdFutbolista, IdPlantilla = plantilla.idPlantillas, EsTitular = esTitular });
     }
 
     public int ActualizarJugador(Plantilla plantilla, Futbolista futbolista, bool esTitular)
     {
-        using var conn = _context.CreateConnection();
-        return conn.Execute("CALL ActualizarPlantillaJugador(@IdFutbolista, @IdPlantilla, @EsTitular);",
+        return _conexion.Execute("CALL ActualizarPlantillaJugador(@IdFutbolista, @IdPlantilla, @EsTitular);",
             new { IdFutbolista = futbolista.IdFutbolista, IdPlantilla = plantilla.idPlantillas, EsTitular = esTitular });
     }
 
     public int EliminarJugador(Plantilla plantilla, Futbolista futbolista)
     {
-        using var conn = _context.CreateConnection();
-        return conn.Execute("CALL EliminarPlantillaJugador(@IdFutbolista, @IdPlantilla);",
+        return _conexion.Execute("CALL EliminarPlantillaJugador(@IdFutbolista, @IdPlantilla);",
             new { IdFutbolista = futbolista.IdFutbolista, IdPlantilla = plantilla.idPlantillas });
     }
 
     public Plantilla? GetDetallePlantilla(uint idPlantillas)
     {
-        using var conn = _context.CreateConnection();
-        using var multi = conn.QueryMultiple("CALL GetDetallePlantilla(@IdPlantilla);", new { IdPlantilla = idPlantillas });
+        using var multi = _conexion.QueryMultiple("CALL GetDetallePlantilla(@IdPlantilla);", new { IdPlantilla = idPlantillas });
 
         var plantilla = multi.Read<Plantilla>().FirstOrDefault();
         if (plantilla != null)

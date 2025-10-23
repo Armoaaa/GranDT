@@ -8,21 +8,21 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema mydb
 -- -----------------------------------------------------
 -- -----------------------------------------------------
--- Schema GranDT
+-- Schema 5to_GranDT
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema GranDT
+-- Schema 5to_GranDT
 -- -----------------------------------------------------
-DROP DATABASE IF EXISTS GranDT;
+DROP DATABASE IF EXISTS 5to_GranDT;
 
-CREATE SCHEMA IF NOT EXISTS `GranDT` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
-USE `GranDT` ;
+CREATE SCHEMA IF NOT EXISTS `5to_GranDT` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `5to_GranDT` ;
 
 -- -----------------------------------------------------
--- Table `GranDT`.`Equipos`
+-- Table `5to_GranDT`.`Equipos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `GranDT`.`Equipos` (
+CREATE TABLE IF NOT EXISTS `5to_GranDT`.`Equipos` (
   `idEquipos` INT NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idEquipos`),
@@ -33,9 +33,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `GranDT`.`Tipo`
+-- Table `5to_GranDT`.`Tipo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `GranDT`.`Tipo` (
+CREATE TABLE IF NOT EXISTS `5to_GranDT`.`Tipo` (
   `idTipo` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(50) NULL DEFAULT NULL,
   PRIMARY KEY (`idTipo`))
@@ -45,9 +45,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `GranDT`.`Futbolista`
+-- Table `5to_GranDT`.`Futbolista`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `GranDT`.`Futbolista` (
+CREATE TABLE IF NOT EXISTS `5to_GranDT`.`Futbolista` (
   `idFutbolista` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(45) NULL DEFAULT NULL,
   `Apellido` VARCHAR(45) NULL DEFAULT NULL,
@@ -61,19 +61,19 @@ CREATE TABLE IF NOT EXISTS `GranDT`.`Futbolista` (
   INDEX `fk_Futbolista_Equipos1_idx` (`idEquipos` ASC) VISIBLE,
   CONSTRAINT `fk_Futbolista_Equipos1`
     FOREIGN KEY (`idEquipos`)
-    REFERENCES `GranDT`.`Equipos` (`idEquipos`),
+    REFERENCES `5to_GranDT`.`Equipos` (`idEquipos`),
   CONSTRAINT `fk_Futbolista_Tipo`
     FOREIGN KEY (`idTipo`)
-    REFERENCES `GranDT`.`Tipo` (`idTipo`))
+    REFERENCES `5to_GranDT`.`Tipo` (`idTipo`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `GranDT`.`Usuario`
+-- Table `5to_GranDT`.`Usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `GranDT`.`Usuario` (
+CREATE TABLE IF NOT EXISTS `5to_GranDT`.`Usuario` (
   `idUsuario` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(45) NOT NULL,
   `Apellido` VARCHAR(45) NOT NULL,
@@ -89,9 +89,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `GranDT`.`Plantillas`
+-- Table `5to_GranDT`.`Plantillas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `GranDT`.`Plantillas` (
+CREATE TABLE IF NOT EXISTS `5to_GranDT`.`Plantillas` (
   `idPlantillas` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `Presupuesto` DECIMAL(10,0) NULL DEFAULT NULL,
   `NombrePlantilla` VARCHAR(50) NULL DEFAULT NULL,
@@ -102,16 +102,16 @@ CREATE TABLE IF NOT EXISTS `GranDT`.`Plantillas` (
   INDEX `fk_Plantillas_Usuario1_idx` (`idUsuario` ASC) VISIBLE,
   CONSTRAINT `fk_Plantillas_Usuario1`
     FOREIGN KEY (`idUsuario`)
-    REFERENCES `GranDT`.`Usuario` (`idUsuario`))
+    REFERENCES `5to_GranDT`.`Usuario` (`idUsuario`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `GranDT`.`PlantillaTitular`
+-- Table `5to_GranDT`.`PlantillaTitular`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `GranDT`.`PlantillaTitular` (
+CREATE TABLE IF NOT EXISTS `5to_GranDT`.`PlantillaTitular` (
   `idFutbolista` INT UNSIGNED NOT NULL,
   `idPlantillas` INT UNSIGNED NOT NULL,
   `esTitular` TINYINT NULL DEFAULT NULL,
@@ -119,19 +119,19 @@ CREATE TABLE IF NOT EXISTS `GranDT`.`PlantillaTitular` (
   INDEX `fk_PlantillaJugador_Plantillas1_idx` (`idPlantillas` ASC) VISIBLE,
   CONSTRAINT `fk_PlantillaJugador_Futbolista1`
     FOREIGN KEY (`idFutbolista`)
-    REFERENCES `GranDT`.`Futbolista` (`idFutbolista`),
+    REFERENCES `5to_GranDT`.`Futbolista` (`idFutbolista`),
   CONSTRAINT `fk_PlantillaJugador_Plantillas1`
     FOREIGN KEY (`idPlantillas`)
-    REFERENCES `GranDT`.`Plantillas` (`idPlantillas`))
+    REFERENCES `5to_GranDT`.`Plantillas` (`idPlantillas`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `GranDT`.`Puntuacion`
+-- Table `5to_GranDT`.`Puntuacion`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `GranDT`.`Puntuacion` (
+CREATE TABLE IF NOT EXISTS `5to_GranDT`.`Puntuacion` (
   `idPuntuacion` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `fechaNro` TINYINT NOT NULL,
   `Puntuacion` DECIMAL(10,0) NULL DEFAULT NULL,
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `GranDT`.`Puntuacion` (
   INDEX `fk_Puntuacion_Futbolista1_idx` (`idFutbolista` ASC) VISIBLE,
   CONSTRAINT `fk_Puntuacion_Futbolista1`
     FOREIGN KEY (`idFutbolista`)
-    REFERENCES `GranDT`.`Futbolista` (`idFutbolista`))
+    REFERENCES `5to_GranDT`.`Futbolista` (`idFutbolista`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
