@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GranDT.Dapper;
+using GranDT.Core;
+using GranDT.Core.Repos;
 
 namespace GranDT.Winf
 {
@@ -32,11 +35,37 @@ namespace GranDT.Winf
 
         private void Reguistrarse_Click(object sender, EventArgs e)
         {
+            // Validar que los emails coincidan
+            if (EmailT.Text != EmailC.Text)
+            {
+                MessageBox.Show("Los emails no coinciden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            // Validar que las contraseñas coincidan
+            if (ContrasenaT.Text != ContrasenaC.Text)
+            {
+                MessageBox.Show("Las contraseñas no coinciden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            // Validar que los campos no estén vacíos
+            if (string.IsNullOrWhiteSpace(EmailT.Text) || string.IsNullOrWhiteSpace(ContrasenaT.Text))
+            {
+                MessageBox.Show("Debe completar todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            // Intentar loguear
+            var conexion = ConexionProvider.GetConexion();
+            var repoUsuario = new RepoUsuario(conexion);
+            var usuario = repoUsuario.loginUsuario(EmailT.Text, ContrasenaT.Text);
+            if (usuario == null)
+            {
+                MessageBox.Show("No se pudo iniciar sesión. Verifique sus credenciales.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            // Si el login es exitoso, avanzar al formulario de Equipos
             Equipos EquiposForm = new Equipos();
             EquiposForm.Show();
             this.Hide();
-
-            // Cuando el Login se cierre, cerrar también este formulario
             EquiposForm.FormClosed += (s, args) => this.Close();
         }
 
