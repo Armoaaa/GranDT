@@ -17,7 +17,7 @@ public class RepoUsuarioTests : TestRepo
     [Theory]
     [InlineData("Juan", "Pérez", "juan@test.com", "2000-01-01", "password123", false)]
     [InlineData("Maria", "González", "maria@test.com", "1995-05-05", "pass456", true)]
-    public void AltaUsuario_CreaUsuario(string nombre, string apellido, string email, string fechaNacimiento, string contrasena, bool esAdmin)
+    public void AltaUsuario(string nombre, string apellido, string email, string fechaNacimiento, string contrasena, bool esAdmin)
     {
         var usuario = new Usuario
         {
@@ -33,4 +33,21 @@ public class RepoUsuarioTests : TestRepo
 
         Assert.True(id > 0);
     }
+
+    [Fact]
+    public void Login()
+    {
+
+        var email = "armoa34@outlook.com";
+        var contrasena = "meamo123jaja";
+
+
+        var usuario = repoUsuario.Login(email, contrasena);
+
+        Assert.True(usuario != null, "Usuario de prueba no encontrado en la base de datos. Asegurate de ejecutar los scripts de inserción o crear el usuario manualmente.");
+        Assert.Equal(email, usuario!.Email);
+    }
+
+
+
 }
