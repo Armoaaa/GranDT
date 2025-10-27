@@ -38,17 +38,17 @@ END;
 //
 DELIMITER ;
 
-DELIMITER //
-CREATE TRIGGER BIUEncriptar
-BEFORE UPDATE ON Usuario
-FOR EACH ROW
-BEGIN
-    IF NEW.Contrasena <> OLD.Contrasena THEN
-        SET NEW.Contrasena = SHA2(NEW.Contrasena, 256);
-    END IF;
-END;
-//
-DELIMITER ;
+-- DELIMITER //
+-- CREATE TRIGGER BIUEncriptar
+-- BEFORE UPDATE ON Usuario
+-- FOR EACH ROW
+-- BEGIN
+--     IF NEW.Contrasena <> OLD.Contrasena THEN
+--         SET NEW.Contrasena = SHA2(NEW.Contrasena, 256);
+--     END IF;
+-- END;
+-- //
+-- DELIMITER ;
 
 DELIMITER //
 CREATE TRIGGER BIPpresupuesto

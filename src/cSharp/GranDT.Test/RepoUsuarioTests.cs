@@ -44,7 +44,7 @@ public class RepoUsuarioTests : TestRepo
 
         var usuario = repoUsuario.Login(email, contrasena);
 
-        Assert.True(usuario != null, "Usuario de prueba no encontrado en la base de datos. Asegurate de ejecutar los scripts de inserción o crear el usuario manualmente.");
+        Assert.True(usuario != null, "Usuario de prueba no encontrado en la base de datos.");
         Assert.Equal(email, usuario!.Email);
     }
 

@@ -154,7 +154,8 @@ BEGIN
         esAdmin
     FROM Usuario
     WHERE Email = UnEmail
-      AND Contrasena = SHA2(UnContrasena, 256);
+    -- AND Contrasena = SHA2(UnContrasena, 256);
+    AND Contrasena = UnContrasena;
 END;
 //
 -- clickclack
