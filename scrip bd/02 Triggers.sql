@@ -38,17 +38,27 @@ END;
 //
 DELIMITER ;
 
--- DELIMITER //
--- CREATE TRIGGER BIUEncriptar
--- BEFORE UPDATE ON Usuario
--- FOR EACH ROW
--- BEGIN
---     IF NEW.Contrasena <> OLD.Contrasena THEN
---         SET NEW.Contrasena = SHA2(NEW.Contrasena, 256);
---     END IF;
--- END;
--- //
--- DELIMITER ;
+DELIMITER //
+CREATE TRIGGER BIUEncriptar
+BEFORE UPDATE ON Usuario
+FOR EACH ROW
+BEGIN
+    IF NEW.Contrasena <> OLD.Contrasena THEN
+        SET NEW.Contrasena = SHA2(NEW.Contrasena, 256);
+    END IF;
+END;
+//
+DELIMITER ;
+DELIMITER //
+CREATE TRIGGER BIIEncriptar
+BEFORE INSERT ON Usuario
+FOR EACH ROW
+BEGIN
+    SET NEW.Contrasena = SHA2(NEW.Contrasena, 256);
+END;
+
+//
+DELIMITER ;
 
 DELIMITER //
 CREATE TRIGGER BIPpresupuesto
@@ -122,5 +132,19 @@ END;
 DELIMITER ;
 
 
+-- prueba de si el test respeta los triggers
+-- DELIMITER //
+-- 
+-- CREATE TRIGGER `password123`
+-- BEFORE INSERT ON `Usuario`
+-- FOR EACH ROW
+-- BEGIN
+--     IF NEW.Contrasena = 'password123' THEN
+--         SIGNAL SQLSTATE '45000'
+--         SET MESSAGE_TEXT = 'La contraseña "password123" no está permitida por razones de seguridad. Por favor, elige una contraseña diferente.';
+--     END IF;
+-- END//
+-- 
+-- DELIMITER ;
 
 

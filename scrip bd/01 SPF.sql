@@ -41,6 +41,7 @@ CREATE PROCEDURE altaUsuario(
     OUT AIidUsuario INT
 )
 BEGIN
+    
     INSERT INTO Usuario (Nombre, Apellido, Email, FechadeNacimiento, Contrasena, esAdmin)
     VALUES (UnNombre, UnApellido, UnEmail, UnFechadeNacimiento, UnContrasena, UnesAdmin);
     SET AIidUsuario = LAST_INSERT_ID();
@@ -140,11 +141,18 @@ END;
 //
 
 
+
+
 CREATE PROCEDURE loginUsuario(
     IN UnEmail VARCHAR(90),
     IN UnContrasena VARCHAR(64)
 )
 BEGIN
+    DECLARE RealContrasena CHAR(64);
+
+    -- Convertimos la contraseña ingresada a su hash SHA2 una sola vez
+    SET RealContrasena = SHA2(UnContrasena, 256);
+
     -- Verificamos si el email existe y la contraseña coincide
     SELECT 
         idUsuario,
@@ -154,10 +162,12 @@ BEGIN
         esAdmin
     FROM Usuario
     WHERE Email = UnEmail
-    -- AND Contrasena = SHA2(UnContrasena, 256);
-    AND Contrasena = UnContrasena;
+      AND Contrasena = RealContrasena;
 END;
 //
+
+
+
 -- clickclack
 
 CREATE PROCEDURE agregarFutbolistaAPlantilla(

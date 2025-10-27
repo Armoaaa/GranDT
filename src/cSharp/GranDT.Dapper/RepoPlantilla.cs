@@ -1,23 +1,32 @@
 using Dapper;
 using System.Data;
 using System.Linq;
-using GranDT.Dapper;
+using GranDT.Core;
+using GranDT.Core.Repos;
 
-namespace GranDT.Core.Repos;
+namespace GranDT.Dapper;
 
 public class RepoPlantilla : Repo, IRepoPlantilla
 {
     public RepoPlantilla(IDbConnection conexion) : base(conexion) { }
 
+    // Versión simple para compatibilidad: ejecuta el SP de alta (sin recuperar OUT)
     public int AltaPlantilla(Plantilla plantilla)
     {
-    return _conexion.Execute("CALL AltaPlantilla(@Presupuesto, @NombrePlantilla, @IdUsuario, @CantidadJugadores);", plantilla);
+        // Llamamos al SP como StoredProcedure para mantener consistencia
+        return _conexion.Execute("altaPlantilla", new
+        {
+            UnPresupuesto = plantilla.Presupuesto,
+            UnNombrePlantilla = plantilla.NombrePlantilla,
+            UnidUsuario = plantilla.IdUsuario,
+            UnCantidadJugadores = (plantilla.Titulares?.Count() ?? 0) + (plantilla.Suplentes?.Count() ?? 0)
+        }, commandType: CommandType.StoredProcedure);
     }
 
     // Implementación que cumple la firma de la interfaz IRepoPlantilla
     public int altaPlantilla(Plantilla plantilla)
     {
-    var parameters = new DynamicParameters();
+        var parameters = new DynamicParameters();
         // parámetros de entrada
         parameters.Add("UnPresupuesto", plantilla.Presupuesto);
         parameters.Add("UnNombrePlantilla", plantilla.NombrePlantilla);
@@ -35,8 +44,8 @@ public class RepoPlantilla : Repo, IRepoPlantilla
         // parámetro de salida
         parameters.Add("AIidPlantilla", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-        // Ejecutamos el procedimiento almacenado
-    _conexion.Execute("CALL altaPlantilla(@UnPresupuesto, @UnNombrePlantilla, @UnidUsuario, @UnCantidadJugadores, @AIidPlantilla);", parameters);
+        // Ejecutamos el procedimiento almacenado como StoredProcedure (necesario para parámetros OUT)
+        _conexion.Execute("altaPlantilla", parameters, commandType: CommandType.StoredProcedure);
 
         var id = parameters.Get<int>("AIidPlantilla");
         // actualizar el objeto con el id generado
@@ -46,35 +55,40 @@ public class RepoPlantilla : Repo, IRepoPlantilla
 
     public int ActualizarPlantilla(Plantilla plantilla)
     {
-    return _conexion.Execute("CALL ActualizarPlantilla(@IdPlantillas, @IdUsuario, @Presupuesto, @NombrePlantilla, @CantidadJugadores);", plantilla);
+        return _conexion.Execute("actualizarPlantilla", new
+        {
+            UnidPlantillas = plantilla.idPlantillas,
+            UnidUsuario = plantilla.IdUsuario,
+            UnPresupuesto = plantilla.Presupuesto,
+            UnNombrePlantilla = plantilla.NombrePlantilla,
+            UnCantidadJugadores = (plantilla.Titulares?.Count() ?? 0) + (plantilla.Suplentes?.Count() ?? 0)
+        }, commandType: CommandType.StoredProcedure);
     }
 
     public int EliminarPlantilla(Plantilla plantilla)
     {
-    return _conexion.Execute("CALL EliminarPlantilla(@IdPlantillas, @IdUsuario);", plantilla);
+        return _conexion.Execute("eliminarPlantilla", new { UnidPlantillas = plantilla.idPlantillas, UnidUsuario = plantilla.IdUsuario }, commandType: CommandType.StoredProcedure);
     }
 
     public int AltaJugador(Plantilla plantilla, Futbolista futbolista, bool esTitular)
     {
-        return _conexion.Execute("CALL AltaPlantillaJugador(@IdFutbolista, @IdPlantilla, @EsTitular);",
-            new { IdFutbolista = futbolista.IdFutbolista, IdPlantilla = plantilla.idPlantillas, EsTitular = esTitular });
+        // Usamos el SP que inserta en PlantillaTitular
+        return _conexion.Execute("altaPlantillaTitular", new { UnidFutbolista = futbolista.IdFutbolista, UnidPlantillas = plantilla.idPlantillas, UnesTitular = esTitular ? 1 : 0 }, commandType: CommandType.StoredProcedure);
     }
 
     public int ActualizarJugador(Plantilla plantilla, Futbolista futbolista, bool esTitular)
     {
-        return _conexion.Execute("CALL ActualizarPlantillaJugador(@IdFutbolista, @IdPlantilla, @EsTitular);",
-            new { IdFutbolista = futbolista.IdFutbolista, IdPlantilla = plantilla.idPlantillas, EsTitular = esTitular });
+        return _conexion.Execute("actualizarPlantillaTitular", new { UnidFutbolista = futbolista.IdFutbolista, UnidPlantillas = plantilla.idPlantillas, UnesTitular = esTitular ? 1 : 0 }, commandType: CommandType.StoredProcedure);
     }
 
     public int EliminarJugador(Plantilla plantilla, Futbolista futbolista)
     {
-        return _conexion.Execute("CALL EliminarPlantillaJugador(@IdFutbolista, @IdPlantilla);",
-            new { IdFutbolista = futbolista.IdFutbolista, IdPlantilla = plantilla.idPlantillas });
+        return _conexion.Execute("eliminarPlantillaTitular", new { UnidFutbolista = futbolista.IdFutbolista, UnidPlantillas = plantilla.idPlantillas }, commandType: CommandType.StoredProcedure);
     }
 
     public Plantilla? GetDetallePlantilla(uint idPlantillas)
     {
-        using var multi = _conexion.QueryMultiple("CALL GetDetallePlantilla(@IdPlantilla);", new { IdPlantilla = idPlantillas });
+        using var multi = _conexion.QueryMultiple("GetDetallePlantilla", new { IdPlantilla = idPlantillas }, commandType: CommandType.StoredProcedure);
 
         var plantilla = multi.Read<Plantilla>().FirstOrDefault();
         if (plantilla != null)

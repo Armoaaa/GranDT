@@ -43,8 +43,10 @@ CALL altaPuntuacion(2, 8.6, @idFut9, @idPunt19);
 CALL altaPuntuacion(2, 8.0, @idFut10, @idPunt20);
 
 
-CALL altaUsuario('Luis','Armoa','armoa34@outlook.com','2007-01-12','meamo123jaja',1,@idUsuario);
-CALL altaUsuario('Juan', 'Perez', 'juanperez@example.com', '1990-05-10', '1234', 0, @idUsuario1);
+CALL altaUsuario('Luis','Armoa','armoa34@outlook.com','2007-01-12','Meamo123jaja',1,@idUsuario);
+CALL altaUsuario('Juan', 'Perez', 'juanperez@example.com', '1990-05-10', 'HHHolacomo1234', 0, @idUsuario1);
+
+CALL altaUsuario('BELEN', 'DOMINGUEZ', '23dominguezbelen@attttt.com', '1999-05-10', '23dominguezbelen', 0, @idUsuario1);
 
 CALL altaPlantilla(95000000.00, 'Super Boca', @idUsuario1, 0, @idPlantilla1);
 -- Titulares

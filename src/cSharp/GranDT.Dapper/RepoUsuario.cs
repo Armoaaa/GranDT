@@ -33,7 +33,7 @@ public class RepoUsuario : Repo, IRepoUsuario
         return p.Get<int>("AIidUsuario");
     }
 
-    public Usuario? Login(string email, string contrasena)
+    public Usuario? loginUsuario(string email, string contrasena)
     {
         var p = new DynamicParameters();
         p.Add("UnEmail", email);
