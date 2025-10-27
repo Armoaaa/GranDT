@@ -6,5 +6,6 @@ public interface IRepoFutbolista
     int altaFutbolista(Futbolista futbolista);
     int altaEquipo(string nombre);
     int altaPuntuacion(Futbolista futbolista, Puntuacion puntuacion);
-    
+    (decimal promedio, int cantidadFechas) PromedioFutbolista(uint idFutbolista);
+    int AgregarFutbolistaAPlantilla(uint idUsuario, string nombrePlantilla, decimal presupuesto, uint idFutbolista, bool esTitular);
 }

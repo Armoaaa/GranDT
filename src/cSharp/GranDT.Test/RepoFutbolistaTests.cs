@@ -108,4 +108,74 @@ public class RepoFutbolistaTests : TestRepo
 
         Assert.True(id > 0);
     }
+
+    [Fact]
+    public void PromedioFutbolista_CalculaPromedioYCantidadFechas()
+    {
+        // Asegurar que existe un futbolista con puntuaciones
+        var idFut = _conexion.QueryFirstOrDefault<int?>("SELECT idFutbolista FROM Futbolista LIMIT 1;", null);
+        if (!idFut.HasValue)
+        {
+            // Crear un futbolista mínimo
+            var f = new Futbolista { Nombre = "Tmp", Apellido = "Tmp", FechadeNacimiento = DateTime.Today, Cotizacion = 100m, IdEquipo = 1, IdTipo = 1 };
+            var newId = repoFutbolista.altaFutbolista(f);
+            idFut = newId;
+
+            // Agregar algunas puntuaciones
+            var futbolista = new Futbolista { IdFutbolista = (uint)idFut.Value };
+            repoFutbolista.altaPuntuacion(futbolista, new Puntuacion { FechaNro = 1, Puntos = 7.5m });
+            repoFutbolista.altaPuntuacion(futbolista, new Puntuacion { FechaNro = 2, Puntos = 8.5m });
+        }
+
+        var (promedio, cantidadFechas) = repoFutbolista.PromedioFutbolista((uint)idFut.Value);
+
+        Assert.True(promedio > 0);
+        Assert.True(cantidadFechas > 0);
+    }
+
+    [Fact]
+    public void AgregarFutbolistaAPlantilla_CreaPlantillaYAgregaJugador()
+    {
+        // Asegurar que existe un futbolista
+        var idFut = _conexion.QueryFirstOrDefault<int?>("SELECT idFutbolista FROM Futbolista LIMIT 1;", null);
+        if (!idFut.HasValue)
+        {
+            var f = new Futbolista { Nombre = "Tmp", Apellido = "Tmp", FechadeNacimiento = DateTime.Today, Cotizacion = 100m, IdEquipo = 1, IdTipo = 1 };
+            var newId = repoFutbolista.altaFutbolista(f);
+            idFut = newId;
+        }
+
+        // Asegurar que existe un usuario
+        var idUsr = _conexion.QueryFirstOrDefault<int?>("SELECT idUsuario FROM Usuario LIMIT 1;", null);
+        if (!idUsr.HasValue)
+        {
+            throw new Exception("Se requiere al menos un usuario en la base de datos para esta prueba");
+        }
+
+        string nombrePlantilla = "Test Plantilla";
+        decimal presupuesto = 1000000m;
+        bool esTitular = true;
+
+        // Limpiar si existe la plantilla
+        _conexion.Execute("DELETE FROM Plantillas WHERE NombrePlantilla = @nombre", new { nombre = nombrePlantilla });
+
+        var resultado = repoFutbolista.AgregarFutbolistaAPlantilla(
+            (uint)idUsr.Value,
+            nombrePlantilla,
+            presupuesto,
+            (uint)idFut.Value,
+            esTitular
+        );
+
+        Assert.True(resultado > 0);
+
+        // Verificar que se creó la plantilla y se agregó el jugador
+        var plantillaExiste = _conexion.QueryFirstOrDefault<bool>(
+            "SELECT 1 FROM Plantillas p JOIN PlantillaTitular pt ON p.idPlantillas = pt.idPlantillas " +
+            "WHERE p.NombrePlantilla = @nombre AND pt.idFutbolista = @idFut",
+            new { nombre = nombrePlantilla, idFut = idFut.Value }
+        );
+
+        Assert.True(plantillaExiste);
+    }
 }

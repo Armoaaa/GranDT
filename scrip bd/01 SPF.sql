@@ -139,4 +139,84 @@ BEGIN
 END;
 //
 
+
+CREATE PROCEDURE loginUsuario(
+    IN UnEmail VARCHAR(90),
+    IN UnContrasena VARCHAR(64)
+)
+BEGIN
+    -- Verificamos si el email existe y la contraseña coincide
+    SELECT 
+        idUsuario,
+        Nombre,
+        Apellido,
+        Email,
+        esAdmin
+    FROM Usuario
+    WHERE Email = UnEmail
+      AND Contrasena = SHA2(UnContrasena, 256);
+END;
+//
+-- clickclack
+
+CREATE PROCEDURE agregarFutbolistaAPlantilla(
+    IN UnidUsuario INT,
+    IN UnNombrePlantilla VARCHAR(50),
+    IN UnPresupuesto DECIMAL(11,2),
+    IN UnidFutbolista INT,
+    IN UnesTitular TINYINT
+)
+BEGIN
+    DECLARE idPlantillaExistente INT;
+
+
+    SELECT idPlantillas INTO idPlantillaExistente
+    FROM Plantillas
+    WHERE NombrePlantilla = UnNombrePlantilla AND idUsuario = UnidUsuario
+    LIMIT 1;
+
+    IF idPlantillaExistente IS NULL THEN
+        INSERT INTO Plantillas (Presupuesto, NombrePlantilla, idUsuario, CantidadJugadores)
+        VALUES (UnPresupuesto, UnNombrePlantilla, UnidUsuario, 0);
+        SET idPlantillaExistente = LAST_INSERT_ID();
+    END IF;
+
+    IF EXISTS (
+        SELECT 1 FROM PlantillaTitular
+        WHERE idFutbolista = UnidFutbolista AND idPlantillas = idPlantillaExistente
+    ) THEN
+        UPDATE PlantillaTitular
+        SET esTitular = UnesTitular
+        WHERE idFutbolista = UnidFutbolista AND idPlantillas = idPlantillaExistente;
+    ELSE
+        INSERT INTO PlantillaTitular (idFutbolista, idPlantillas, esTitular)
+        VALUES (UnidFutbolista, idPlantillaExistente, UnesTitular);
+    END IF;
+
+    UPDATE Plantillas p
+    SET p.CantidadJugadores = (
+        SELECT COUNT(*) FROM PlantillaTitular WHERE idPlantillas = idPlantillaExistente
+    )
+    WHERE p.idPlantillas = idPlantillaExistente;
+END;
+//
+
+
+CREATE PROCEDURE promedioFutbolista(
+    IN UnidFutbolista INT
+)
+BEGIN
+    SELECT 
+        f.Nombre,
+        f.Apellido,
+        ROUND(AVG(p.Puntuacion), 2) AS PromedioPuntuacion,
+        COUNT(p.fechaNro) AS CantidadFechas
+    FROM Puntuacion p
+    JOIN Futbolista f ON f.idFutbolista = p.idFutbolista
+    WHERE p.idFutbolista = UnidFutbolista
+    GROUP BY f.idFutbolista, f.Nombre, f.Apellido;
+END;
+//
+
 DELIMITER ;
+

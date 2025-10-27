@@ -10,9 +10,8 @@ public interface IRepoPlantilla
 
     int altaJugador(Plantilla plantilla, Futbolista futbolista, bool esTitular);
     int actualizarJugador(Plantilla plantilla, Futbolista futbolista, bool esTitular);
-    int eliminarJugador(Plantilla plantilla, Futbolista futbolista);
 
     // traer titulares o suplentes
-    Plantilla? GetDetallePlantilla(uint idPlantillas);
+
 
 }

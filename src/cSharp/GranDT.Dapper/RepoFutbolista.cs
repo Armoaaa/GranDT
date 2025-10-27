@@ -61,4 +61,28 @@ public class RepoFutbolista : Repo, IRepoFutbolista
 
         return p.Get<int>("AIidpuntuacion");
     }
+
+    public (decimal promedio, int cantidadFechas) PromedioFutbolista(uint idFutbolista)
+    {
+        var p = new DynamicParameters();
+        p.Add("UnidFutbolista", idFutbolista);
+
+        var result = _conexion.QuerySingle("promedioFutbolista", p, commandType: CommandType.StoredProcedure);
+        return (result.PromedioPuntuacion, (int)result.CantidadFechas);
+    }
+
+    public int AgregarFutbolistaAPlantilla(uint idUsuario, string nombrePlantilla, decimal presupuesto, uint idFutbolista, bool esTitular)
+    {
+        var p = new DynamicParameters();
+        p.Add("UnidUsuario", idUsuario);
+        p.Add("UnNombrePlantilla", nombrePlantilla);
+        p.Add("UnPresupuesto", presupuesto);
+        p.Add("UnidFutbolista", idFutbolista);
+        p.Add("UnesTitular", esTitular ? 1 : 0);
+
+        _conexion.Execute("agregarFutbolistaAPlantilla", p, commandType: CommandType.StoredProcedure);
+
+
+        return 1;
+    }
 }
