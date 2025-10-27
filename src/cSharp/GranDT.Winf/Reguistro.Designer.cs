@@ -84,6 +84,7 @@
             ApellidoT.Name = "ApellidoT";
             ApellidoT.Size = new Size(106, 23);
             ApellidoT.TabIndex = 9;
+
             // 
             // label2
             // 
@@ -109,6 +110,7 @@
             EmailT.Name = "EmailT";
             EmailT.Size = new Size(230, 23);
             EmailT.TabIndex = 11;
+
             // 
             // label4
             // 
@@ -125,6 +127,7 @@
             NacimientoT.Name = "NacimientoT";
             NacimientoT.Size = new Size(230, 23);
             NacimientoT.TabIndex = 13;
+
             // 
             // Contrasena
             // 
@@ -141,6 +144,7 @@
             ContrasenaT.Name = "ContrasenaT";
             ContrasenaT.Size = new Size(230, 23);
             ContrasenaT.TabIndex = 15;
+
             // 
             // Reguistro
             // 
