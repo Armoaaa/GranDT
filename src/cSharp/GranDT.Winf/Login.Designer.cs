@@ -35,9 +35,9 @@
             Atras = new Button();
             Reguistrarse = new Button();
             label1 = new Label();
-            textBox1 = new TextBox();
+            EmailC = new TextBox();
             label2 = new Label();
-            textBox2 = new TextBox();
+            ContrasenaC = new TextBox();
             SuspendLayout();
             // 
             // Contrasena
@@ -55,6 +55,7 @@
             ContrasenaT.Name = "ContrasenaT";
             ContrasenaT.Size = new Size(230, 23);
             ContrasenaT.TabIndex = 21;
+            ContrasenaT.TextChanged += ContrasenaT_TextChanged;
             // 
             // label3
             // 
@@ -71,6 +72,7 @@
             EmailT.Name = "EmailT";
             EmailT.Size = new Size(230, 23);
             EmailT.TabIndex = 19;
+            EmailT.TextChanged += EmailT_TextChanged;
             // 
             // Atras
             // 
@@ -102,12 +104,13 @@
             label1.Text = "Confirmar Correo Electronico";
             label1.Click += label1_Click;
             // 
-            // textBox1
+            // EmailC
             // 
-            textBox1.Location = new Point(284, 139);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(230, 23);
-            textBox1.TabIndex = 23;
+            EmailC.Location = new Point(284, 139);
+            EmailC.Name = "EmailC";
+            EmailC.Size = new Size(230, 23);
+            EmailC.TabIndex = 23;
+            EmailC.TextChanged += EmailC_TextChanged;
             // 
             // label2
             // 
@@ -118,12 +121,13 @@
             label2.TabIndex = 26;
             label2.Text = "Confirmar Password";
             // 
-            // textBox2
+            // ContrasenaC
             // 
-            textBox2.Location = new Point(285, 240);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(230, 23);
-            textBox2.TabIndex = 25;
+            ContrasenaC.Location = new Point(285, 240);
+            ContrasenaC.Name = "ContrasenaC";
+            ContrasenaC.Size = new Size(230, 23);
+            ContrasenaC.TabIndex = 25;
+            ContrasenaC.TextChanged += ContrasenaC_TextChanged;
             // 
             // Login
             // 
@@ -131,9 +135,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(label2);
-            Controls.Add(textBox2);
+            Controls.Add(ContrasenaC);
             Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(EmailC);
             Controls.Add(Contrasena);
             Controls.Add(ContrasenaT);
             Controls.Add(label3);
@@ -156,8 +160,8 @@
         private Button Atras;
         private Button Reguistrarse;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox EmailC;
         private Label label2;
-        private TextBox textBox2;
+        private TextBox ContrasenaC;
     }
 }

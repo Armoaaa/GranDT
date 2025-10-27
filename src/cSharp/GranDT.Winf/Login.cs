@@ -49,5 +49,25 @@ namespace GranDT.Winf
             // Cuando el Login se cierre, cerrar también este formulario
             InicioForm.FormClosed += (s, args) => this.Close();
         }
+
+        private void EmailT_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EmailC_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ContrasenaT_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ContrasenaC_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
