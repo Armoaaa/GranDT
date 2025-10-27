@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GranDT.Test", "GranDT.Test\GranDT.Test.csproj", "{3BCC3676-7A22-4F59-AD5A-55D2E7B6CABE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GranDT.Winf", "GranDT.Winf\GranDT.Winf.csproj", "{E430B129-ED93-469C-89DE-ADD2FCF8144B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0D7605CE-9F5A-48CE-94E0-8330CB343314} = {0D7605CE-9F5A-48CE-94E0-8330CB343314}
+		{6405A9F8-22CD-4A6D-982B-FA6FF01263AD} = {6405A9F8-22CD-4A6D-982B-FA6FF01263AD}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

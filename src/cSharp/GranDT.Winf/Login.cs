@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using GranDT.Dapper;
-using GranDT.Core;
-using GranDT.Core.Repos;
+﻿using GranDT.Dapper;
 
 namespace GranDT.Winf
 {
