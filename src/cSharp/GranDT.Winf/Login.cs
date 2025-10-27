@@ -54,7 +54,7 @@ namespace GranDT.Winf
                 return;
             }
             // Intentar loguear
-            var conexion = ConexionProvider.GetConexion();
+            var conexion = Conexion.GetConexion();
             var repoUsuario = new RepoUsuario(conexion);
             var usuario = repoUsuario.loginUsuario(EmailT.Text, ContrasenaT.Text);
             if (usuario == null)
