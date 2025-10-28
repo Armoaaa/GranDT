@@ -37,15 +37,12 @@ public class RepoUsuarioTests : TestRepo
     [Fact]
     public void loginUsuario()
     {
-
         var email = "armoa34@outlook.com";
         var contrasena = "Meamo123jaja";
 
+        var loginExitoso = repoUsuario.loginUsuario(email, contrasena);
 
-        var usuario = repoUsuario.loginUsuario(email, contrasena);
-
-        Assert.True(usuario != null, "Usuario de prueba no encontrado en la base de datos.");
-        Assert.Equal(email, usuario!.Email);
+        Assert.True(loginExitoso, "El login debería ser exitoso con las credenciales correctas.");
     }
 
 

@@ -33,16 +33,18 @@ public class RepoUsuario : Repo, IRepoUsuario
         return p.Get<int>("AIidUsuario");
     }
 
-    public Usuario? loginUsuario(string email, string contrasena)
+    public bool loginUsuario(string email, string contrasena)
     {
         var p = new DynamicParameters();
         p.Add("UnEmail", email);
         p.Add("UnContrasena", contrasena);
 
-        return _conexion.QueryFirstOrDefault<Usuario>(
+        var usuario = _conexion.QueryFirstOrDefault<Usuario>(
             _spLoginUsuario,
             p,
             commandType: CommandType.StoredProcedure
         );
+        
+        return usuario != null;
     }
 }

@@ -16,7 +16,6 @@ public partial class Inicio : Form
         ReguistroForm.Show();
         this.Hide();
 
-        // Cuando el Login se cierre, cerrar también este formulario
         ReguistroForm.FormClosed += (s, args) => this.Close();
     }
 
@@ -26,7 +25,11 @@ public partial class Inicio : Form
         loginForm.Show();
         this.Hide();
 
-        // Cuando el Login se cierre, cerrar también este formulario
         loginForm.FormClosed += (s, args) => this.Close();
+    }
+
+    private void Inicio_Load(object sender, EventArgs e)
+    {
+
     }
 }

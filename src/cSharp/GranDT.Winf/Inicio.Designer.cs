@@ -62,6 +62,7 @@ partial class Inicio
         Name = "Inicio";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "GranDT";
+        Load += Inicio_Load;
         ResumeLayout(false);
     }
 
