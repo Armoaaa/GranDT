@@ -34,7 +34,8 @@ partial class Inicio
         // 
         // Reguistrarse
         // 
-        Reguistrarse.Location = new Point(464, 295);
+        Reguistrarse.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+        Reguistrarse.Location = new Point(340, 180);
         Reguistrarse.Name = "Reguistrarse";
         Reguistrarse.Size = new Size(120, 42);
         Reguistrarse.TabIndex = 0;
@@ -44,7 +45,8 @@ partial class Inicio
         // 
         // Login
         // 
-        Login.Location = new Point(213, 295);
+        Login.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+        Login.Location = new Point(340, 180);
         Login.Name = "Login";
         Login.Size = new Size(120, 42);
         Login.TabIndex = 1;

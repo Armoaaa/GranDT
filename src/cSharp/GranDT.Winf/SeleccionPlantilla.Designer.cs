@@ -1,6 +1,6 @@
 ﻿namespace GranDT.Winf
 {
-    partial class Equipos
+    partial class SeleccionPlantilla
     {
         /// <summary>
         /// Required designer variable.
@@ -28,44 +28,69 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listBox1 = new ListBox();
+            SEquipos = new ComboBox();
             Confirmar = new Button();
+            Crear = new Button();
+            Cerrar = new Button();
             SuspendLayout();
             // 
-            // listBox1
+            // SEquipos
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(272, 22);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(226, 229);
-            listBox1.TabIndex = 0;
+            SEquipos.FormattingEnabled = true;
+            SEquipos.Location = new Point(325, 102);
+            SEquipos.Name = "SEquipos";
+            SEquipos.Size = new Size(121, 23);
+            SEquipos.TabIndex = 2;
             // 
             // Confirmar
             // 
-            Confirmar.Location = new Point(346, 304);
+            Confirmar.Location = new Point(390, 297);
             Confirmar.Name = "Confirmar";
-            Confirmar.Size = new Size(75, 23);
-            Confirmar.TabIndex = 1;
-            Confirmar.Text = "Confirmar";
+            Confirmar.Size = new Size(142, 23);
+            Confirmar.TabIndex = 3;
+            Confirmar.Text = "Confirmar seleccion";
             Confirmar.UseVisualStyleBackColor = true;
             Confirmar.Click += Confirmar_Click;
             // 
-            // Equipos
+            // Crear
+            // 
+            Crear.Location = new Point(250, 297);
+            Crear.Name = "Crear";
+            Crear.Size = new Size(134, 23);
+            Crear.TabIndex = 4;
+            Crear.Text = "Crear plantilla";
+            Crear.UseVisualStyleBackColor = true;
+            Crear.Click += Crear_Click;
+            // 
+            // Cerrar
+            // 
+            Cerrar.Location = new Point(685, 12);
+            Cerrar.Name = "Cerrar";
+            Cerrar.Size = new Size(103, 23);
+            Cerrar.TabIndex = 5;
+            Cerrar.Text = "Cerrar cuenta";
+            Cerrar.UseVisualStyleBackColor = true;
+            Cerrar.Click += Cerrar_Click;
+            // 
+            // SeleccionPlantilla
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(Cerrar);
+            Controls.Add(Crear);
             Controls.Add(Confirmar);
-            Controls.Add(listBox1);
-            Name = "Equipos";
+            Controls.Add(SEquipos);
+            Name = "SeleccionPlantilla";
             Text = "Equipos";
             Load += Equipos_Load;
             ResumeLayout(false);
         }
 
         #endregion
-
-        private ListBox listBox1;
+        private ComboBox SEquipos;
         private Button Confirmar;
+        private Button Crear;
+        private Button Cerrar;
     }
 }

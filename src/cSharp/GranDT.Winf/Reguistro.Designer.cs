@@ -55,7 +55,7 @@
             // 
             NombreT.Location = new Point(265, 97);
             NombreT.Name = "NombreT";
-            NombreT.Size = new Size(106, 23);
+            NombreT.Size = new Size(230, 23);
             NombreT.TabIndex = 7;
             // 
             // Atras
@@ -70,6 +70,7 @@
             // 
             // Reguistrarse
             // 
+            Reguistrarse.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             Reguistrarse.Location = new Point(391, 339);
             Reguistrarse.Name = "Reguistrarse";
             Reguistrarse.Size = new Size(104, 33);
@@ -80,16 +81,17 @@
             // 
             // ApellidoT
             // 
-            ApellidoT.Location = new Point(389, 97);
+            ApellidoT.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            ApellidoT.Location = new Point(267, 97);
             ApellidoT.Name = "ApellidoT";
-            ApellidoT.Size = new Size(106, 23);
+            ApellidoT.Size = new Size(230, 23);
             ApellidoT.TabIndex = 9;
-
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(389, 79);
+            label2.Location = new Point(265, 79);
             label2.Name = "label2";
             label2.Size = new Size(51, 15);
             label2.TabIndex = 10;
@@ -106,11 +108,11 @@
             // 
             // EmailT
             // 
+            EmailT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             EmailT.Location = new Point(265, 143);
             EmailT.Name = "EmailT";
             EmailT.Size = new Size(230, 23);
             EmailT.TabIndex = 11;
-
             // 
             // label4
             // 
@@ -123,11 +125,11 @@
             // 
             // NacimientoT
             // 
+            NacimientoT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             NacimientoT.Location = new Point(265, 189);
             NacimientoT.Name = "NacimientoT";
             NacimientoT.Size = new Size(230, 23);
             NacimientoT.TabIndex = 13;
-
             // 
             // Contrasena
             // 
@@ -140,11 +142,11 @@
             // 
             // ContrasenaT
             // 
+            ContrasenaT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             ContrasenaT.Location = new Point(265, 239);
             ContrasenaT.Name = "ContrasenaT";
             ContrasenaT.Size = new Size(230, 23);
             ContrasenaT.TabIndex = 15;
-
             // 
             // Reguistro
             // 

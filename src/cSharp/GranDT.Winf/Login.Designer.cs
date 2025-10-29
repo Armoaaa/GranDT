@@ -51,6 +51,7 @@
             // 
             // ContrasenaT
             // 
+            ContrasenaT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             ContrasenaT.Location = new Point(285, 191);
             ContrasenaT.Name = "ContrasenaT";
             ContrasenaT.Size = new Size(230, 23);
@@ -68,6 +69,7 @@
             // 
             // EmailT
             // 
+            EmailT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             EmailT.Location = new Point(285, 95);
             EmailT.Name = "EmailT";
             EmailT.Size = new Size(230, 23);
@@ -86,6 +88,7 @@
             // 
             // Reguistrarse
             // 
+            Reguistrarse.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             Reguistrarse.Location = new Point(411, 316);
             Reguistrarse.Name = "Reguistrarse";
             Reguistrarse.Size = new Size(104, 33);
@@ -106,6 +109,7 @@
             // 
             // EmailC
             // 
+            EmailC.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             EmailC.Location = new Point(284, 139);
             EmailC.Name = "EmailC";
             EmailC.Size = new Size(230, 23);
@@ -123,6 +127,7 @@
             // 
             // ContrasenaC
             // 
+            ContrasenaC.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             ContrasenaC.Location = new Point(285, 240);
             ContrasenaC.Name = "ContrasenaC";
             ContrasenaC.Size = new Size(230, 23);

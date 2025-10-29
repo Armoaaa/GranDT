@@ -71,7 +71,7 @@ namespace GranDT.Winf
                 return;
             }
             // Si el registro es exitoso, avanzar al formulario de Equipos
-            Equipos EquiposForm = new Equipos();
+            SeleccionPlantilla EquiposForm = new SeleccionPlantilla();
             EquiposForm.Show();
             this.Hide();
             EquiposForm.FormClosed += (s, args) => this.Close();

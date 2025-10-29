@@ -1,6 +1,6 @@
 ﻿namespace GranDT.Winf
 {
-    partial class Plantilla
+    partial class EdicionPlantilla
     {
         /// <summary>
         /// Required designer variable.
