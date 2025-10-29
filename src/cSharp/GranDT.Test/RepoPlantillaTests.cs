@@ -160,7 +160,7 @@ public class RepoPlantillaTests : TestRepo
     }
 
     [Fact]
-    public void ActualizarJugador_ModificaEstadoTitular()
+    public void ModificaEstadoTitular()
     {
 
         var plantilla = new Plantilla
@@ -171,6 +171,23 @@ public class RepoPlantillaTests : TestRepo
             CantidadJugadores = 0
         };
 
+
+        plantilla.idPlantillas = (uint)repoPlantilla.altaPlantilla(plantilla);
+
+        var futbolista = new Futbolista { IdFutbolista = (uint)1 };
+
+        repoPlantilla.altaJugador(plantilla, futbolista, true);
+
+        var resultado = repoPlantilla.actualizarJugador(plantilla, futbolista, false);
+
+        Assert.True(resultado > 0);
+
+    }
+     [Fact]
+    public void ObtenerPlantillaCompleta()
+    {
+
+        var plantilla = new Plantilla
 
         plantilla.idPlantillas = (uint)repoPlantilla.altaPlantilla(plantilla);
 

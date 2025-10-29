@@ -363,6 +363,63 @@ BEGIN
 END;
 //
 
+REATE PROCEDURE obtenerPlantillaCompleta(
+    IN UnidPlantillas INT
+)
+BEGIN
+    -- 1. Traer la información de la Plantilla (Plantilla)
+    SELECT 
+        p.idPlantillas,
+        p.Presupuesto,
+        p.NombrePlantilla,
+        p.idUsuario,
+        p.CantidadJugadores
+    FROM Plantillas p
+    WHERE p.idPlantillas = UnidPlantillas;
+
+    -- 2. Traer los Futbolistas Titulares (FutbolistasTitulares)
+    SELECT 
+        f.idFutbolista,
+        f.Nombre,
+        f.Apellido,
+        f.Apodo,
+        f.FechadeNacimiento,
+        f.Cotizacion,
+        f.idTipo,
+        f.idEquipos,
+        e.Nombre AS NombreEquipo,
+        t.Nombre AS NombreTipo
+    FROM PlantillaTitular pt
+    INNER JOIN Futbolista f ON f.idFutbolista = pt.idFutbolista
+    INNER JOIN Equipos e ON e.idEquipos = f.idEquipos
+    INNER JOIN Tipo t ON t.idTipo = f.idTipo
+    WHERE pt.idPlantillas = UnidPlantillas
+      AND pt.esTitular = 1
+    ORDER BY f.Apellido;
+
+    -- 3. Traer los Futbolistas Suplentes (FutbolistasSuplentes)
+    SELECT 
+        f.idFutbolista,
+        f.Nombre,
+        f.Apellido,
+        f.Apodo,
+        f.FechadeNacimiento,
+        f.Cotizacion,
+        f.idTipo,
+        f.idEquipos,
+        e.Nombre AS NombreEquipo,
+        t.Nombre AS NombreTipo
+    FROM PlantillaTitular pt
+    INNER JOIN Futbolista f ON f.idFutbolista = pt.idFutbolista
+    INNER JOIN Equipos e ON e.idEquipos = f.idEquipos
+    INNER JOIN Tipo t ON t.idTipo = f.idTipo
+    WHERE pt.idPlantillas = UnidPlantillas
+      AND pt.esTitular = 0
+    ORDER BY f.Apellido;
+    
+END;
+//
+
 DELIMITER ;
 
 

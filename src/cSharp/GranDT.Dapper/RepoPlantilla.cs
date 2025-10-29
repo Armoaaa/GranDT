@@ -17,6 +17,7 @@ public class RepoPlantilla : Repo, IRepoPlantilla
     private static readonly string _spTraerPlantillasPorEmail = "traerPlantillasPorEmail";
     private static readonly string _spTraerEquipos = "traerEquipos";
     private static readonly string _sptraerFutbolistasXTipoXEquipo = "traerFutbolistasXTipoXEquipo";
+    private static readonly string _spPlantillaCompleta = "traerPlantillaCompleta"; 
 
     public int altaPlantilla(Plantilla plantilla)
     {
@@ -130,13 +131,13 @@ public class RepoPlantilla : Repo, IRepoPlantilla
 // 1. SELECT de la Plantilla
 // 2. SELECT de los Futbolistas Titulares
 // 3. SELECT de los Futbolistas Suplentes
-    private static readonly string _queryPlantillaCompleta = "traerPlantillaCompleta"; 
 
-    public Plantilla? ObtenerPlantillaCompleta(int idPlantilla)
+
+    public Plantilla? ObtenerPlantillaCompleta(uint idPlantilla)
     {
     // 1. Ejecución de QueryMultiple
     // Se utiliza 'using' para asegurar que la conexión se cierre correctamente después de la lectura.
-    using (var multi = _conexion.QueryMultiple(_queryPlantillaCompleta, new { id = idPlantilla }))
+    using (var multi = _conexion.QueryMultiple(_spPlantillaCompleta, new { id = idPlantilla }))
     {
         // 2. Lectura del objeto principal: Plantilla
         // Se usa ReadSingleOrDefault<Plantilla>() porque esperamos 0 o 1 Plantilla principal.
@@ -147,11 +148,11 @@ public class RepoPlantilla : Repo, IRepoPlantilla
         {
             // Asumo que el segundo SELECT trae a los futbolistas titulares
             // Se usa Read<Futbolista>() para obtener una colección.
-            plantilla.FutbolistasTitulares = multi.Read<Futbolista>().ToList(); 
+            plantilla.Titulares = multi.Read<Futbolista>().ToList(); 
             
             // Asumo que el tercer SELECT trae a los futbolistas suplentes
             // Se usa Read<Futbolista>() para obtener otra colección.
-            plantilla.FutbolistasSuplentes = multi.Read<Futbolista>().ToList();
+            plantilla.Suplentes = multi.Read<Futbolista>().ToList();
             
             // Nota: Podrías añadir más .Read() aquí si el SP devuelve más conjuntos (Ej: Usuario)
         }
