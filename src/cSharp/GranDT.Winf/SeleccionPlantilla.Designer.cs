@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SEquipos = new ComboBox();
+            SPlantilla = new ComboBox();
             Confirmar = new Button();
             Crear = new Button();
             Cerrar = new Button();
             SuspendLayout();
             // 
-            // SEquipos
+            // SPlantilla
             // 
-            SEquipos.FormattingEnabled = true;
-            SEquipos.Location = new Point(340, 102);
-            SEquipos.Name = "SEquipos";
-            SEquipos.Size = new Size(120, 23);
-            SEquipos.TabIndex = 2;
+            SPlantilla.FormattingEnabled = true;
+            SPlantilla.Location = new Point(340, 102);
+            SPlantilla.Name = "SPlantilla";
+            SPlantilla.Size = new Size(120, 23);
+            SPlantilla.TabIndex = 2;
             // 
             // Confirmar
             // 
@@ -82,7 +82,7 @@
             Controls.Add(Cerrar);
             Controls.Add(Crear);
             Controls.Add(Confirmar);
-            Controls.Add(SEquipos);
+            Controls.Add(SPlantilla);
             Name = "SeleccionPlantilla";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Equipos";
@@ -91,7 +91,7 @@
         }
 
         #endregion
-        private ComboBox SEquipos;
+        private ComboBox SPlantilla;
         private Button Confirmar;
         private Button Crear;
         private Button Cerrar;
