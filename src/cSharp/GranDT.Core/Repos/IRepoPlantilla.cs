@@ -12,5 +12,6 @@ public interface IRepoPlantilla
     // traer titulares o suplentes
     IEnumerable<Plantilla> TraerPlantillasPorEmail(string email);
     IEnumerable<Equipos> TraerEquipos();
-    IEnumerable<Futbolista> traerFutbolistasXTipoXEquipo(uint idTipo,uint idEquipo);
+    IEnumerable<Futbolista> traerFutbolistasXTipoXEquipo(uint idTipo, uint idEquipo);
+    Plantilla? ObtenerProducto(short id);
 }

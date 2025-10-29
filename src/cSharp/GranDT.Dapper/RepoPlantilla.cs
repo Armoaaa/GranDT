@@ -112,7 +112,7 @@ public class RepoPlantilla : Repo, IRepoPlantilla
         var p = new DynamicParameters();
         p.Add("UnIdTipo", idTipo);
         p.Add("UnIdEquipo", idEquipo);
-    
+
         return _conexion.Query<Futbolista, Equipos, Tipo, Futbolista>(
             _sptraerFutbolistasXTipoXEquipo,
             (f, e, t) =>
@@ -126,5 +126,40 @@ public class RepoPlantilla : Repo, IRepoPlantilla
             commandType: CommandType.StoredProcedure
         ).ToList();
     }
+// Asumo que tienes una query o Stored Procedure que hace 3 SELECTs:
+// 1. SELECT de la Plantilla
+// 2. SELECT de los Futbolistas Titulares
+// 3. SELECT de los Futbolistas Suplentes
+    private static readonly string _queryPlantillaCompleta = "traerPlantillaCompleta"; 
+
+    public Plantilla? ObtenerPlantillaCompleta(int idPlantilla)
+    {
+    // 1. Ejecución de QueryMultiple
+    // Se utiliza 'using' para asegurar que la conexión se cierre correctamente después de la lectura.
+    using (var multi = _conexion.QueryMultiple(_queryPlantillaCompleta, new { id = idPlantilla }))
+    {
+        // 2. Lectura del objeto principal: Plantilla
+        // Se usa ReadSingleOrDefault<Plantilla>() porque esperamos 0 o 1 Plantilla principal.
+        var plantilla = multi.ReadSingleOrDefault<Plantilla>();
+
+        // 3. Mapeo de Colecciones Relacionadas (si la plantilla existe)
+        if (plantilla is not null)
+        {
+            // Asumo que el segundo SELECT trae a los futbolistas titulares
+            // Se usa Read<Futbolista>() para obtener una colección.
+            plantilla.FutbolistasTitulares = multi.Read<Futbolista>().ToList(); 
+            
+            // Asumo que el tercer SELECT trae a los futbolistas suplentes
+            // Se usa Read<Futbolista>() para obtener otra colección.
+            plantilla.FutbolistasSuplentes = multi.Read<Futbolista>().ToList();
+            
+            // Nota: Podrías añadir más .Read() aquí si el SP devuelve más conjuntos (Ej: Usuario)
+        }
+        
+        // 4. Retorno
+        return plantilla;
+    }
+}
+
 
 }
