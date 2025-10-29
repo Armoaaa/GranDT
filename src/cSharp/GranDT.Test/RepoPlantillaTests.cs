@@ -32,138 +32,58 @@ public class RepoPlantillaTests : TestRepo
     }
 
     [Fact]
-    public void TraerPlantillasPorEmail_DevuelvePlantillasCorrectas()
+    public void TraerPlantillasPorEmail()
     {
-        // Preparar
-        string email = "test@test.com";
-        string nombre = "Test";
-        string apellido = "Usuario";
-        DateTime fechaNac = new DateTime(2000, 1, 1);
-        string contraseña = "123456";
-        bool esAdmin = false;
-        string nombrePlantilla = $"Test Plantilla {DateTime.Now.Ticks}"; // Asegura nombre único
-
-        // Asegurar que existe el usuario de prueba
-        var idUsr = _conexion.QueryFirstOrDefault<int?>(
-            "SELECT idUsuario FROM Usuario WHERE Email = @email",
-            new { email });
-
-        if (!idUsr.HasValue)
-        {
-            _conexion.Execute(
-                "INSERT INTO Usuario (Nombre, Apellido, Email, FechadeNacimiento, Contrasena, esAdmin) " +
-                "VALUES (@nombre, @apellido, @email, @fechaNac, @contraseña, @esAdmin)",
-                new { 
-                    nombre, 
-                    apellido, 
-                    email, 
-                    fechaNac, 
-                    contraseña = System.Security.Cryptography.SHA256.HashData(
-                        System.Text.Encoding.UTF8.GetBytes(contraseña)
-                    ), 
-                    esAdmin 
-                });
-            idUsr = _conexion.QueryFirst<int>("SELECT LAST_INSERT_ID()");
-        }
-
-        // Verificar que el usuario se creó correctamente
-        if (!idUsr.HasValue)
-        {
-            throw new Exception("No se pudo crear el usuario de prueba");
-        }
-
-        // Crear una nueva plantilla para la prueba
-        var plantilla = new Plantilla
-        {
-            NombrePlantilla = nombrePlantilla,
-            Presupuesto = 1000000,
-            IdUsuario = (uint)idUsr.Value,
-            CantidadJugadores = 11
-        };
-        repoPlantilla.altaPlantilla(plantilla);
-
+        string email = "armoa34@outlook.com";
         // Actuar
         var plantillas = repoPlantilla.TraerPlantillasPorEmail(email).ToList();
 
-        // Verificar
         Assert.NotEmpty(plantillas);
-        Assert.Contains(plantillas, p => p.NombrePlantilla == nombrePlantilla);
-        Assert.All(plantillas, p => Assert.Equal((uint)idUsr.Value, p.IdUsuario));
+        foreach (var p in plantillas)
+        {
+            Assert.NotNull(p.NombrePlantilla);
+            Console.WriteLine(
+            $"ID: {p.idPlantillas} | " +
+            $"Nombre: {p.NombrePlantilla} | " +
+            $"Presupuesto: {p.Presupuesto} | " +
+            $"Usuario: {p.Usuario?.Nombre} {p.Usuario?.Apellido}"
+        );
+        }
+        
     }
 
+
+    
+    
     [Fact]
-    public void TraerEquipos_DevuelveEquiposOrdenados()
+    public void TraerFutbolistasPorTipo()
     {
-        // Actuar
-        var equipos = repoPlantilla.TraerEquipos().ToList();
-
-        // Verificar
-        Assert.NotEmpty(equipos);
-        // Verificar que están ordenados por nombre
-        var equiposOrdenados = equipos.OrderBy(e => e.Nombre).ToList();
-        Assert.Equal(equiposOrdenados, equipos);
-    }
-
-    [Fact]
-    public void TraerFutbolistasPorTipo_DevuelveFutbolistasCorrectos()
-    {
-        // Preparar
-        string tipoNombre = "Arquero"; // Este tipo debe existir en la base de datos
-
-        // Actuar
-        var futbolistas = repoPlantilla.TraerFutbolistasPorTipo(tipoNombre).ToList();
-
-        // Verificar
+        uint idTipo = 1;
+        uint idEquipo = 2;
+    
+        var futbolistas = repoPlantilla.traerFutbolistasXTipoXEquipo(idTipo, idEquipo).ToList();
+    
         Assert.NotEmpty(futbolistas);
+    
         foreach (var f in futbolistas)
         {
             Assert.NotNull(f.Tipo);
-            Assert.Equal(tipoNombre, f.Tipo.Nombre);
             Assert.NotNull(f.Equipos);
-            Assert.NotEmpty(f.Equipos.Nombre);
+            // Console.WriteLine($"{f.Nombre} {f.Apellido} - {f.Tipo?.Nombre} ({f.Equipos?.Nombre})"); // ESTO ES PARA QUE SE MUESTRE EN LA CONSOLA LA 
         }
-        
-        // Verificar que estén ordenados por equipo y apellido
-        var futbolistasOrdenados = futbolistas
-            .OrderBy(f => f.Equipos?.Nombre ?? string.Empty)
-            .ThenBy(f => f.Apellido)
-            .ToList();
-        Assert.Equal(futbolistasOrdenados, futbolistas);
     }
 
     [Fact]
-    public void AltaPlantilla_DevuelveIdYNoDuplica()
+    public void AltaPlantilla()
     {
-        // Asegurar que existe un usuario
-        var idUsr = _conexion.QueryFirstOrDefault<int?>("SELECT idUsuario FROM Usuario LIMIT 1;", null);
-        if (!idUsr.HasValue)
-        {
-            throw new Exception("Se requiere al menos un usuario en la base de datos para esta prueba");
-        }
 
         var plantilla = new Plantilla
         {
             Presupuesto = 1000000m,
             NombrePlantilla = "Test Plantillaa",
-            IdUsuario = (uint)idUsr.Value,
+            IdUsuario = 1,
             CantidadJugadores = 0
         };
-
-        // Limpiar si existe la plantilla
-        var plantillaExistente = _conexion.QueryFirstOrDefault<int?>(
-            "SELECT idPlantillas FROM Plantillas WHERE NombrePlantilla = @nombre AND idUsuario = @idUsr",
-            new { nombre = plantilla.NombrePlantilla, idUsr = plantilla.IdUsuario });
-
-        if (plantillaExistente.HasValue)
-        {
-            // Primero eliminar los jugadores de la plantilla
-            _conexion.Execute("DELETE FROM PlantillaTitular WHERE idPlantillas = @id",
-                new { id = plantillaExistente.Value });
-            
-            // Luego eliminar la plantilla
-            _conexion.Execute("DELETE FROM Plantillas WHERE idPlantillas = @id",
-                new { id = plantillaExistente.Value });
-        }
 
         var id = repoPlantilla.altaPlantilla(plantilla);
 

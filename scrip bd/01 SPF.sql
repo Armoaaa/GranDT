@@ -257,8 +257,11 @@ BEGIN
     ORDER BY Nombre;
 END;
 //
-CREATE PROCEDURE traerFutbolistasPorTipo(
-    IN UnTipoNombre VARCHAR(50)
+
+
+CREATE PROCEDURE traerFutbolistasXTipoXEquipo(
+    IN UnIdTipo INT,
+    IN UnIdEquipo INT
 )
 BEGIN
     SELECT 
@@ -267,14 +270,99 @@ BEGIN
         f.Apellido,
         f.Apodo,
         f.Cotizacion,
-        e.Nombre as EquipoNombre
+        f.idEquipos AS IdEquipo,
+        f.idTipo AS IdTipo,
+        e.idEquipos AS IdEquipoEquipo,
+        e.Nombre AS NombreEquipo,
+        t.idTipo AS IdTipoTipo,
+        t.Nombre AS NombreTipo
     FROM Futbolista f
-    INNER JOIN Tipo t ON f.idTipo = t.idTipo
-    INNER JOIN Equipos e ON f.idEquipos = e.idEquipos
-    WHERE t.Nombre = UnTipoNombre
-    ORDER BY e.Nombre, f.Apellido;
+    INNER JOIN Equipos e ON e.idEquipos = f.idEquipos
+    INNER JOIN Tipo t ON t.idTipo = f.idTipo
+    WHERE f.idTipo = UnIdTipo
+      AND f.idEquipos = UnIdEquipo
+    ORDER BY f.Apellido;
+END;
+
+//
+CREATE PROCEDURE eliminarPuntuacion(
+    IN UnidFutbolista INT
+)
+BEGIN
+    DELETE FROM Puntuacion
+    WHERE idFutbolista = UnidFutbolista;
+END;
+//
+CREATE PROCEDURE eliminarPlantillaTitularPorPlantilla(
+    IN UnidPlantillas INT
+)
+BEGIN
+    DELETE FROM PlantillaTitular
+    WHERE idPlantillas = UnidPlantillas;
+END;
+//
+CREATE PROCEDURE eliminarPlantilla(
+    IN UnidPlantillas INT
+)
+BEGIN
+    -- Eliminar futbolistas de la plantilla
+    CALL eliminarPlantillaTitularPorPlantilla(UnidPlantillas);
+
+    -- Eliminar la plantilla en sí
+    DELETE FROM Plantillas
+    WHERE idPlantillas = UnidPlantillas;
+END;
+//
+CREATE PROCEDURE eliminarFutbolista(
+    IN UnidFutbolista INT
+)
+BEGIN
+    -- Eliminar puntuaciones asociadas
+    CALL eliminarPuntuacion(UnidFutbolista);
+
+    -- Eliminar de las plantillas
+    DELETE FROM PlantillaTitular
+    WHERE idFutbolista = UnidFutbolista;
+
+    -- Eliminar futbolista
+    DELETE FROM Futbolista
+    WHERE idFutbolista = UnidFutbolista;
+END;
+//
+
+CREATE PROCEDURE eliminarEquipo(
+    IN UnidEquipos INT
+)
+BEGIN
+
+    DELETE FROM Futbolista WHERE idEquipos = UnidEquipos;
+    
+    DELETE FROM Equipos WHERE idEquipos = UnidEquipos;
+END;
+//
+CREATE PROCEDURE eliminarTipo(
+    IN UnidTipo INT
+)
+BEGIN
+
+    
+    DELETE FROM Futbolista WHERE idTipo = UnidTipo;
+    
+
+    DELETE FROM Tipo WHERE idTipo = UnidTipo;
+END;
+//
+CREATE PROCEDURE eliminarUsuario(
+    IN UnidUsuario INT
+)
+BEGIN
+
+    DELETE FROM Plantillas WHERE idUsuario = UnidUsuario;
+
+    DELETE FROM Usuario WHERE idUsuario = UnidUsuario;
 END;
 //
 
 DELIMITER ;
+
 

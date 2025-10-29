@@ -16,7 +16,7 @@ public class RepoPlantilla : Repo, IRepoPlantilla
     private static readonly string _spActualizarPlantillaTitular = "actualizarPlantillaTitular";
     private static readonly string _spTraerPlantillasPorEmail = "traerPlantillasPorEmail";
     private static readonly string _spTraerEquipos = "traerEquipos";
-    private static readonly string _spTraerFutbolistasPorTipo = "traerFutbolistasPorTipo";
+    private static readonly string _sptraerFutbolistasXTipoXEquipo = "traerFutbolistasXTipoXEquipo";
 
     public int altaPlantilla(Plantilla plantilla)
     {
@@ -98,7 +98,8 @@ public class RepoPlantilla : Repo, IRepoPlantilla
         var p = new DynamicParameters();
         p.Add("UnEmail", email);
 
-        return _conexion.Query<Plantilla>(_spTraerPlantillasPorEmail, p, commandType: CommandType.StoredProcedure);
+        return _conexion.Query<Plantilla>(_spTraerPlantillasPorEmail, p, commandType: CommandType.StoredProcedure) ;
+        
     }
 
     public IEnumerable<Equipos> TraerEquipos()
@@ -106,26 +107,24 @@ public class RepoPlantilla : Repo, IRepoPlantilla
         return _conexion.Query<Equipos>(_spTraerEquipos, commandType: CommandType.StoredProcedure);
     }
 
-    public IEnumerable<Futbolista> TraerFutbolistasPorTipo(string tipo)
+    public IEnumerable<Futbolista> traerFutbolistasXTipoXEquipo(uint idTipo, uint idEquipo)
     {
         var p = new DynamicParameters();
-        p.Add("UnTipoNombre", tipo);
-
-        return _conexion.Query(
-            _spTraerFutbolistasPorTipo,
+        p.Add("UnIdTipo", idTipo);
+        p.Add("UnIdEquipo", idEquipo);
+    
+        return _conexion.Query<Futbolista, Equipos, Tipo, Futbolista>(
+            _sptraerFutbolistasXTipoXEquipo,
+            (f, e, t) =>
+            {
+                f.Equipos = e;
+                f.Tipo = t;
+                return f;
+            },
             p,
+            splitOn: "IdEquipoEquipo,IdTipoTipo",
             commandType: CommandType.StoredProcedure
-        ).Select(f => new Futbolista
-        {
-            IdFutbolista = f.idFutbolista,
-            Nombre = f.Nombre,
-            Apellido = f.Apellido,
-            Apodo = f.Apodo,
-            Cotizacion = f.Cotizacion,
-            IdTipo = f.idTipo,
-            IdEquipo = f.idEquipos,
-            Tipo = new Tipo { IdTipo = f.idTipo, Nombre = f.TipoNombre },
-            Equipos = new Equipos { IdEquipos = f.idEquipos, Nombre = f.EquipoNombre }
-        });
+        ).ToList();
     }
+
 }
