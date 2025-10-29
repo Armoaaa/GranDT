@@ -1,8 +1,7 @@
 using GranDT.Core;
 using GranDT.Core.Repos;
 using GranDT.Dapper;
-using Dapper;
-using Xunit;
+//using System.Text.Json;
 
 namespace GranDT.Test;
 
@@ -43,24 +42,24 @@ public class RepoPlantillaTests : TestRepo
 
         Assert.Empty(plantillas);
         Console.WriteLine($"El usuario {email} no tiene plantillas, como se esperaba.");
-        
+
     }
 
 
 
 
-    
-    
+
+
     [Fact]
     public void TraerFutbolistasPorTipo()
     {
         uint idTipo = 3;
         uint idEquipo = 1;
-    
+
         var futbolistas = repoPlantilla.traerFutbolistasXTipoXEquipo(idTipo, idEquipo).ToList();
-    
+
         Assert.NotEmpty(futbolistas);
-    
+
         foreach (var f in futbolistas)
         {
             Assert.NotNull(f.Tipo);
@@ -183,21 +182,22 @@ public class RepoPlantillaTests : TestRepo
         Assert.True(resultado > 0);
 
     }
-     [Fact]
+    [Fact]
     public void ObtenerPlantillaCompleta()
     {
 
-        var plantilla = new Plantilla
+        uint idPlantillaExistente = 1;
+        var plantillaObtenida = repoPlantilla.ObtenerPlantillaCompleta(idPlantillaExistente);
 
-        plantilla.idPlantillas = (uint)repoPlantilla.altaPlantilla(plantilla);
+        Assert.NotNull(plantillaObtenida);
+        // var jsonPlantilla = JsonSerializer.Serialize(
+        //     plantillaObtenida,
+        //     new JsonSerializerOptions { WriteIndented = true } // Hace que el JSON sea legible
+        // );
 
-        var futbolista = new Futbolista { IdFutbolista = (uint)1 };
-        
-        repoPlantilla.altaJugador(plantilla, futbolista, true);
-  
-        var resultado = repoPlantilla.actualizarJugador(plantilla, futbolista, false);
-
-        Assert.True(resultado > 0);
-
+        //Console.WriteLine("--- Datos Completos de la Plantilla Recibida ---");
+        //Console.WriteLine(jsonPlantilla);
+        //Console.WriteLine("-------------------------------------------------");   //ESTO ES EN CASO DE QUERER VER EL RESULTADO COMPLETO SE NECESITA SYSTEM.TEXT.JSON
+        Assert.Equal(idPlantillaExistente, plantillaObtenida.idPlantillas);
     }
 }

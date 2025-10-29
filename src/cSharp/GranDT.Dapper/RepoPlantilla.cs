@@ -17,7 +17,7 @@ public class RepoPlantilla : Repo, IRepoPlantilla
     private static readonly string _spTraerPlantillasPorEmail = "traerPlantillasPorEmail";
     private static readonly string _spTraerEquipos = "traerEquipos";
     private static readonly string _sptraerFutbolistasXTipoXEquipo = "traerFutbolistasXTipoXEquipo";
-    private static readonly string _spPlantillaCompleta = "traerPlantillaCompleta"; 
+    private static readonly string _spObtenerPlantillaCompleta = "obtenerPlantillaCompleta";
 
     public int altaPlantilla(Plantilla plantilla)
     {
@@ -133,31 +133,20 @@ public class RepoPlantilla : Repo, IRepoPlantilla
 // 3. SELECT de los Futbolistas Suplentes
 
 
-    public Plantilla? ObtenerPlantillaCompleta(uint idPlantilla)
+    public Plantilla? ObtenerPlantillaCompleta(uint idPlantillas)
     {
-    // 1. Ejecución de QueryMultiple
-    // Se utiliza 'using' para asegurar que la conexión se cierre correctamente después de la lectura.
-    using (var multi = _conexion.QueryMultiple(_spPlantillaCompleta, new { id = idPlantilla }))
+    using (var multi = _conexion.QueryMultiple(_spObtenerPlantillaCompleta, new { UnidPlantillas = idPlantillas }))
     {
-        // 2. Lectura del objeto principal: Plantilla
-        // Se usa ReadSingleOrDefault<Plantilla>() porque esperamos 0 o 1 Plantilla principal.
-        var plantilla = multi.ReadSingleOrDefault<Plantilla>();
 
-        // 3. Mapeo de Colecciones Relacionadas (si la plantilla existe)
+        var plantilla = multi.ReadSingleOrDefault<Plantilla>();
         if (plantilla is not null)
         {
-            // Asumo que el segundo SELECT trae a los futbolistas titulares
-            // Se usa Read<Futbolista>() para obtener una colección.
             plantilla.Titulares = multi.Read<Futbolista>().ToList(); 
-            
-            // Asumo que el tercer SELECT trae a los futbolistas suplentes
-            // Se usa Read<Futbolista>() para obtener otra colección.
             plantilla.Suplentes = multi.Read<Futbolista>().ToList();
             
             // Nota: Podrías añadir más .Read() aquí si el SP devuelve más conjuntos (Ej: Usuario)
         }
         
-        // 4. Retorno
         return plantilla;
     }
 }

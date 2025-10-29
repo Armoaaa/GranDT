@@ -110,14 +110,6 @@ END;
 //
 
 
-CREATE PROCEDURE eliminarPlantilla(
-    IN UnidPlantillas INT,
-    IN UnidUsuario INT
-)
-BEGIN
-    DELETE FROM Plantillas WHERE idPlantillas = UnidPlantillas AND idUsuario = UnidUsuario;
-END;
-//
 
 CREATE PROCEDURE actualizarPlantillaTitular(
     IN UnidFutbolista INT,
@@ -363,7 +355,7 @@ BEGIN
 END;
 //
 
-REATE PROCEDURE obtenerPlantillaCompleta(
+CREATE PROCEDURE obtenerPlantillaCompleta(
     IN UnidPlantillas INT
 )
 BEGIN

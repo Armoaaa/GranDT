@@ -13,5 +13,5 @@ public interface IRepoPlantilla
     IEnumerable<Plantilla> TraerPlantillasPorEmail(string email);
     IEnumerable<Equipos> TraerEquipos();
     IEnumerable<Futbolista> traerFutbolistasXTipoXEquipo(uint idTipo, uint idEquipo);
-    Plantilla? ObtenerPlantillaCompleta(uint id);
+    Plantilla? ObtenerPlantillaCompleta(uint idPlantillas);
 }
