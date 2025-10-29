@@ -37,13 +37,14 @@
             // SEquipos
             // 
             SEquipos.FormattingEnabled = true;
-            SEquipos.Location = new Point(325, 102);
+            SEquipos.Location = new Point(340, 102);
             SEquipos.Name = "SEquipos";
-            SEquipos.Size = new Size(121, 23);
+            SEquipos.Size = new Size(120, 23);
             SEquipos.TabIndex = 2;
             // 
             // Confirmar
             // 
+            Confirmar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             Confirmar.Location = new Point(390, 297);
             Confirmar.Name = "Confirmar";
             Confirmar.Size = new Size(142, 23);
@@ -64,6 +65,7 @@
             // 
             // Cerrar
             // 
+            Cerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             Cerrar.Location = new Point(685, 12);
             Cerrar.Name = "Cerrar";
             Cerrar.Size = new Size(103, 23);
@@ -82,6 +84,7 @@
             Controls.Add(Confirmar);
             Controls.Add(SEquipos);
             Name = "SeleccionPlantilla";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Equipos";
             Load += Equipos_Load;
             ResumeLayout(false);

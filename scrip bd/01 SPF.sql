@@ -229,5 +229,52 @@ BEGIN
 END;
 //
 
+
+CREATE PROCEDURE traerPlantillasPorEmail(
+    IN UnEmail VARCHAR(90)
+)
+BEGIN
+    SELECT 
+        p.idPlantillas,
+        p.NombrePlantilla,
+        p.Presupuesto,
+        p.CantidadJugadores,
+        u.Nombre AS NombreUsuario,
+        u.Apellido AS ApellidoUsuario
+    FROM Plantillas p
+    INNER JOIN Usuario u ON u.idUsuario = p.idUsuario
+    WHERE u.Email = UnEmail;
+END;
+//
+
+
+CREATE PROCEDURE traerEquipos()
+BEGIN
+    SELECT 
+        idEquipos,
+        Nombre
+    FROM Equipos
+    ORDER BY Nombre;
+END;
+//
+CREATE PROCEDURE traerFutbolistasPorTipo(
+    IN UnTipoNombre VARCHAR(50)
+)
+BEGIN
+    SELECT 
+        f.idFutbolista,
+        f.Nombre,
+        f.Apellido,
+        f.Apodo,
+        f.Cotizacion,
+        e.Nombre as EquipoNombre
+    FROM Futbolista f
+    INNER JOIN Tipo t ON f.idTipo = t.idTipo
+    INNER JOIN Equipos e ON f.idEquipos = e.idEquipos
+    WHERE t.Nombre = UnTipoNombre
+    ORDER BY e.Nombre, f.Apellido;
+END;
+//
+
 DELIMITER ;
 

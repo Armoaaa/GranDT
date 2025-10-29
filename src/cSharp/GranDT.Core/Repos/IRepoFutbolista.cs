@@ -9,3 +9,4 @@ public interface IRepoFutbolista
     (decimal promedio, int cantidadFechas) PromedioFutbolista(uint idFutbolista);
     int AgregarFutbolistaAPlantilla(uint idUsuario, string nombrePlantilla, decimal presupuesto, uint idFutbolista, bool esTitular);
 }
+ 

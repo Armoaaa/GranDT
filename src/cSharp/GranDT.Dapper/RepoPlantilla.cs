@@ -14,6 +14,9 @@ public class RepoPlantilla : Repo, IRepoPlantilla
     private static readonly string _spEliminarPlantilla = "eliminarPlantilla";
     private static readonly string _spAltaPlantillaTitular = "altaPlantillaTitular";
     private static readonly string _spActualizarPlantillaTitular = "actualizarPlantillaTitular";
+    private static readonly string _spTraerPlantillasPorEmail = "traerPlantillasPorEmail";
+    private static readonly string _spTraerEquipos = "traerEquipos";
+    private static readonly string _spTraerFutbolistasPorTipo = "traerFutbolistasPorTipo";
 
     public int altaPlantilla(Plantilla plantilla)
     {
@@ -88,5 +91,41 @@ public class RepoPlantilla : Repo, IRepoPlantilla
             p,
             commandType: CommandType.StoredProcedure
         );
+    }
+
+    public IEnumerable<Plantilla> TraerPlantillasPorEmail(string email)
+    {
+        var p = new DynamicParameters();
+        p.Add("UnEmail", email);
+
+        return _conexion.Query<Plantilla>(_spTraerPlantillasPorEmail, p, commandType: CommandType.StoredProcedure);
+    }
+
+    public IEnumerable<Equipos> TraerEquipos()
+    {
+        return _conexion.Query<Equipos>(_spTraerEquipos, commandType: CommandType.StoredProcedure);
+    }
+
+    public IEnumerable<Futbolista> TraerFutbolistasPorTipo(string tipo)
+    {
+        var p = new DynamicParameters();
+        p.Add("UnTipoNombre", tipo);
+
+        return _conexion.Query(
+            _spTraerFutbolistasPorTipo,
+            p,
+            commandType: CommandType.StoredProcedure
+        ).Select(f => new Futbolista
+        {
+            IdFutbolista = f.idFutbolista,
+            Nombre = f.Nombre,
+            Apellido = f.Apellido,
+            Apodo = f.Apodo,
+            Cotizacion = f.Cotizacion,
+            IdTipo = f.idTipo,
+            IdEquipo = f.idEquipos,
+            Tipo = new Tipo { IdTipo = f.idTipo, Nombre = f.TipoNombre },
+            Equipos = new Equipos { IdEquipos = f.idEquipos, Nombre = f.EquipoNombre }
+        });
     }
 }
