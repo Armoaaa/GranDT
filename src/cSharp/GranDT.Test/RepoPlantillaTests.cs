@@ -17,7 +17,7 @@ public class RepoPlantillaTests : TestRepo
     [Fact]
     public void TraerPlantillasPorEmail()
     {
-        string email = "armoa34@outlook.com";
+        string email = "asd@attttt.com";
         // Actuar
         var plantillas = repoPlantilla.TraerPlantillasPorEmail(email).ToList();
 
@@ -54,8 +54,8 @@ public class RepoPlantillaTests : TestRepo
     [Fact]
     public void TraerFutbolistasPorTipo()
     {
-        uint idTipo = 1;
-        uint idEquipo = 2;
+        uint idTipo = 3;
+        uint idEquipo = 1;
     
         var futbolistas = repoPlantilla.traerFutbolistasXTipoXEquipo(idTipo, idEquipo).ToList();
     
