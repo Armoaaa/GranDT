@@ -49,12 +49,12 @@ public class RepoFutbolista : Repo, IRepoFutbolista
         return p.Get<int>("AIidFutbolista");
     }
 
-    public int altaPuntuacion(Futbolista futbolista, Puntuacion puntuacion)
+    public int altaPuntuacion(uint IdFutbolista, Puntuacion puntuacion)
     {
         var p = new DynamicParameters();
         p.Add("UnfechaNro", puntuacion.FechaNro);
         p.Add("UnPuntuacion", puntuacion.Puntos);
-        p.Add("UnidFutbolista", futbolista.IdFutbolista);
+        p.Add("UnidFutbolista", IdFutbolista);
         p.Add("AIidpuntuacion", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
         _conexion.Execute("altaPuntuacion", p, commandType: CommandType.StoredProcedure);

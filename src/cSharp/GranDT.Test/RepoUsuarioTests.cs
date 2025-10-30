@@ -35,16 +35,28 @@ public class RepoUsuarioTests : TestRepo
     }
 
     [Fact]
-    public void loginUsuario()
+    public void loginUsuarioCORRECTO()
     {
         var email = "armoa34@outlook.com";
         var contrasena = "Meamo123jaja";
 
-        var loginExitoso = repoUsuario.loginUsuario(email, contrasena);
+        Usuario? resultado = repoUsuario.loginUsuario(email, contrasena);
 
-        Assert.True(loginExitoso, "El login debería ser exitoso con las credenciales correctas.");
+        Assert.NotNull(resultado);
+
     }
+        [Fact]
+    public void loginUsuarioINCORRECTO()
+    {
+        var email = "armoa34@outlook.com";
+        var contrasena = "Meamo123jaASASja";
 
+        Usuario? resultado = repoUsuario.loginUsuario(email, contrasena);
 
-
+        Assert.Null(resultado);
+        if (resultado == null)
+        {
+            Console.WriteLine("Login fallado");
+        }
+    }
 }

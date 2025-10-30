@@ -40,14 +40,14 @@ public class RepoFutbolistaTests : TestRepo
     public void AltaPuntuacion()
     {
 
-        var futbolista = new Futbolista { IdFutbolista = 4 };
+        uint idFutbolista = 4;
         var puntuacion = new Puntuacion { FechaNro = 3, Puntos = 8.5m };
 
-        var id = repoFutbolista.altaPuntuacion(futbolista, puntuacion);
+        var id = repoFutbolista.altaPuntuacion(idFutbolista, puntuacion);
 
         Assert.True(id > 0);
     }
-    
+    //
 
     [Fact]
 
