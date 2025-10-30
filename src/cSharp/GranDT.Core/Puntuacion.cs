@@ -6,5 +6,4 @@ public class Puntuacion
     public  byte FechaNro { get; set; }
     public decimal? Puntos { get; set; }
     public uint idFutbolista { get; set; } 
-    public Futbolista? Futbolista { get; set; }
 }

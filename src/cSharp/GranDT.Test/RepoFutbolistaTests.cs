@@ -37,7 +37,7 @@ public class RepoFutbolistaTests : TestRepo
     }
 
     [Fact]
-    public void AltaPuntuacion_DevuelveIdYRespetaTriggers()
+    public void AltaPuntuacion()
     {
 
         var futbolista = new Futbolista { IdFutbolista = 4 };

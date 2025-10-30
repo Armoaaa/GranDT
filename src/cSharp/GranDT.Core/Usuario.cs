@@ -1,4 +1,5 @@
 
+
 namespace GranDT.Core
 {
     public class Usuario

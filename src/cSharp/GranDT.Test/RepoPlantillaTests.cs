@@ -1,7 +1,7 @@
 using GranDT.Core;
 using GranDT.Core.Repos;
 using GranDT.Dapper;
-//using System.Text.Json;
+using System.Text.Json;
 
 namespace GranDT.Test;
 
@@ -136,7 +136,6 @@ public class RepoPlantillaTests : TestRepo
     [Fact]
     public void AltaJugador_AgregaJugadorAPlantilla()
     {
-        // Crear plantilla de prueba
         var plantilla = new Plantilla
         {
             Presupuesto = 1000000m,
@@ -190,14 +189,14 @@ public class RepoPlantillaTests : TestRepo
         var plantillaObtenida = repoPlantilla.ObtenerPlantillaCompleta(idPlantillaExistente);
 
         Assert.NotNull(plantillaObtenida);
-        // var jsonPlantilla = JsonSerializer.Serialize(
-        //     plantillaObtenida,
-        //     new JsonSerializerOptions { WriteIndented = true } // Hace que el JSON sea legible
-        // );
+         var jsonPlantilla = JsonSerializer.Serialize(
+             plantillaObtenida,
+             new JsonSerializerOptions { WriteIndented = true } // Hace que el JSON sea legible
+         );
 
-        //Console.WriteLine("--- Datos Completos de la Plantilla Recibida ---");
-        //Console.WriteLine(jsonPlantilla);
-        //Console.WriteLine("-------------------------------------------------");   //ESTO ES EN CASO DE QUERER VER EL RESULTADO COMPLETO SE NECESITA SYSTEM.TEXT.JSON
+        Console.WriteLine("--- Datos Completos de la Plantilla Recibida ---");
+        Console.WriteLine(jsonPlantilla);
+        Console.WriteLine("-------------------------------------------------");   //ESTO ES EN CASO DE QUERER VER EL RESULTADO COMPLETO SE NECESITA SYSTEM.TEXT.JSON
         Assert.Equal(idPlantillaExistente, plantillaObtenida.idPlantillas);
     }
 }

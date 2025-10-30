@@ -412,6 +412,39 @@ BEGIN
 END;
 //
 
-DELIMITER ;
+CREATE PROCEDURE traerPuntuacionesPorFutbolista(
+    IN UnidFutbolista INT
+)
+BEGIN
+    -- Primer conjunto de resultados: Datos del Futbolista (incluyendo Equipo y Tipo)
+    -- Dapper mapea estas columnas a las propiedades escalares de Futbolista.
+    SELECT 
+        f.idFutbolista,
+        f.Nombre,
+        f.Apellido,
+        f.Apodo,
+        f.FechadeNacimiento,
+        f.Cotizacion,
+        f.idEquipos AS IdEquipo,
+        e.Nombre AS NombreEquipo, -- Columnas para mapear el objeto Equipos (si usas multi-mapeo)
+        f.idTipo AS IdTipo,
+        t.Nombre AS NombreTipo     -- Columnas para mapear el objeto Tipo (si usas multi-mapeo)
+    FROM Futbolista f
+    INNER JOIN Equipos e ON e.idEquipos = f.idEquipos
+    INNER JOIN Tipo t ON t.idTipo = f.idTipo
+    WHERE f.idFutbolista = UnidFutbolista;
 
+    -- Segundo conjunto de resultados: La Colección de Puntuaciones
+    -- Dapper mapea estas columnas a la lista Puntuaciones.
+    SELECT 
+        p.fechaNro AS FechaNro, -- Asegúrate que el alias coincida con la propiedad en C# (si la tiene)
+        p.Puntuacion AS Puntos,  -- Asegúrate que el alias coincida con la propiedad en C# (si la tiene)
+        p.idFutbolista
+    FROM Puntuacion p
+    WHERE p.idFutbolista = UnidFutbolista
+    ORDER BY p.fechaNro DESC;
+END;
+//
+
+DELIMITER ;
 
