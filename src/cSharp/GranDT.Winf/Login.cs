@@ -46,7 +46,7 @@ namespace GranDT.Winf
             var conexion = Conexion.GetConexion();
             var repoUsuario = new RepoUsuario(conexion);
             var loginExitoso = repoUsuario.loginUsuario(EmailT.Text, ContrasenaT.Text);
-            if (loginExitoso == false)
+            if (loginExitoso == null)
             {
                 MessageBox.Show("No se pudo iniciar sesión. Verifique sus credenciales.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

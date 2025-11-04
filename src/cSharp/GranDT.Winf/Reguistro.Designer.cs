@@ -37,9 +37,13 @@
             label3 = new Label();
             EmailT = new TextBox();
             label4 = new Label();
-            NacimientoT = new TextBox();
             Contrasena = new Label();
+            MaskFecha = new MaskedTextBox();
             ContrasenaT = new TextBox();
+            label5 = new Label();
+            ContrasenaC = new TextBox();
+            label6 = new Label();
+            EmailC = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -55,7 +59,7 @@
             // 
             NombreT.Location = new Point(265, 97);
             NombreT.Name = "NombreT";
-            NombreT.Size = new Size(230, 23);
+            NombreT.Size = new Size(166, 23);
             NombreT.TabIndex = 7;
             // 
             // Atras
@@ -82,16 +86,16 @@
             // ApellidoT
             // 
             ApellidoT.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            ApellidoT.Location = new Point(267, 97);
+            ApellidoT.Location = new Point(329, 97);
             ApellidoT.Name = "ApellidoT";
-            ApellidoT.Size = new Size(230, 23);
+            ApellidoT.Size = new Size(166, 23);
             ApellidoT.TabIndex = 9;
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(265, 79);
+            label2.Location = new Point(332, 79);
             label2.Name = "label2";
             label2.Size = new Size(51, 15);
             label2.TabIndex = 10;
@@ -108,10 +112,9 @@
             // 
             // EmailT
             // 
-            EmailT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             EmailT.Location = new Point(265, 143);
             EmailT.Name = "EmailT";
-            EmailT.Size = new Size(230, 23);
+            EmailT.Size = new Size(166, 23);
             EmailT.TabIndex = 11;
             // 
             // label4
@@ -123,14 +126,6 @@
             label4.TabIndex = 14;
             label4.Text = "Fecha de nacimiento";
             // 
-            // NacimientoT
-            // 
-            NacimientoT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            NacimientoT.Location = new Point(265, 189);
-            NacimientoT.Name = "NacimientoT";
-            NacimientoT.Size = new Size(230, 23);
-            NacimientoT.TabIndex = 13;
-            // 
             // Contrasena
             // 
             Contrasena.AutoSize = true;
@@ -140,23 +135,74 @@
             Contrasena.TabIndex = 16;
             Contrasena.Text = "Password";
             // 
+            // MaskFecha
+            // 
+            MaskFecha.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            MaskFecha.Location = new Point(265, 190);
+            MaskFecha.Mask = "0000-00-00";
+            MaskFecha.Name = "MaskFecha";
+            MaskFecha.Size = new Size(230, 23);
+            MaskFecha.TabIndex = 17;
+            MaskFecha.ValidatingType = typeof(DateTime);
+            // 
             // ContrasenaT
             // 
-            ContrasenaT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            ContrasenaT.Location = new Point(265, 239);
+            ContrasenaT.Location = new Point(269, 239);
             ContrasenaT.Name = "ContrasenaT";
-            ContrasenaT.Size = new Size(230, 23);
+            ContrasenaT.Size = new Size(167, 23);
             ContrasenaT.TabIndex = 15;
+            ContrasenaT.UseSystemPasswordChar = true;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label5.AutoSize = true;
+            label5.Location = new Point(331, 221);
+            label5.Name = "label5";
+            label5.Size = new Size(114, 15);
+            label5.TabIndex = 30;
+            label5.Text = "Confirmar Password";
+            // 
+            // ContrasenaC
+            // 
+            ContrasenaC.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            ContrasenaC.Location = new Point(328, 239);
+            ContrasenaC.Name = "ContrasenaC";
+            ContrasenaC.Size = new Size(167, 23);
+            ContrasenaC.TabIndex = 29;
+            ContrasenaC.UseSystemPasswordChar = true;
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label6.AutoSize = true;
+            label6.Location = new Point(329, 125);
+            label6.Name = "label6";
+            label6.Size = new Size(162, 15);
+            label6.TabIndex = 28;
+            label6.Text = "Confirmar Correo Electronico";
+            // 
+            // EmailC
+            // 
+            EmailC.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            EmailC.Location = new Point(329, 143);
+            EmailC.Name = "EmailC";
+            EmailC.Size = new Size(166, 23);
+            EmailC.TabIndex = 27;
             // 
             // Reguistro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label5);
+            Controls.Add(ContrasenaC);
+            Controls.Add(label6);
+            Controls.Add(EmailC);
+            Controls.Add(MaskFecha);
             Controls.Add(Contrasena);
             Controls.Add(ContrasenaT);
             Controls.Add(label4);
-            Controls.Add(NacimientoT);
             Controls.Add(label3);
             Controls.Add(EmailT);
             Controls.Add(label2);
@@ -184,8 +230,12 @@
         private Label label3;
         private TextBox EmailT;
         private Label label4;
-        private TextBox NacimientoT;
         private Label Contrasena;
+        private MaskedTextBox MaskFecha;
         private TextBox ContrasenaT;
+        private Label label5;
+        private TextBox ContrasenaC;
+        private Label label6;
+        private TextBox EmailC;
     }
 }

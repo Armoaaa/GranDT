@@ -15,6 +15,7 @@ namespace GranDT.Winf
 {
     public partial class Reguistro : Form
     {
+        //DateTime fecha;
         public Reguistro()
         {
             InitializeComponent();
@@ -26,6 +27,8 @@ namespace GranDT.Winf
         private void Reguistro_Load(object sender, EventArgs e)
         {
 
+            //fecha.Year.ToString ("1990");
+            //NacimientoT.Text = fecha.ToString("___" + "-__"+"-__");
         }
 
         private void Reguistrarse_Click(object sender, EventArgs e)
@@ -34,14 +37,27 @@ namespace GranDT.Winf
             if (string.IsNullOrWhiteSpace(NombreT.Text) ||
                 string.IsNullOrWhiteSpace(ApellidoT.Text) ||
                 string.IsNullOrWhiteSpace(EmailT.Text) ||
-                string.IsNullOrWhiteSpace(NacimientoT.Text) ||
+                string.IsNullOrWhiteSpace(MaskFecha.Text) ||
                 string.IsNullOrWhiteSpace(ContrasenaT.Text))
+
             {
                 MessageBox.Show("Debe completar todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            // Validar que los emails coincidan
+            if (EmailT.Text != EmailC.Text)
+            {
+                MessageBox.Show("Los emails no coinciden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            // Validar que las contraseñas coincidan
+            if (ContrasenaT.Text != ContrasenaC.Text)
+            {
+                MessageBox.Show("Las contraseñas no coinciden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             // Validar formato de fecha yyyy-MM-dd
-            if (!DateTime.TryParseExact(NacimientoT.Text, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out DateTime fechaNacimiento))
+            if (!DateTime.TryParseExact(MaskFecha.Text, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out DateTime fechaNacimiento))
             {
                 MessageBox.Show("La fecha debe estar en formato yyyy-MM-dd.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
