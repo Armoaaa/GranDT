@@ -222,20 +222,14 @@ END;
 //
 
 
-CREATE PROCEDURE traerPlantillasPorEmail(
+CREATE PROCEDURE traerPlantillasPorId(
     IN UnEmail VARCHAR(90)
 )
 BEGIN
     SELECT 
-        p.idPlantillas,
-        p.NombrePlantilla,
-        p.Presupuesto,
-        p.CantidadJugadores,
-        u.Nombre AS NombreUsuario,
-        u.Apellido AS ApellidoUsuario
+        *
     FROM Plantillas p
-    INNER JOIN Usuario u ON u.idUsuario = p.idUsuario
-    WHERE u.Email = UnEmail;
+    WHERE idUsuario = UnidUsuario;
 END;
 //
 

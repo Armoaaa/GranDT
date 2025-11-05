@@ -47,6 +47,7 @@ namespace GranDT.Winf
             var repoUsuario = new RepoUsuario(conexion);
             var loginExitoso = repoUsuario.loginUsuario(EmailT.Text, ContrasenaT.Text);
             if (loginExitoso == null)
+            
             {
                 MessageBox.Show("No se pudo iniciar sesión. Verifique sus credenciales.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -57,7 +58,10 @@ namespace GranDT.Winf
             this.Hide();
             EquiposForm.FormClosed += (s, args) => this.Close();
         }
-
+        public static class SesionActual
+        {
+            public static int IdUsuario { get; set; }
+        }
         private void Atras_Click(object sender, EventArgs e)
         {
             Inicio InicioForm = new Inicio();
