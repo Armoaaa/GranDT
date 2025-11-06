@@ -10,8 +10,11 @@ public interface IRepoPlantilla
     int actualizarJugador(Plantilla plantilla, Futbolista futbolista, bool esTitular);
 
     // traer titulares o suplentes
-    IEnumerable<Plantilla> TraerPlantillasPorEmail(string email);
+    IEnumerable<Plantilla> PlantillasPorIdUsuario(uint idUsuario);
+    IEnumerable<Plantilla> PlantillasPorIdPlantilla(uint idPlantilla);
     IEnumerable<Equipos> TraerEquipos();
-    IEnumerable<Futbolista> traerFutbolistasXTipoXEquipo(uint idTipo, uint idEquipo);
+    IEnumerable<Futbolista> traerFutbolistasXTipoXEquipo(uint idTipo, int idEquipos);
     Plantilla? ObtenerPlantillaCompleta(uint idPlantillas);
+    int AltaJugadorEnPlantilla(uint idPlantillas, uint idFutbolista, bool esTitular);
 }
+

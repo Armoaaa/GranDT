@@ -52,12 +52,13 @@ CREATE PROCEDURE altaPlantilla(
     IN UnPresupuesto DECIMAL(11,2),
     IN UnNombrePlantilla VARCHAR(50),
     IN UnidUsuario INT,
+    IN UnidEquipos INT,
     IN UnCantidadJugadores TINYINT,
     OUT AIidPlantilla INT
 )
 BEGIN
-    INSERT INTO Plantillas (Presupuesto, NombrePlantilla, idUsuario, CantidadJugadores)
-    VALUES (UnPresupuesto, UnNombrePlantilla, UnidUsuario, UnCantidadJugadores);
+    INSERT INTO Plantillas (Presupuesto, NombrePlantilla, idUsuario, idEquipos, CantidadJugadores)
+    VALUES (UnPresupuesto, UnNombrePlantilla, UnidUsuario, UnidEquipos, UnCantidadJugadores);
     SET AIidPlantilla = LAST_INSERT_ID();
 END;
 //
@@ -162,47 +163,7 @@ END;
 
 -- clickclack
 
-CREATE PROCEDURE agregarFutbolistaAPlantilla(
-    IN UnidUsuario INT,
-    IN UnNombrePlantilla VARCHAR(50),
-    IN UnPresupuesto DECIMAL(11,2),
-    IN UnidFutbolista INT,
-    IN UnesTitular TINYINT
-)
-BEGIN
-    DECLARE idPlantillaExistente INT;
 
-
-    SELECT idPlantillas INTO idPlantillaExistente
-    FROM Plantillas
-    WHERE NombrePlantilla = UnNombrePlantilla AND idUsuario = UnidUsuario
-    LIMIT 1;
-
-    IF idPlantillaExistente IS NULL THEN
-        INSERT INTO Plantillas (Presupuesto, NombrePlantilla, idUsuario, CantidadJugadores)
-        VALUES (UnPresupuesto, UnNombrePlantilla, UnidUsuario, 0);
-        SET idPlantillaExistente = LAST_INSERT_ID();
-    END IF;
-
-    IF EXISTS (
-        SELECT 1 FROM PlantillaTitular
-        WHERE idFutbolista = UnidFutbolista AND idPlantillas = idPlantillaExistente
-    ) THEN
-        UPDATE PlantillaTitular
-        SET esTitular = UnesTitular
-        WHERE idFutbolista = UnidFutbolista AND idPlantillas = idPlantillaExistente;
-    ELSE
-        INSERT INTO PlantillaTitular (idFutbolista, idPlantillas, esTitular)
-        VALUES (UnidFutbolista, idPlantillaExistente, UnesTitular);
-    END IF;
-
-    UPDATE Plantillas p
-    SET p.CantidadJugadores = (
-        SELECT COUNT(*) FROM PlantillaTitular WHERE idPlantillas = idPlantillaExistente
-    )
-    WHERE p.idPlantillas = idPlantillaExistente;
-END;
-//
 
 
 CREATE PROCEDURE promedioFutbolista(
@@ -222,8 +183,8 @@ END;
 //
 
 
-CREATE PROCEDURE traerPlantillasPorId(
-    IN UnEmail VARCHAR(90)
+CREATE PROCEDURE PlantillasPorIdUsuario(
+    IN UnidUsuario INT
 )
 BEGIN
     SELECT 
@@ -233,12 +194,22 @@ BEGIN
 END;
 //
 
-
-CREATE PROCEDURE traerEquipos()
+CREATE PROCEDURE PlantillasPorIdPlantilla(
+    IN UnidPlantilla INT
+)
 BEGIN
     SELECT 
-        idEquipos,
-        Nombre
+        *
+    FROM Plantillas p
+    WHERE idPlantillas = UnidPlantilla;
+END;
+
+//
+
+
+CREATE PROCEDURE traerEquipos() 
+BEGIN
+    SELECT  *
     FROM Equipos
     ORDER BY Nombre;
 END;
@@ -247,7 +218,7 @@ END;
 
 CREATE PROCEDURE traerFutbolistasXTipoXEquipo(
     IN UnIdTipo INT,
-    IN UnIdEquipo INT
+    IN UnIdEquipos INT
 )
 BEGIN
     SELECT 
@@ -256,9 +227,9 @@ BEGIN
         f.Apellido,
         f.Apodo,
         f.Cotizacion,
-        f.idEquipos AS IdEquipo,
+        f.idEquipos AS IdEquipos,
         f.idTipo AS IdTipo,
-        e.idEquipos AS IdEquipoEquipo,
+        e.idEquipos AS IdEquiposEquipo,
         e.Nombre AS NombreEquipo,
         t.idTipo AS IdTipoTipo,
         t.Nombre AS NombreTipo
@@ -266,7 +237,7 @@ BEGIN
     INNER JOIN Equipos e ON e.idEquipos = f.idEquipos
     INNER JOIN Tipo t ON t.idTipo = f.idTipo
     WHERE f.idTipo = UnIdTipo
-      AND f.idEquipos = UnIdEquipo
+      AND f.idEquipos = UnIdEquipos
     ORDER BY f.Apellido;
 END;
 

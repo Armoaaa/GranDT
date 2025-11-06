@@ -96,10 +96,14 @@ CREATE TABLE IF NOT EXISTS `5to_GranDT`.`Plantillas` (
   `Presupuesto` DECIMAL(10,0) NULL DEFAULT NULL,
   `NombrePlantilla` VARCHAR(50) NULL DEFAULT NULL,
   `idUsuario` INT UNSIGNED NOT NULL,
+  `idEquipos` INT NOT NULL,
   `CantidadJugadores` TINYINT NULL DEFAULT NULL,
-  PRIMARY KEY (`idPlantillas`, `idUsuario`),
+  PRIMARY KEY (`idPlantillas`, `idUsuario`, `idEquipos`),
   UNIQUE INDEX `NombrePlantilla_UNIQUE` (`NombrePlantilla` ASC) VISIBLE,
   INDEX `fk_Plantillas_Usuario1_idx` (`idUsuario` ASC) VISIBLE,
+  CONSTRAINT `fk_Plantillas_Equipos1`
+    FOREIGN KEY (`idEquipos`)
+    REFERENCES `5to_GranDT`.`Equipos` (`idEquipos`),
   CONSTRAINT `fk_Plantillas_Usuario1`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `5to_GranDT`.`Usuario` (`idUsuario`))

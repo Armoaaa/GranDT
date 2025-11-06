@@ -46,6 +46,7 @@
             SEquipos.Name = "SEquipos";
             SEquipos.Size = new Size(200, 23);
             SEquipos.TabIndex = 0;
+
             // 
             // Confirmar
             // 
@@ -56,6 +57,7 @@
             Confirmar.TabIndex = 1;
             Confirmar.Text = "Confirmar";
             Confirmar.UseVisualStyleBackColor = true;
+            Confirmar.Click += Confirmar_Click;
             // 
             // Cancelar
             // 
@@ -65,6 +67,7 @@
             Cancelar.TabIndex = 2;
             Cancelar.Text = "Cancelar";
             Cancelar.UseVisualStyleBackColor = true;
+            Cancelar.Click += Cancelar_Click;
             // 
             // CoAS
             // 
@@ -82,6 +85,7 @@
             TPresupuesto.Name = "TPresupuesto";
             TPresupuesto.Size = new Size(200, 23);
             TPresupuesto.TabIndex = 4;
+
             // 
             // label123
             // 
@@ -99,6 +103,7 @@
             TNombre.Name = "TNombre";
             TNombre.Size = new Size(200, 23);
             TNombre.TabIndex = 6;
+
             // 
             // label65
             // 

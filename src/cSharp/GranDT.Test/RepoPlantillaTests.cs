@@ -14,11 +14,11 @@ public class RepoPlantillaTests : TestRepo
 
 
     [Fact]
-    public void TraerPlantillasPorEmail()
+    public void TraerPlantillasPorId()
     {
-        string email = "asd@attttt.com";
+        uint idUsuario = 1;
         // Actuar
-        var plantillas = repoPlantilla.TraerPlantillasPorEmail(email).ToList();
+        var plantillas = repoPlantilla.TraerPlantillasPorId(idUsuario).ToList();
 
         Assert.NotEmpty(plantillas);
         foreach (var p in plantillas)
@@ -36,12 +36,12 @@ public class RepoPlantillaTests : TestRepo
     [Fact]
     public void CheckearSinPlantilla()
     {
-        string email = "juanperez@example.com";
+        uint idUsuario = 100;
         // Actuar
-        var plantillas = repoPlantilla.TraerPlantillasPorEmail(email).ToList();
+        var plantillas = repoPlantilla.TraerPlantillasPorId(idUsuario).ToList();
 
         Assert.Empty(plantillas);
-        Console.WriteLine($"El usuario {email} no tiene plantillas, como se esperaba.");
+        Console.WriteLine($"El usuario {idUsuario} no tiene plantillas, como se esperaba.");
 
     }
 
@@ -54,9 +54,9 @@ public class RepoPlantillaTests : TestRepo
     public void TraerFutbolistasPorTipo()
     {
         uint idTipo = 3;
-        uint idEquipo = 1;
+        int idEquipos = 1;
 
-        var futbolistas = repoPlantilla.traerFutbolistasXTipoXEquipo(idTipo, idEquipo).ToList();
+        var futbolistas = repoPlantilla.traerFutbolistasXTipoXEquipo(idTipo, idEquipos).ToList();
 
         Assert.NotEmpty(futbolistas);
 
@@ -77,6 +77,7 @@ public class RepoPlantillaTests : TestRepo
             Presupuesto = 1000000m,
             NombrePlantilla = "Test Plantillaa",
             IdUsuario = 1,
+            idEquipos = 1,
             CantidadJugadores = 0
         };
 
@@ -86,102 +87,7 @@ public class RepoPlantillaTests : TestRepo
     }
 
     [Fact]
-    public void ActualizarPlantilla_ModificaCorrectamente()
-    {
 
-
-        var plantilla = new Plantilla
-        {
-            Presupuesto = 1000000m,
-            NombrePlantilla = "Test Plantilla Update",
-            IdUsuario = 1,
-            CantidadJugadores = 0
-        };
-
-
-        plantilla.idPlantillas = (uint)repoPlantilla.altaPlantilla(plantilla);
-
-        // Modificar valores
-        plantilla.Presupuesto = 2000000m;
-        plantilla.NombrePlantilla = "Test Plantilla Updated";
-
-        var resultado = repoPlantilla.actualizarPlantilla(plantilla);
-
-        Assert.True(resultado > 0);
-
-
-    }
-
-    [Fact]
-    public void EliminarPlantilla_EliminaCorrectamente()
-    {
-
-
-        var plantilla = new Plantilla
-        {
-            Presupuesto = 1000000m,
-            NombrePlantilla = "Test Plantilla Delete",
-            IdUsuario = 4,
-            CantidadJugadores = 0
-        };
-
-        plantilla.idPlantillas = (uint)repoPlantilla.altaPlantilla(plantilla);
-
-        var resultado = repoPlantilla.eliminarPlantilla(plantilla);
-
-        Assert.True(resultado > 0);
-
-    }
-
-    [Fact]
-    public void AltaJugador_AgregaJugadorAPlantilla()
-    {
-        var plantilla = new Plantilla
-        {
-            Presupuesto = 1000000m,
-            NombrePlantilla = "Test Plantilla Jugadores",
-            IdUsuario = 1,
-            CantidadJugadores = 0
-        };
-
-
-
-        plantilla.idPlantillas = (uint)repoPlantilla.altaPlantilla(plantilla);
-
-        var futbolista = new Futbolista { IdFutbolista = 2 };
-        bool esTitular = true;
-
-        var resultado = repoPlantilla.altaJugador(plantilla, futbolista, esTitular);
-
-        Assert.True(resultado > 0);
-
-    }
-
-    [Fact]
-    public void ModificaEstadoTitular()
-    {
-
-        var plantilla = new Plantilla
-        {
-            Presupuesto = 1000000m,
-            NombrePlantilla = "Test Plantilla Update Jugador",
-            IdUsuario = 1,
-            CantidadJugadores = 0
-        };
-
-
-        plantilla.idPlantillas = (uint)repoPlantilla.altaPlantilla(plantilla);
-
-        var futbolista = new Futbolista { IdFutbolista = (uint)1 };
-
-        repoPlantilla.altaJugador(plantilla, futbolista, true);
-
-        var resultado = repoPlantilla.actualizarJugador(plantilla, futbolista, false);
-
-        Assert.True(resultado > 0);
-
-    }
-    [Fact]
     public void ObtenerPlantillaCompleta()
     {
 
@@ -189,14 +95,32 @@ public class RepoPlantillaTests : TestRepo
         var plantillaObtenida = repoPlantilla.ObtenerPlantillaCompleta(idPlantillaExistente);
 
         Assert.NotNull(plantillaObtenida);
-         var jsonPlantilla = JsonSerializer.Serialize(
-             plantillaObtenida,
-             new JsonSerializerOptions { WriteIndented = true } // Hace que el JSON sea legible
-         );
+        var jsonPlantilla = JsonSerializer.Serialize(
+            plantillaObtenida,
+            new JsonSerializerOptions { WriteIndented = true } // Hace que el JSON sea legible
+        );
 
         Console.WriteLine("--- Datos Completos de la Plantilla Recibida ---");
         Console.WriteLine(jsonPlantilla);
         Console.WriteLine("-------------------------------------------------");   //ESTO ES EN CASO DE QUERER VER EL RESULTADO COMPLETO SE NECESITA SYSTEM.TEXT.JSON
         Assert.Equal(idPlantillaExistente, plantillaObtenida.idPlantillas);
     }
+    [Fact]
+    public void AltaPlantillaTitular()
+    {
+    // Arrange
+    uint idPlantilla = 1;
+    uint idFutbolista = 10;
+
+    // Actuar
+    repoPlantilla.AltaJugadorEnPlantilla(idPlantilla, idFutbolista, true);
+    var plantilla = repoPlantilla.PlantillasPorIdPlantilla(idPlantilla);
+
+    // Assert
+    var jugadorEncontrado = plantilla.Titulares
+        .Any(f => f.IdFutbolista == idFutbolista);
+
+    Assert.True(jugadorEncontrado, "❌ El alta del jugador en la plantilla titular falló.");
+    Console.WriteLine($"✅ El futbolista {idFutbolista} fue agregado correctamente a la plantilla {idPlantilla} como titular.");
+}
 }

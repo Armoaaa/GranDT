@@ -8,7 +8,7 @@ public class Futbolista
     public string? Apodo { get; set; }
     public DateTime? FechadeNacimiento { get; set; }
     public decimal? Cotizacion { get; set; }
-    public uint IdEquipo { get; set; }
+    public int IdEquipos { get; set; }
     public uint IdTipo { get; set; }
     public Equipos? Equipos { get; set; }
     public Tipo? Tipo { get; set; }

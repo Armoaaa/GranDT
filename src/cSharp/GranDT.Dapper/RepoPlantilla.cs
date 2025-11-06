@@ -14,7 +14,8 @@ public class RepoPlantilla : Repo, IRepoPlantilla
     private static readonly string _spEliminarPlantilla = "eliminarPlantilla";
     private static readonly string _spAltaPlantillaTitular = "altaPlantillaTitular";
     private static readonly string _spActualizarPlantillaTitular = "actualizarPlantillaTitular";
-    private static readonly string _spTraerPlantillasPorEmail = "traerPlantillasPorEmail";
+    private static readonly string _spPlantillasPorIdUsuario = "plantillasPorIdUsuario";
+    private static readonly string _spPlantillasPorIdPlantilla = "plantillasPorIdPlantilla";
     private static readonly string _spTraerEquipos = "traerEquipos";
     private static readonly string _sptraerFutbolistasXTipoXEquipo = "traerFutbolistasXTipoXEquipo";
     private static readonly string _spObtenerPlantillaCompleta = "obtenerPlantillaCompleta";
@@ -25,6 +26,7 @@ public class RepoPlantilla : Repo, IRepoPlantilla
         p.Add("UnPresupuesto", plantilla.Presupuesto);
         p.Add("UnNombrePlantilla", plantilla.NombrePlantilla);
         p.Add("UnidUsuario", plantilla.IdUsuario);
+        p.Add("UnidEquipos", plantilla.idEquipos);
         p.Add("UnCantidadJugadores", plantilla.CantidadJugadores);
         p.Add("AIidPlantilla", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
@@ -94,25 +96,34 @@ public class RepoPlantilla : Repo, IRepoPlantilla
         );
     }
 
-    public IEnumerable<Plantilla> TraerPlantillasPorEmail(string email)
+    public IEnumerable<Plantilla> PlantillasPorIdUsuario(uint idUsuario)
     {
         var p = new DynamicParameters();
-        p.Add("UnEmail", email);
+        p.Add("UnidUsuario", idUsuario);
 
-        return _conexion.Query<Plantilla>(_spTraerPlantillasPorEmail, p, commandType: CommandType.StoredProcedure) ;
+        return _conexion.Query<Plantilla>(_spPlantillasPorIdUsuario, p, commandType: CommandType.StoredProcedure);
+
+    }
+        public IEnumerable<Plantilla> PlantillasPorIdPlantilla(uint idPlantilla)
+    {
+        var p = new DynamicParameters();
+        p.Add("UnidPlantillas", idPlantilla);
+
+        return _conexion.Query<Plantilla>(_spPlantillasPorIdPlantilla, p, commandType: CommandType.StoredProcedure);
         
     }
 
     public IEnumerable<Equipos> TraerEquipos()
     {
+
         return _conexion.Query<Equipos>(_spTraerEquipos, commandType: CommandType.StoredProcedure);
     }
 
-    public IEnumerable<Futbolista> traerFutbolistasXTipoXEquipo(uint idTipo, uint idEquipo)
+    public IEnumerable<Futbolista> traerFutbolistasXTipoXEquipo(uint idTipo, int idEquipos)
     {
         var p = new DynamicParameters();
         p.Add("UnIdTipo", idTipo);
-        p.Add("UnIdEquipo", idEquipo);
+        p.Add("UnIdEquipos", idEquipos);
 
         return _conexion.Query<Futbolista, Equipos, Tipo, Futbolista>(
             _sptraerFutbolistasXTipoXEquipo,
@@ -123,33 +134,47 @@ public class RepoPlantilla : Repo, IRepoPlantilla
                 return f;
             },
             p,
-            splitOn: "IdEquipoEquipo,IdTipoTipo",
+            splitOn: "IdEquipos,IdTipoTipo",
             commandType: CommandType.StoredProcedure
         ).ToList();
     }
-// Asumo que tienes una query o Stored Procedure que hace 3 SELECTs:
-// 1. SELECT de la Plantilla
-// 2. SELECT de los Futbolistas Titulares
-// 3. SELECT de los Futbolistas Suplentes
+    // Asumo que tienes una query o Stored Procedure que hace 3 SELECTs:
+    // 1. SELECT de la Plantilla
+    // 2. SELECT de los Futbolistas Titulares
+    // 3. SELECT de los Futbolistas Suplentes
 
 
     public Plantilla? ObtenerPlantillaCompleta(uint idPlantillas)
     {
-    using (var multi = _conexion.QueryMultiple(_spObtenerPlantillaCompleta, new { UnidPlantillas = idPlantillas }))
-    {
-
-        var plantilla = multi.ReadSingleOrDefault<Plantilla>();
-        if (plantilla is not null)
+        using (var multi = _conexion.QueryMultiple(_spObtenerPlantillaCompleta, new { UnidPlantillas = idPlantillas }))
         {
-            plantilla.Titulares = multi.Read<Futbolista>().ToList(); 
-            plantilla.Suplentes = multi.Read<Futbolista>().ToList();
-            
-            // Nota: Podrías añadir más .Read() aquí si el SP devuelve más conjuntos (Ej: Usuario)
+
+            var plantilla = multi.ReadSingleOrDefault<Plantilla>();
+            if (plantilla is not null)
+            {
+                plantilla.Titulares = multi.Read<Futbolista>().ToList();
+                plantilla.Suplentes = multi.Read<Futbolista>().ToList();
+
+                // Nota: Podrías añadir más .Read() aquí si el SP devuelve más conjuntos (Ej: Usuario)
+            }
+
+            return plantilla;
         }
-        
-        return plantilla;
+
     }
-}
+    public int AltaJugadorEnPlantilla(uint idPlantillas, uint idFutbolista, bool esTitular)
+    {
+        var p = new DynamicParameters();
+        p.Add("UnidFutbolista", idFutbolista);
+        p.Add("UnidPlantillas", idPlantillas);
+        p.Add("UnesTitular", esTitular ? 1 : 0);
+
+        return _conexion.Execute(
+            _spAltaPlantillaTitular,
+            p,
+            commandType: CommandType.StoredProcedure
+        );
+    }
 
 
-}
+}    

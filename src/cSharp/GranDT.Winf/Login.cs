@@ -17,11 +17,6 @@ namespace GranDT.Winf
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Reguistrarse_Click(object sender, EventArgs e)
         {
             // Validar que los emails coincidan
@@ -52,8 +47,10 @@ namespace GranDT.Winf
                 MessageBox.Show("No se pudo iniciar sesión. Verifique sus credenciales.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            // Si el login es exitoso, avanzar al formulario de Equipos
+            // Si el login es exitoso, almacenar sesión y avanzar al formulario de selección de plantilla
             SeleccionPlantilla EquiposForm = new SeleccionPlantilla();
+            // Guardar IdUsuario en la sesión para que otros formularios puedan usarlo
+            SesionActual.IdUsuario = (int)loginExitoso.IdUsuario;
             EquiposForm.Show();
             this.Hide();
             EquiposForm.FormClosed += (s, args) => this.Close();
@@ -78,24 +75,6 @@ namespace GranDT.Winf
             InicioForm.FormClosed += (s, args) => this.Close();
         }
 
-        private void EmailT_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void EmailC_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ContrasenaT_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ContrasenaC_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

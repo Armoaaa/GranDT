@@ -12,7 +12,7 @@ public class RepoFutbolistaTests : TestRepo
     public RepoFutbolistaTests() : base()
         => repoFutbolista = new RepoFutbolista(_conexion);
 
-    
+
 
 
     [Fact]
@@ -23,10 +23,10 @@ public class RepoFutbolistaTests : TestRepo
             Nombre = "Test",
             Apellido = "Jugador",
             Apodo = "TJugador",
-            FechadeNacimiento = new DateTime(2000,1,1),
+            FechadeNacimiento = new DateTime(2000, 1, 1),
             Cotizacion = 1000m,
-            IdEquipo = 1, 
-            IdTipo = 1   
+            IdEquipos = 1,
+            IdTipo = 1
         };
 
 
@@ -49,25 +49,7 @@ public class RepoFutbolistaTests : TestRepo
     }
     //
 
-    [Fact]
-
-    public void AgregarFutbolistaAPlantilla_CreaPlantillaYAgregaJugador()
-    {
-
-        string nombrePlantilla = "Test Plantilla";
-        decimal presupuesto = 1000000m;
-        bool esTitular = true;
 
 
-        var resultado = repoFutbolista.AgregarFutbolistaAPlantilla(
-            (uint)1,
-            nombrePlantilla,
-            presupuesto,
-            (uint)4,
-            esTitular
-        );
 
-        Assert.True(resultado > 0);
-
-    }
 }

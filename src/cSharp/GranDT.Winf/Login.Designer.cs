@@ -56,7 +56,7 @@
             ContrasenaT.Name = "ContrasenaT";
             ContrasenaT.Size = new Size(230, 23);
             ContrasenaT.TabIndex = 21;
-            ContrasenaT.TextChanged += ContrasenaT_TextChanged;
+
             // 
             // label3
             // 
@@ -74,7 +74,7 @@
             EmailT.Name = "EmailT";
             EmailT.Size = new Size(230, 23);
             EmailT.TabIndex = 19;
-            EmailT.TextChanged += EmailT_TextChanged;
+
             // 
             // Atras
             // 
@@ -105,7 +105,7 @@
             label1.Size = new Size(162, 15);
             label1.TabIndex = 24;
             label1.Text = "Confirmar Correo Electronico";
-            label1.Click += label1_Click;
+
             // 
             // EmailC
             // 
@@ -114,7 +114,7 @@
             EmailC.Name = "EmailC";
             EmailC.Size = new Size(230, 23);
             EmailC.TabIndex = 23;
-            EmailC.TextChanged += EmailC_TextChanged;
+
             // 
             // label2
             // 
@@ -132,7 +132,6 @@
             ContrasenaC.Name = "ContrasenaC";
             ContrasenaC.Size = new Size(230, 23);
             ContrasenaC.TabIndex = 25;
-            ContrasenaC.TextChanged += ContrasenaC_TextChanged;
             // 
             // Login
             // 

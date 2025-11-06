@@ -3,22 +3,23 @@ CALL altaTipo('Defensor', @idTipo2);
 CALL altaTipo('Mediocampista', @idTipo3);
 CALL altaTipo('Delantero', @idTipo4);
 
-CALL altaEquipo('Boca Juniors', @idEquipo1);
-CALL altaEquipo('River Plate', @idEquipo2);
-CALL altaEquipo('Racing Club', @idEquipo3);
-CALL altaEquipo('Independiente', @idEquipo4);
-CALL altaEquipo('San Lorenzo', @idEquipo5);
+CALL altaEquipo('Boca Juniors', @idEquipos1);
+CALL altaEquipo('River Plate', @idEquipos2);
+CALL altaEquipo('Racing Club', @idEquipos3);
+CALL altaEquipo('Independiente', @idEquipos4);
+CALL altaEquipo('San Lorenzo', @idEquipos5);
 
-CALL altaFutbolista('Sergio', 'Romero', 'Chiquito', '1987-02-22', 8500000.00, @idTipo1, @idEquipo1, @idFut1);
-CALL altaFutbolista('Luis', 'Advíncula', NULL, '1990-03-02', 7800000.00, @idTipo2, @idEquipo1, @idFut2);
-CALL altaFutbolista('Marcos', 'Rojo', NULL, '1990-03-20', 9200000.00, @idTipo2, @idEquipo1, @idFut3);
-CALL altaFutbolista('Nicolás', 'Figal', NULL, '1994-02-15', 8700000.00, @idTipo2, @idEquipo1, @idFut4);
-CALL altaFutbolista('Frank', 'Fabra', NULL, '1991-02-22', 8000000.00, @idTipo2, @idEquipo1, @idFut5);
-CALL altaFutbolista('Pol', 'Fernández', NULL, '1991-10-11', 9500000.00, @idTipo3, @idEquipo1, @idFut6);
-CALL altaFutbolista('Cristian', 'Medina', NULL, '2002-06-23', 7300000.00, @idTipo3, @idEquipo1, @idFut7);
-CALL altaFutbolista('Equi', 'Fernández', NULL, '2002-05-04', 7800000.00, @idTipo3, @idEquipo1, @idFut8);
-CALL altaFutbolista('Edinson', 'Cavani', NULL, '1987-02-14', 9800000.00, @idTipo4, @idEquipo1, @idFut9);
-CALL altaFutbolista('Miguel', 'Merentiel', NULL, '1996-02-24', 8700000.00, @idTipo4, @idEquipo1, @idFut10);
+CALL altaFutbolista('Sergio', 'Romero', 'Chiquito', '1987-02-22', 8500000.00, @idTipo1, @idEquipos1, @idFut1);
+CALL altaFutbolista('Luis', 'Advíncula', NULL, '1990-03-02', 7800000.00, @idTipo2, @idEquipos1, @idFut2);
+CALL altaFutbolista('Marcos', 'Rojo', NULL, '1990-03-20', 9200000.00, @idTipo2, @idEquipos1, @idFut3);
+CALL altaFutbolista('Nicolás', 'Figal', NULL, '1994-02-15', 8700000.00, @idTipo2, @idEquipos1, @idFut4);
+CALL altaFutbolista('Frank', 'Fabra', NULL, '1991-02-22', 8000000.00, @idTipo2, @idEquipos1, @idFut5);
+CALL altaFutbolista('Pol', 'Fernández', NULL, '1991-10-11', 9500000.00, @idTipo3, @idEquipos1, @idFut6);
+CALL altaFutbolista('Cristian', 'Medina', NULL, '2002-06-23', 7300000.00, @idTipo3, @idEquipos1, @idFut7);
+CALL altaFutbolista('Equi', 'Fernández', NULL, '2002-05-04', 7800000.00, @idTipo3, @idEquipos1, @idFut8);
+CALL altaFutbolista('Edinson', 'Cavani', NULL, '1987-02-14', 9800000.00, @idTipo4, @idEquipos1, @idFut9);
+CALL altaFutbolista('Miguel', 'Merentiel', NULL, '1996-02-24', 8700000.00, @idTipo4, @idEquipos1, @idFut10);
+CALL altaFutbolista('NAZI', 'PRUEBA', NULL, '1996-02-24', 8700000.00, @idTipo4, @idEquipos1, @idFut11);
 
 CALL altaPuntuacion(1, 7.5, @idFut1, @idPunt1);  -- Sergio Romero
 CALL altaPuntuacion(1, 6.8, @idFut2, @idPunt2);  -- Luis Advíncula
@@ -49,19 +50,17 @@ CALL altaUsuario('Juan', 'Perez', 'juanperez@example.com', '1990-05-10', 'HHHola
 CALL altaUsuario('BELEN', 'DOMINGUEZ', '23dominguezbelen@attttt.com', '1999-05-10', '23dominguezbelen', 0, @idUsuario1);
 CALL altaUsuario('BELEN', 'DOMINGUEZ', 'asd@attttt.com', '1999-05-10', '23dominguezbelen', 0, @idUsuario1);
 
-CALL altaPlantilla(95000000.00, 'Super Boca', @idUsuario1, 0, @idPlantilla1);
+CALL altaPlantilla(95000000.00, 'Super Boca', @idUsuario1, @idEquipos1, 0, @idPlantilla1);
 -- Titulares
-CALL agregarFutbolistaAPlantilla(@idUsuario1, 'Super Boca', 95000000.00, @idFut1, 1); -- Romero (Arquero)
-CALL agregarFutbolistaAPlantilla(@idUsuario1, 'Super Boca', 95000000.00, @idFut2, 1); -- Advíncula (Defensor)
-CALL agregarFutbolistaAPlantilla(@idUsuario1, 'Super Boca', 95000000.00, @idFut3, 1); -- Rojo (Defensor)
-CALL agregarFutbolistaAPlantilla(@idUsuario1, 'Super Boca', 95000000.00, @idFut4, 1); -- Figal (Defensor)
-CALL agregarFutbolistaAPlantilla(@idUsuario1, 'Super Boca', 95000000.00, @idFut5, 1); -- Fabra (Defensor)
-CALL agregarFutbolistaAPlantilla(@idUsuario1, 'Super Boca', 95000000.00, @idFut6, 1); -- Pol Fernández (Mediocampista)
-CALL agregarFutbolistaAPlantilla(@idUsuario1, 'Super Boca', 95000000.00, @idFut7, 1); -- Medina (Mediocampista)
-CALL agregarFutbolistaAPlantilla(@idUsuario1, 'Super Boca', 95000000.00, @idFut8, 1); -- Equi Fernández (Mediocampista)
-CALL agregarFutbolistaAPlantilla(@idUsuario1, 'Super Boca', 95000000.00, @idFut9, 1); -- Cavani (Delantero)
-CALL agregarFutbolistaAPlantilla(@idUsuario1, 'Super Boca', 95000000.00, @idFut10, 1); -- Merentiel (Delantero)
+CALL altaPlantillaTitular(1, @idPlantilla1, 1);  -- Romero (Arquero)
+CALL altaPlantillaTitular(2, @idPlantilla1, 1);  -- Advíncula (Defensor)
+CALL altaPlantillaTitular(3, @idPlantilla1, 1);  -- Rojo (Defensor)
+CALL altaPlantillaTitular(4, @idPlantilla1, 1);  -- Figal (Defensor)
+CALL altaPlantillaTitular(5, @idPlantilla1, 1);  -- Fabra (Defensor)
+CALL altaPlantillaTitular(6, @idPlantilla1, 1);  -- Pol Fernández (Mediocampista)
+CALL altaPlantillaTitular(7, @idPlantilla1, 1);  -- Medina (Mediocampista)
+CALL altaPlantillaTitular(8, @idPlantilla1, 1);  -- Equi Fernández (Mediocampista)
 
--- etos son suplentes jaja
-CALL agregarFutbolistaAPlantilla(@idUsuario1, 'Super Boca', 95000000.00, @idFut3, 0); 
-CALL agregarFutbolistaAPlantilla(@idUsuario1, 'Super Boca', 95000000.00, @idFut5, 0);
+-- SUPLENTES -----------------------------------------------------
+CALL altaPlantillaTitular(9,  @idPlantilla1, 0); -- Suplente 1
+CALL altaPlantillaTitular(10, @idPlantilla1, 0); -- Suplente 2

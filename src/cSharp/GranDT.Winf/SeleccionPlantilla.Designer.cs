@@ -41,6 +41,7 @@
             SPlantilla.Name = "SPlantilla";
             SPlantilla.Size = new Size(120, 23);
             SPlantilla.TabIndex = 2;
+            SPlantilla.SelectedIndexChanged += SPlantilla_SelectedIndexChanged;
             // 
             // Confirmar
             // 

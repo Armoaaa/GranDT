@@ -41,7 +41,7 @@ public class RepoFutbolista : Repo, IRepoFutbolista
         p.Add("UnFechadeNacimiento", futbolista.FechadeNacimiento);
         p.Add("UnCotizacion", futbolista.Cotizacion);
         p.Add("UnidTipo", futbolista.IdTipo);
-        p.Add("UnidEquipos", futbolista.IdEquipo);
+        p.Add("UnidEquipos", futbolista.IdEquipos);
         p.Add("AIidFutbolista", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
         _conexion.Execute("altaFutbolista", p, commandType: CommandType.StoredProcedure);
@@ -71,18 +71,4 @@ public class RepoFutbolista : Repo, IRepoFutbolista
         return (result.PromedioPuntuacion, (int)result.CantidadFechas);
     }
 
-    public int AgregarFutbolistaAPlantilla(uint idUsuario, string nombrePlantilla, decimal presupuesto, uint idFutbolista, bool esTitular)
-    {
-        var p = new DynamicParameters();
-        p.Add("UnidUsuario", idUsuario);
-        p.Add("UnNombrePlantilla", nombrePlantilla);
-        p.Add("UnPresupuesto", presupuesto);
-        p.Add("UnidFutbolista", idFutbolista);
-        p.Add("UnesTitular", esTitular ? 1 : 0);
-
-        _conexion.Execute("agregarFutbolistaAPlantilla", p, commandType: CommandType.StoredProcedure);
-
-
-        return 1;
-    }
 }
