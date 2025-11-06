@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GranDT.Dapper;
+using GranDT.Core;
 
 namespace GranDT.Winf
 {
@@ -32,9 +34,6 @@ namespace GranDT.Winf
 
         // Constructor por compatibilidad (sin filtro)
         public SeleccionJugador() : this(0, 0)
-        {
-        }
-        public SeleccionJugador()
         {
             InitializeComponent();
         }
@@ -65,9 +64,12 @@ namespace GranDT.Winf
                 IEnumerable<Futbolista> lista;
                 if (_idTipo == 0 && _idEquipo == 0)
                 {
-)
-                    lista = _repo.traerFutbolistasXTipoXEquipo(0, 0);
+                    IEnumerable<Futbolista> enumerable = _repo.traerFutbolistasXTipoXEquipo(0, 0);
+                    lista = enumerable;
                 }
+
+
+
                 else
                 {
                     lista = _repo.traerFutbolistasXTipoXEquipo(_idTipo, _idEquipo);
@@ -82,3 +84,4 @@ namespace GranDT.Winf
         }
     }
 }
+
