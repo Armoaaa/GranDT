@@ -16,5 +16,6 @@ public interface IRepoPlantilla
     IEnumerable<Futbolista> traerFutbolistasXTipoXEquipo(uint idTipo, int idEquipos);
     Plantilla? ObtenerPlantillaCompleta(uint idPlantillas);
     int AltaJugadorEnPlantilla(uint idPlantillas, uint idFutbolista, bool esTitular);
+    int ActualizarJugadorEnPlantilla(uint idPlantillas, uint idFutbolista, bool esTitular);
 }
 

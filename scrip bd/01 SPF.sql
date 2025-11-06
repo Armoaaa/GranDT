@@ -195,13 +195,13 @@ END;
 //
 
 CREATE PROCEDURE PlantillasPorIdPlantilla(
-    IN UnidPlantilla INT
+    IN UnidPlantillas INT
 )
 BEGIN
     SELECT 
         *
     FROM Plantillas p
-    WHERE idPlantillas = UnidPlantilla;
+    WHERE idPlantillas = UnidPlantillas;
 END;
 
 //

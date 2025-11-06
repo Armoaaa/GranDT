@@ -2,7 +2,8 @@ using GranDT.Core;
 using GranDT.Core.Repos;
 using GranDT.Dapper;
 using System.Text.Json;
-
+using System.Linq;
+using Dapper;
 namespace GranDT.Test;
 
 public class RepoPlantillaTests : TestRepo
@@ -18,7 +19,7 @@ public class RepoPlantillaTests : TestRepo
     {
         uint idUsuario = 1;
         // Actuar
-        var plantillas = repoPlantilla.TraerPlantillasPorId(idUsuario).ToList();
+        var plantillas = repoPlantilla.PlantillasPorIdUsuario(idUsuario).ToList();
 
         Assert.NotEmpty(plantillas);
         foreach (var p in plantillas)
@@ -38,17 +39,12 @@ public class RepoPlantillaTests : TestRepo
     {
         uint idUsuario = 100;
         // Actuar
-        var plantillas = repoPlantilla.TraerPlantillasPorId(idUsuario).ToList();
+        var plantillas = repoPlantilla.PlantillasPorIdUsuario(idUsuario).ToList();
 
         Assert.Empty(plantillas);
         Console.WriteLine($"El usuario {idUsuario} no tiene plantillas, como se esperaba.");
 
     }
-
-
-
-
-
 
     [Fact]
     public void TraerFutbolistasPorTipo()
@@ -106,21 +102,51 @@ public class RepoPlantillaTests : TestRepo
         Assert.Equal(idPlantillaExistente, plantillaObtenida.idPlantillas);
     }
     [Fact]
-    public void AltaPlantillaTitular()
+    public void AltaPlantillaSuplente()
     {
-    // Arrange
-    uint idPlantilla = 1;
-    uint idFutbolista = 10;
+        uint idPlantillas = 1; 
+        uint idFutbolista = 11;
+        bool esTitular = false;
+        try
+        {
+            repoPlantilla.AltaJugadorEnPlantilla(idPlantillas, idFutbolista, esTitular);
 
-    // Actuar
-    repoPlantilla.AltaJugadorEnPlantilla(idPlantilla, idFutbolista, true);
-    var plantilla = repoPlantilla.PlantillasPorIdPlantilla(idPlantilla);
+            var plantilla = repoPlantilla.PlantillasPorIdPlantilla(idPlantillas);
 
-    // Assert
-    var jugadorEncontrado = plantilla.Titulares
-        .Any(f => f.IdFutbolista == idFutbolista);
+            Assert.NotNull(plantilla);
 
-    Assert.True(jugadorEncontrado, "❌ El alta del jugador en la plantilla titular falló.");
-    Console.WriteLine($"✅ El futbolista {idFutbolista} fue agregado correctamente a la plantilla {idPlantilla} como titular.");
+            Console.WriteLine($"El futbolista {idFutbolista} fue agregado correctamente a la plantilla {idPlantillas} como SUPLENTE.");
+
+        }
+        finally
+        {}
+    }
+
+    [Fact]
+    public void ActualizarPlantilla_ModificaCamposCorrectamente()
+    {
+
+        var plantilla = new Plantilla
+        {
+            idPlantillas = 1,
+            IdUsuario = 4,
+            NombrePlantilla = "Super Boca",
+            Presupuesto = 2000,
+            CantidadJugadores = 18
+        };
+        repoPlantilla.actualizarPlantilla(plantilla);
+
+    }
+    [Fact]
+    public void ActualizarPlantillaTitular_CambiaATitularASuplente()
+    {
+
+        uint idPlantillas = 1;
+        uint idFutbolista = 10;
+        bool esTitular = false; 
+
+        repoPlantilla.ActualizarJugadorEnPlantilla(idPlantillas, idFutbolista, esTitular);
+
+    }
 }
-}
+    

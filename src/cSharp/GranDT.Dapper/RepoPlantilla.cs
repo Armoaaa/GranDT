@@ -104,13 +104,13 @@ public class RepoPlantilla : Repo, IRepoPlantilla
         return _conexion.Query<Plantilla>(_spPlantillasPorIdUsuario, p, commandType: CommandType.StoredProcedure);
 
     }
-        public IEnumerable<Plantilla> PlantillasPorIdPlantilla(uint idPlantilla)
+    public IEnumerable<Plantilla> PlantillasPorIdPlantilla(uint idPlantilla)
     {
         var p = new DynamicParameters();
         p.Add("UnidPlantillas", idPlantilla);
 
         return _conexion.Query<Plantilla>(_spPlantillasPorIdPlantilla, p, commandType: CommandType.StoredProcedure);
-        
+
     }
 
     public IEnumerable<Equipos> TraerEquipos()
@@ -138,11 +138,6 @@ public class RepoPlantilla : Repo, IRepoPlantilla
             commandType: CommandType.StoredProcedure
         ).ToList();
     }
-    // Asumo que tienes una query o Stored Procedure que hace 3 SELECTs:
-    // 1. SELECT de la Plantilla
-    // 2. SELECT de los Futbolistas Titulares
-    // 3. SELECT de los Futbolistas Suplentes
-
 
     public Plantilla? ObtenerPlantillaCompleta(uint idPlantillas)
     {
@@ -175,6 +170,20 @@ public class RepoPlantilla : Repo, IRepoPlantilla
             commandType: CommandType.StoredProcedure
         );
     }
+    public int ActualizarJugadorEnPlantilla(uint idPlantillas, uint idFutbolista, bool esTitular)
+    {
+        var p = new DynamicParameters();
+        p.Add("UnidFutbolista", idFutbolista);
+        p.Add("UnidPlantillas", idPlantillas);
+        p.Add("UnesTitular", esTitular ? 1 : 0); // Mapeo de bool a TINYINT (1 o 0)
 
+        return _conexion.Execute(
+            _spActualizarPlantillaTitular,
+            p,
+            commandType: CommandType.StoredProcedure
+        );
+    }
 
-}    
+}
+
+  
