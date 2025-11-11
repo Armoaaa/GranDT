@@ -75,6 +75,7 @@ namespace GranDT.Winf
                     NombrePlantilla = TNombre.Text.Trim(),
                     Presupuesto = presupuesto,
                     IdUsuario = (uint)Login.SesionActual.IdUsuario,
+                    idEquipos = (int)(uint)SEquipos.SelectedValue,
                     CantidadJugadores = 18 // Siempre 18 como solicitado
                 };
 

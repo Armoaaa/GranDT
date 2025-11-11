@@ -31,8 +31,7 @@ namespace GranDT.Winf
                 var conexion = Conexion.GetConexion();
                 var repo = new RepoPlantilla(conexion);
                 // Traer plantillas del usuario en sesión (si no hay sesión, pasará 0)
-                var plantillas = repo.TraerPlantillasPorId((uint)Login.SesionActual.IdUsuario)?.ToList() ?? new List<Plantilla>();
-
+                var plantillas = repo.PlantillasPorIdUsuario((uint)Login.SesionActual.IdUsuario)?.ToList() ?? new List<Plantilla>();
                 if (plantillas.Count == 0)
                 {
                     // No hay plantillas para mostrar
