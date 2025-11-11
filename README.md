@@ -42,11 +42,10 @@ mysql -u tuUsuario -p
 :tuContraseña
 ```
 
-_Luego dirigirse a la carpeta src y dentro de la carpeta GranDT/src/cSharp/GranDt.Test
+Luego dirigirse a la carpeta src y dentro de la carpeta GranDT/src/cSharp/GranDt.Test y GranDT/src/cSharp/GranDt.Winf
 
-1. Crear `appSettings.json`: nombre del archivo json que tiene que estar en la misma carpeta.
-El contenido del archivo tiene que ser:  
-  ```json
+1. Cambiar la linea de los archivos:  TestRepo.cs y Conexion.cs  
+  ```C#
     private const string _cadena = "Server=localhost;User ID=tuUsuario;Password=tuContraseña;Database=5to_GranDT;";
   ```
 
@@ -108,7 +107,7 @@ El proyecto fue construido utilizando las siguientes herramientas y versiones:
 * Visual Studio Code
 * SQL Server
 * Dapper (versión 2.1.35)
-* Entity Framework Core
+* 
 * MySQL (versión 8.0 o superior)
 * XUnit (para pruebas unitarias)
 <!-- agarre de base el redme del equipo spotify XD peldon por el pecado no tenia tiempo -->
