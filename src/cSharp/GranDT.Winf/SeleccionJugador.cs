@@ -1,4 +1,6 @@
-﻿using GranDT.Core.Repos;
+﻿using Dapper;
+using GranDT.Core;
+using GranDT.Core.Repos;
 using GranDT.Dapper;
 using System;
 using System.Collections.Generic;
@@ -18,52 +20,79 @@ namespace GranDT.Winf
         {
             InitializeComponent();
 
-            // Guarda la conexión para usarla en otros métodos
-            _conexion = Conexion.GetConexion();
-            _repoPlantilla = new RepoPlantilla(_conexion);
+            // Llama a la función de carga con los valores uint
+            // Puedes obtener estos valores de otros controles o variables
+            uint idEquipo = 100; // Ejemplo para el primer parámetro uint
+            uint jornada = 2;    // Ejemplo para el segundo parámetro uint
 
-            // Cargar los datos al iniciar el formulario (ejemplo)
-            // Asegúrate que tu DataGridView se llama 'dataGridView1'
-            CargarJugadores(100, 2); // Valores de ejemplo para los uint
+            CargarJugadoresDesdeSP(idEquipo, jornada);
         }
 
-        // Nuevo método para ejecutar el SP y llenar el DataGridView
-        public void CargarJugadores(uint valor1, uint valor2)
+        // --- Nuevo método de Carga ---
+        public void CargarJugadoresDesdeSP(uint idEquipo, uint jornada)
         {
+            IDbConnection conexion = null;
             try
             {
-                // **1. Nombre del Stored Procedure en MySQL**
-                // Reemplaza "SP_ObtenerJugadores" con el nombre real de tu SP
-                string spName = "SP_ObtenerJugadores";
+                conexion = Conexion.GetConexion();
 
-                // **2. Definición de Parámetros**
-                // Crea un objeto anónimo para pasar los parámetros. 
-                // Los nombres de las propiedades (e.g., Parametro1, Parametro2)
-                // deben coincidir con los nombres de los parámetros definidos en tu Stored Procedure de MySQL.
+                // 1. Nombre del Stored Procedure en MySQL
+                string spName = "SP_ObtenerJugadoresPorEquipoYJornada";
+
+                // 2. Definición de Parámetros
+                // Los nombres (e.g., p_idEquipo, p_jornada) DEBEN 
+                // coincidir con los nombres de los parámetros definidos en tu Stored Procedure.
                 var parametros = new
                 {
-                    Parametro1 = valor1, // Corresponde al primer parámetro uint
-                    Parametro2 = valor2  // Corresponde al segundo parámetro uint
+                    p_idEquipo = idEquipo, // Dapper automáticamente maneja uint
+                    p_jornada = jornada    // Dapper automáticamente maneja uint
                 };
 
-                // **3. Ejecución del SP con Dapper**
-                // Usamos Query<Jugador> para obtener una lista de objetos 'Jugador'.
-                var listaJugadores = _conexion.Query<Jugador>(
-                    sql: spName,
-                    param: parametros, // Pasamos el objeto con los parámetros
-                    commandType: CommandType.StoredProcedure // ¡FUNDAMENTAL! Indica que es un SP
-                ).ToList(); // Convertimos el resultado a una Lista
+                // Asegúrate de abrir la conexión si GetConexion() no la abre
+                if (conexion.State != ConnectionState.Open)
+                {
+                    conexion.Open();
+                }
 
-.
+                // 3. Ejecución del SP con Dapper
+                var listaJugadores = conexion.Query<Futbolista>(
+                    sql: spName,
+                    param: parametros,
+                    commandType: CommandType.StoredProcedure // Indica que es un SP
+                ).ToList();
+
+                // 4. Asignar los Resultados al DataGridView
+                // Reemplaza 'dataGr' (asumo que es el nombre incompleto de tu DataGridView)
+                // por el nombre correcto, ej: 'dataGridView1'
                 dataGridView1.DataSource = listaJugadores;
+            }
+            catch (MySqlConnector.MySqlException myEx)
+            {
+                // Manejo de errores específicos de MySQL (ej. SP no existe, error de sintaxis)
+                MessageBox.Show($"Error de MySQL: {myEx.Message}", "Error de Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al cargar jugadores: {ex.Message}", "Error de Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                // Manejo de errores (ej. loggear la excepción)
+                MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error General", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Es crucial cerrar la conexión si la abriste
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
             }
         }
 
-        // ... (Tus otros métodos como Confirmar_Click)
+        private void Confirmar_Click(object sender, EventArgs e)
+        {
+            // Lógica para confirmar selección...
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Lógica del DataGridView...
+        }
     }
 }
