@@ -65,7 +65,7 @@ Para desplegar el proyecto, sigue los siguientes pasos:
 
 2. **Configurar la base de datos**:
    - Asegúrate de tener MySQL instalado y en funcionamiento.
-   - Crea una base de datos llamada `5to_RiotGames` en tu servidor MySQL.
+   - Crea una base de datos llamada `5to_GranDt` en tu servidor MySQL.
    - Navega a la carpeta `scripts bd` dentro del proyecto:
      ```
      cd scripts bd
@@ -95,8 +95,8 @@ Para desplegar el proyecto, sigue los siguientes pasos:
      dotnet test
      ```
 
-5. **Acceder a la aplicación**:
-   - Una vez que el proyecto esté en ejecución, podrás acceder a la aplicación a través de tu navegador en la dirección que se indique en la terminal (generalmente `http://localhost:5000` o similar).
+5. **Acceder al programa**:
+   - Para testear el prograna abri la solucion src/cSharp/GranDT.sln .
 
 
 ## Herramientas
