@@ -5,7 +5,7 @@
 
 <h2 align="center"> E.T. Nº12 D.E. 1º "Libertador Gral. José de San Martín" </h2>
 
-**Alumnos**: Luis Armoa, Carlos Bruno, Ruben Torrent
+**Alumnos**: Luis Alejandro Espinola Armoa, Fransisco Santiago Rios puma
 **Asignatura**:  AGBD y Laboratorio de Algoritmo
 **Nombre TP**: GranDt
 **Curso**: 5 ° 8
@@ -13,7 +13,7 @@
 
 # GranDt
 
-Nuestro proyecto es una base de datos diseñada para almacenar y gestionar información del cliente de Riot Games relacionada con el juego Valorant y el juego League of Legends. Esta base de datos tiene como objetivo proporcionar una estructura organizada para el almacenamiento de datos de cuentas, objetos, inventarios y servidores. El proyecto busca implementar una solución escalable y eficiente para el manejo de grandes cantidades de datos, permitiendo a los usuarios interactuar con la base de datos de manera sencilla y segura.
+Nuestro proyecto es un programa que permite acceder a una plantilla con jugadores y un presupuesto que 
 
 ## Comenzando 
 
@@ -28,9 +28,9 @@ https://github.com/Armoaaa/GranDT.git
 - .NET 8 (SDK .NET 8.0.105) - [Descargar](https://dotnet.microsoft.com/es-es/download/dotnet/8.0)
 - Visual Studio Code - [Descargar](https://code.visualstudio.com/#alt-downloads)
 - Git - [Descargar](https://git-scm.com/downloads)
-- MySQL - [Descargar](https://dev.mysql.com/downloads/mysql/)
-- Dapper - Micro ORM para .NET
-- Entity Framework Core - Para la gestión de datos en .NET
+- MySQL 8.0.44 - [Descargar](https://dev.mysql.com/downloads/mysql/8.0.html)
+- MySQL Worbench - [Opcional](https://dev.mysql.com/downloads/workbench/)
+
 
 ## Pasos para iniciar el proyecto 
 
@@ -42,16 +42,12 @@ mysql -u tuUsuario -p
 :tuContraseña
 ```
 
-_Luego dirigirse a la carpeta src y dentro de la carpeta Mordekaiser.ReposDapper.Test_
+_Luego dirigirse a la carpeta src y dentro de la carpeta GranDT/src/cSharp/GranDt.Test
 
 1. Crear `appSettings.json`: nombre del archivo json que tiene que estar en la misma carpeta.
 El contenido del archivo tiene que ser:  
   ```json
-  {
-  "ConnectionStrings": {
-    "MySQL": "server=localhost;database=tuBD;user=tuUsuarioBD;password=tuPass"
-  }
-  }
+    private const string _cadena = "Server=localhost;User ID=tuUsuario;Password=tuContraseña;Database=5to_GranDT;";
   ```
 
 Para desplegar el proyecto, sigue los siguientes pasos:
@@ -60,7 +56,7 @@ Para desplegar el proyecto, sigue los siguientes pasos:
 1. **Abrir el proyecto**:
    - Navega al directorio del proyecto clonado:
      ```
-     cd MORDEKAISER
+     cd GranDt
      ```
    - Abre el proyecto en Visual Studio Code ejecutando:
      ```
