@@ -11,8 +11,7 @@ public class RepoUsuario : Repo, IRepoUsuario
     public RepoUsuario(IDbConnection conexion) : base(conexion) { }
 
     private static readonly string _spAltaUsuario = "altaUsuario";
-    private static readonly string _spLoginUsuario = "loginUsuario";
-
+        private static readonly string _sploginUsuario = "loginUsuario";
     public int AltaUsuario(Usuario usuario)
     {
         var p = new DynamicParameters();
@@ -32,8 +31,6 @@ public class RepoUsuario : Repo, IRepoUsuario
 
         return p.Get<int>("AIidUsuario");
     }
-
-    private static readonly string _sploginUsuario = "loginUsuario";
 
     public Usuario? loginUsuario(string email, string contrasena)
     {

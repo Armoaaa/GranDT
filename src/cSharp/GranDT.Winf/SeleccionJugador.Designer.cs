@@ -30,7 +30,6 @@
         {
             components = new System.ComponentModel.Container();
             dataGridView1 = new DataGridView();
-            futbolistaBindingSource = new BindingSource(components);
             idFutbolistaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             apellidoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -38,7 +37,9 @@
             fechadeNacimientoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             cotizacionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             puntuacionesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            futbolistaBindingSource = new BindingSource(components);
             Confirmar = new Button();
+            FutbolistaListado = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)futbolistaBindingSource).BeginInit();
             SuspendLayout();
@@ -54,10 +55,6 @@
             dataGridView1.Size = new Size(745, 348);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // futbolistaBindingSource
-            // 
-            futbolistaBindingSource.DataSource = typeof(Core.Futbolista);
             // 
             // idFutbolistaDataGridViewTextBoxColumn
             // 
@@ -101,6 +98,10 @@
             puntuacionesDataGridViewTextBoxColumn.HeaderText = "Puntuaciones";
             puntuacionesDataGridViewTextBoxColumn.Name = "puntuacionesDataGridViewTextBoxColumn";
             // 
+            // futbolistaBindingSource
+            // 
+            futbolistaBindingSource.DataSource = typeof(Core.Futbolista);
+            // 
             // Confirmar
             // 
             Confirmar.Location = new Point(604, 388);
@@ -111,11 +112,21 @@
             Confirmar.UseVisualStyleBackColor = true;
             Confirmar.Click += Confirmar_Click;
             // 
+            // FutbolistaListado
+            // 
+            FutbolistaListado.FormattingEnabled = true;
+            FutbolistaListado.Location = new Point(12, 415);
+            FutbolistaListado.Name = "FutbolistaListado";
+            FutbolistaListado.Size = new Size(203, 23);
+            FutbolistaListado.TabIndex = 2;
+            FutbolistaListado.SelectedIndexChanged += FutbolistaListado_SelectedIndexChanged;
+            // 
             // SeleccionJugador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(FutbolistaListado);
             Controls.Add(Confirmar);
             Controls.Add(dataGridView1);
             Name = "SeleccionJugador";
@@ -137,5 +148,6 @@
         private DataGridViewTextBoxColumn puntuacionesDataGridViewTextBoxColumn;
         private BindingSource futbolistaBindingSource;
         private Button Confirmar;
+        private ComboBox FutbolistaListado;
     }
 }

@@ -49,10 +49,10 @@ public class RepoPlantillaTests : TestRepo
     [Fact]
     public void TraerFutbolistasPorTipo()
     {
-        uint idTipo = 3;
+        uint IdTipo = 3;
         int idEquipos = 1;
 
-        var futbolistas = repoPlantilla.traerFutbolistasXTipoXEquipo(idTipo, idEquipos).ToList();
+        var futbolistas = repoPlantilla.traerFutbolistasXTipoXEquipo(IdTipo, idEquipos).ToList();
 
         Assert.NotEmpty(futbolistas);
 
@@ -143,10 +143,23 @@ public class RepoPlantillaTests : TestRepo
 
         uint idPlantillas = 1;
         uint idFutbolista = 10;
-        bool esTitular = false; 
+        bool esTitular = false;
 
         repoPlantilla.ActualizarJugadorEnPlantilla(idPlantillas, idFutbolista, esTitular);
 
     }
+    [Fact]
+    public void TraerFutbolistasParaSeleccion()
+    {
+    // Arrange
+        int idTipo = 2;
+        int idEquipos = 1;
+
+    // Act
+        var futbolistas = repoPlantilla.TraerFutbolistasParaSeleccion(idTipo, idEquipos).ToList();
+
+        Assert.NotEmpty(futbolistas);
+    }
+
 }
     

@@ -7,5 +7,6 @@ public interface IRepoFutbolista
     int altaEquipo(string nombre);
     int altaPuntuacion(uint IdFutbolista, Puntuacion puntuacion);
     (decimal promedio, int cantidadFechas) PromedioFutbolista(uint idFutbolista);
+    
 }
  

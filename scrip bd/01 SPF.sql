@@ -213,34 +213,20 @@ BEGIN
     FROM Equipos
     ORDER BY Nombre;
 END;
+
 //
-
-
 CREATE PROCEDURE traerFutbolistasXTipoXEquipo(
-    IN UnIdTipo INT,
-    IN UnIdEquipos INT
+    IN UnidTipo INT,
+    IN UnidEquipos INT
 )
 BEGIN
     SELECT 
-        f.idFutbolista,
-        f.Nombre,
-        f.Apellido,
-        f.Apodo,
-        f.Cotizacion,
-        f.idEquipos AS IdEquipos,
-        f.idTipo AS IdTipo,
-        e.idEquipos AS IdEquiposEquipo,
-        e.Nombre AS NombreEquipo,
-        t.idTipo AS IdTipoTipo,
-        t.Nombre AS NombreTipo
-    FROM Futbolista f
-    INNER JOIN Equipos e ON e.idEquipos = f.idEquipos
-    INNER JOIN Tipo t ON t.idTipo = f.idTipo
-    WHERE f.idTipo = UnIdTipo
-      AND f.idEquipos = UnIdEquipos
-    ORDER BY f.Apellido;
+        * 
+    FROM Futbolista
+    WHERE idTipo = UnidTipo
+      AND idEquipos = UnidEquipos
+    ORDER BY Apellido;
 END;
-
 //
 CREATE PROCEDURE eliminarPuntuacion(
     IN UnidFutbolista INT
@@ -411,5 +397,19 @@ BEGIN
 END;
 //
 
-DELIMITER ;
 
+
+CREATE PROCEDURE traerFutbolistasParaSeleccion (
+    IN UnidTipo INT,
+    IN UnidEquipos INT
+)
+BEGIN
+    SELECT 
+        CONCAT(Apellido, ', ', Nombre) AS NombreCompleto
+    FROM Futbolista
+    WHERE idTipo = UnidTipo
+      AND idEquipos = UnidEquipos
+    ORDER BY Apellido, Nombre;
+END;
+//
+DELIMITER ;

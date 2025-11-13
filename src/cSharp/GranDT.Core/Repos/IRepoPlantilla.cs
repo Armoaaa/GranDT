@@ -13,9 +13,11 @@ public interface IRepoPlantilla
     IEnumerable<Plantilla> PlantillasPorIdUsuario(uint idUsuario);
     IEnumerable<Plantilla> PlantillasPorIdPlantilla(uint idPlantilla);
     IEnumerable<Equipos> TraerEquipos();
-    IEnumerable<Futbolista> traerFutbolistasXTipoXEquipo(uint idTipo, int idEquipos);
+    IEnumerable<Futbolista> traerFutbolistasXTipoXEquipo(uint IdTipo, int idEquipos);
+    IEnumerable<Futbolista> TraerFutbolistasParaSeleccion(int IdTipo, int IdEquipos);
     Plantilla? ObtenerPlantillaCompleta(uint idPlantillas);
     int AltaJugadorEnPlantilla(uint idPlantillas, uint idFutbolista, bool esTitular);
     int ActualizarJugadorEnPlantilla(uint idPlantillas, uint idFutbolista, bool esTitular);
+    
 }
 

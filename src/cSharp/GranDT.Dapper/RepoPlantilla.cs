@@ -10,6 +10,7 @@ public class RepoPlantilla : Repo, IRepoPlantilla
     public RepoPlantilla(IDbConnection conexion) : base(conexion) { }
 
     private static readonly string _spAltaPlantilla = "altaPlantilla";
+    private static readonly string _sptraerFutbolistasParaSeleccion = "traerFutbolistasParaSeleccion";
     private static readonly string _spActualizarPlantilla = "actualizarPlantilla";
     private static readonly string _spEliminarPlantilla = "eliminarPlantilla";
     private static readonly string _spAltaPlantillaTitular = "altaPlantillaTitular";
@@ -19,6 +20,7 @@ public class RepoPlantilla : Repo, IRepoPlantilla
     private static readonly string _spTraerEquipos = "traerEquipos";
     private static readonly string _sptraerFutbolistasXTipoXEquipo = "traerFutbolistasXTipoXEquipo";
     private static readonly string _spObtenerPlantillaCompleta = "obtenerPlantillaCompleta";
+    
 
     public int altaPlantilla(Plantilla plantilla)
     {
@@ -122,8 +124,8 @@ public class RepoPlantilla : Repo, IRepoPlantilla
     public IEnumerable<Futbolista> traerFutbolistasXTipoXEquipo(uint idTipo, int idEquipos)
     {
         var p = new DynamicParameters();
-        p.Add("UnIdTipo", idTipo);
-        p.Add("UnIdEquipos", idEquipos);
+        p.Add("UnidTipo", idTipo);
+        p.Add("UndEquipos", idEquipos);
 
         return _conexion.Query<Futbolista, Equipos, Tipo, Futbolista>(
             _sptraerFutbolistasXTipoXEquipo,
@@ -138,7 +140,18 @@ public class RepoPlantilla : Repo, IRepoPlantilla
             commandType: CommandType.StoredProcedure
         ).ToList();
     }
+    public IEnumerable<Futbolista> TraerFutbolistasParaSeleccion(int IdTipo, int idEquipos)
+    {
+        var p = new DynamicParameters();
+        p.Add("UnidTipo", IdTipo);
+        p.Add("UnidEquipos", idEquipos);
 
+        return _conexion.Query<Futbolista>(
+            _sptraerFutbolistasParaSeleccion,
+            p,
+            commandType: CommandType.StoredProcedure
+        ).ToList();
+    }
     public Plantilla? ObtenerPlantillaCompleta(uint idPlantillas)
     {
         using (var multi = _conexion.QueryMultiple(_spObtenerPlantillaCompleta, new { UnidPlantillas = idPlantillas }))

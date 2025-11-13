@@ -16,59 +16,56 @@ namespace GranDT.Winf
 {
     public partial class SeleccionJugador : Form
     {
-        public SeleccionJugador()
+    private uint _idTipo;
+    private int _idEquipos;
+    private uint _idPlantilla;
+    private bool _esSuplente;
+        public SeleccionJugador() : this(2, 1, 1, false)
+        {
+        }
+
+        // Constructor que recibe los filtros (tipo, equipo), la plantilla destino y si es suplente
+        public SeleccionJugador(uint idTipo, int idEquipos, uint idPlantilla = 1, bool esSuplente = false)
         {
             InitializeComponent();
 
-            // Llama a la función de carga con los valores uint
-            // Puedes obtener estos valores de otros controles o variables
-            uint idEquipo = 100; // Ejemplo para el primer parámetro uint
-            uint jornada = 2;    // Ejemplo para el segundo parámetro uint
+            _idTipo = idTipo;
+            _idEquipos = idEquipos;
+            _idPlantilla = idPlantilla;
+            _esSuplente = esSuplente;
 
-            CargarJugadoresDesdeSP(idEquipo, jornada);
+            // Cargar el grid y el listado
+            CargarJugadoresDesdeSP(_idTipo, _idEquipos);
+            CargarListadoFutbolistasParaSeleccion(_idTipo, _idEquipos);
         }
-
-        // --- Nuevo método de Carga ---
-        public void CargarJugadoresDesdeSP(uint idEquipo, uint jornada)
+        public void CargarJugadoresDesdeSP(uint IdTipo, int idEquipos)
         {
-            IDbConnection conexion = null;
+            IDbConnection? conexion = null;
             try
             {
                 conexion = Conexion.GetConexion();
+                string sp = "traerFutbolistasXTipoXEquipo";
 
-                // 1. Nombre del Stored Procedure en MySQL
-                string spName = "SP_ObtenerJugadoresPorEquipoYJornada";
-
-                // 2. Definición de Parámetros
-                // Los nombres (e.g., p_idEquipo, p_jornada) DEBEN 
-                // coincidir con los nombres de los parámetros definidos en tu Stored Procedure.
                 var parametros = new
                 {
-                    p_idEquipo = idEquipo, // Dapper automáticamente maneja uint
-                    p_jornada = jornada    // Dapper automáticamente maneja uint
+                    UnIdtipo = IdTipo,
+                    UnidEquipos = idEquipos
                 };
 
-                // Asegúrate de abrir la conexión si GetConexion() no la abre
                 if (conexion.State != ConnectionState.Open)
                 {
                     conexion.Open();
                 }
-
-                // 3. Ejecución del SP con Dapper
                 var listaJugadores = conexion.Query<Futbolista>(
-                    sql: spName,
+                    sql: sp,
                     param: parametros,
-                    commandType: CommandType.StoredProcedure // Indica que es un SP
+                    commandType: CommandType.StoredProcedure
                 ).ToList();
 
-                // 4. Asignar los Resultados al DataGridView
-                // Reemplaza 'dataGr' (asumo que es el nombre incompleto de tu DataGridView)
-                // por el nombre correcto, ej: 'dataGridView1'
                 dataGridView1.DataSource = listaJugadores;
             }
             catch (MySqlConnector.MySqlException myEx)
             {
-                // Manejo de errores específicos de MySQL (ej. SP no existe, error de sintaxis)
                 MessageBox.Show($"Error de MySQL: {myEx.Message}", "Error de Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
@@ -77,7 +74,6 @@ namespace GranDT.Winf
             }
             finally
             {
-                // Es crucial cerrar la conexión si la abriste
                 if (conexion != null && conexion.State == ConnectionState.Open)
                 {
                     conexion.Close();
@@ -85,14 +81,146 @@ namespace GranDT.Winf
             }
         }
 
+        // NOTA: Los controles ya existen en el Designer (`FutbolistaListado` y `Confirmar`).
+
+        // Carga sólo el Nombre Completo (resultado del SP traerFutbolistasParaSeleccion)
+        private void CargarListadoFutbolistasParaSeleccion(uint IdTipo, int idEquipos)
+        {
+            IDbConnection? conexion = null;
+            try
+            {
+                conexion = Conexion.GetConexion();
+                if (conexion.State != ConnectionState.Open)
+                {
+                    conexion.Open();
+                }
+
+                // Si IdTipo == 0 -> buscamos todos los tipos para el equipo (suplente)
+                List<string> listaNombres;
+                if (IdTipo == 0)
+                {
+                    var sql = @"SELECT CONCAT(Apellido, ', ', Nombre) AS NombreCompleto FROM Futbolista WHERE idEquipos = @UnidEquipos ORDER BY Apellido, Nombre";
+                    listaNombres = conexion.Query<string>(sql, new { UnidEquipos = idEquipos }).ToList();
+                }
+                else
+                {
+                    string sp = "traerFutbolistasParaSeleccion";
+                    var parametros = new
+                    {
+                        UnidTipo = IdTipo,
+                        UnidEquipos = idEquipos
+                    };
+
+                    // El SP devuelve una sola columna (NombreCompleto). La mapeamos a string.
+                    listaNombres = conexion.Query<string>(
+                        sql: sp,
+                        param: parametros,
+                        commandType: CommandType.StoredProcedure
+                    ).ToList();
+                }
+
+                if (FutbolistaListado != null)
+                {
+                    FutbolistaListado.DataSource = listaNombres;
+                }
+            }
+            catch (MySqlConnector.MySqlException myEx)
+            {
+                MessageBox.Show($"Error de MySQL: {myEx.Message}", "Error de Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error General", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+        }
+
+        // El handler del botón Confirmar (expuesto en el Designer) reutiliza esta lógica.
         private void Confirmar_Click(object sender, EventArgs e)
         {
-            // Lógica para confirmar selección...
+            if (FutbolistaListado == null || FutbolistaListado.SelectedItem == null)
+            {
+                MessageBox.Show("Seleccione un jugador del listado.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var nombreCompleto = FutbolistaListado.SelectedItem.ToString();
+            if (string.IsNullOrWhiteSpace(nombreCompleto))
+            {
+                MessageBox.Show("Nombre seleccionado inválido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // El SP devuelve 'Apellido, Nombre' según la definición. Separamos.
+            var partes = nombreCompleto.Split(new string[] { ", " }, StringSplitOptions.None);
+            if (partes.Length < 2)
+            {
+                MessageBox.Show("Formato de nombre inesperado. No se puede obtener Id.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var apellido = partes[0].Trim();
+            var nombre = partes[1].Trim();
+
+            IDbConnection? conexion = null;
+            try
+            {
+                conexion = Conexion.GetConexion();
+                if (conexion.State != ConnectionState.Open) conexion.Open();
+
+                // Buscar idFutbolista por Nombre+Apellido y por los filtros (tipo y equipo)
+                var consultaId = @"SELECT idFutbolista FROM Futbolista WHERE Apellido = @Apellido AND Nombre = @Nombre AND idTipo = @IdTipo AND idEquipos = @IdEquipos LIMIT 1";
+                var idF = conexion.QueryFirstOrDefault<int?>(consultaId, new { Apellido = apellido, Nombre = nombre, IdTipo = _idTipo, IdEquipos = _idEquipos });
+
+                if (idF == null)
+                {
+                    MessageBox.Show("No se encontró el id del futbolista seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Llamar al SP altaPlantillaTitular para insertar en PlantillaTitular. Usamos plantilla id = 1 y esTitular = 1 (prueba)
+                var p = new DynamicParameters();
+                p.Add("UnidFutbolista", idF.Value);
+                p.Add("UnidPlantillas", 1);
+                p.Add("UnesTitular", 1);
+
+                conexion.Execute("altaPlantillaTitular", p, commandType: CommandType.StoredProcedure);
+
+                MessageBox.Show($"Jugador agregado a la plantilla 1 como titular (idFutbolista={idF}).", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (MySqlConnector.MySqlException myEx)
+            {
+                MessageBox.Show($"Error de MySQL: {myEx.Message}", "Error de Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error General", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
         }
+
+        
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Lógica del DataGridView...
+        }
+
+        private void FutbolistaListado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
