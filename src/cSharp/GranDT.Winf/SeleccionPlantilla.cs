@@ -22,16 +22,39 @@ namespace GranDT.Winf
             var screen = Screen.PrimaryScreen.WorkingArea;
             this.Width = (int)(screen.Width * 0.6);  // 60% del ancho de pantalla
             this.Height = (int)(screen.Height * 0.7); // 70% del alto de pantalla
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.WindowState = FormWindowState.Normal;
+            this.ShowInTaskbar = true;
         }
 
         private void Equipos_Load(object sender, EventArgs e)
         {
             try
             {
+                // Validar que el usuario esté logueado
+                if (Login.SesionActual.IdUsuario <= 0)
+                {
+                    MessageBox.Show("No hay una sesión de usuario activa. Por favor, inicie sesión primero.", "Error de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    // Volver al login
+                    var loginForm = new Login();
+                    loginForm.Show();
+                    this.Hide();
+                    loginForm.FormClosed += (s, args) => this.Close();
+                    return;
+                }
+
                 var conexion = Conexion.GetConexion();
+                if (conexion.State != System.Data.ConnectionState.Open)
+                {
+                    conexion.Open();
+                }
+                
                 var repo = new RepoPlantilla(conexion);
-                // Traer plantillas del usuario en sesión (si no hay sesión, pasará 0)
-                var plantillas = repo.PlantillasPorIdUsuario((uint)Login.SesionActual.IdUsuario)?.ToList() ?? new List<Plantilla>();
+                
+                // Traer SOLO las plantillas del usuario logueado
+                var idUsuarioLogueado = (uint)Login.SesionActual.IdUsuario;
+                var plantillas = repo.PlantillasPorIdUsuario(idUsuarioLogueado)?.ToList() ?? new List<Plantilla>();
+                
                 if (plantillas.Count == 0)
                 {
                     // No hay plantillas para mostrar
@@ -39,12 +62,17 @@ namespace GranDT.Winf
                     SPlantilla.Items.Clear();
                     SPlantilla.Items.Add("-- Sin plantillas --");
                     SPlantilla.SelectedIndex = 0;
+                    SPlantilla.Enabled = false;
+                    Confirmar.Enabled = false;
                     return;
                 }
 
+                SPlantilla.Enabled = true;
+                Confirmar.Enabled = true;
                 SPlantilla.DisplayMember = nameof(Plantilla.NombrePlantilla);
                 SPlantilla.ValueMember = nameof(Plantilla.idPlantillas);
                 SPlantilla.DataSource = plantillas;
+                
                 // seleccionar el primero por defecto
                 if (SPlantilla.Items.Count > 0)
                 {
@@ -55,7 +83,7 @@ namespace GranDT.Winf
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al cargar plantillas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al cargar plantillas: {ex.Message}\n\nDetalles: {ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void Cerrar_Click(object sender, EventArgs e)

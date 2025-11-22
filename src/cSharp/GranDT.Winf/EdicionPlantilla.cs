@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dapper;
 
 namespace GranDT.Winf
 {
@@ -32,19 +33,63 @@ namespace GranDT.Winf
 
         private void Plantilla_Load(object sender, EventArgs e)
         {
+            // Validar que el usuario esté logueado
+            if (Login.SesionActual.IdUsuario <= 0)
+            {
+                MessageBox.Show("No hay una sesión de usuario activa. Por favor, inicie sesión primero.", "Error de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // Volver al login
+                var loginForm = new Login();
+                loginForm.Show();
+                this.Hide();
+                loginForm.FormClosed += (s, args) => this.Close();
+                return;
+            }
+
             // Si se pasó una plantilla seleccionada, podemos cargar sus datos aquí
             if (_idPlantillaSeleccionada.HasValue)
             {
                 try
                 {
                     var conexion = Conexion.GetConexion();
+                    if (conexion.State != System.Data.ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                    
+                    // Verificar que la plantilla pertenece al usuario logueado
+                    var sqlVerificacion = @"SELECT idUsuario FROM Plantillas WHERE idPlantillas = @UnidPlantillas";
+                    var idUsuarioPlantilla = conexion.QueryFirstOrDefault<int?>(sqlVerificacion, new { UnidPlantillas = _idPlantillaSeleccionada.Value });
+                    
+                    if (!idUsuarioPlantilla.HasValue || idUsuarioPlantilla.Value != Login.SesionActual.IdUsuario)
+                    {
+                        MessageBox.Show("No tiene permisos para editar esta plantilla. Solo puede editar sus propias plantillas.", "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        // Volver a selección de plantilla
+                        var seleccionForm = new SeleccionPlantilla();
+                        seleccionForm.Show();
+                        this.Hide();
+                        seleccionForm.FormClosed += (s, args) => this.Close();
+                        return;
+                    }
+                    
                     var repo = new GranDT.Dapper.RepoPlantilla(conexion);
                     var plantilla = repo.ObtenerPlantillaCompleta((uint)_idPlantillaSeleccionada.Value);
                     if (plantilla != null)
                     {
-                        // Guardamos el id del equipo y de la plantilla para usar al abrir SeleccionJugador
-                        _idEquiposDePlantilla = plantilla.idEquipos;
+                        // Guardamos el id de la plantilla
                         _idPlantillaActual = plantilla.idPlantillas;
+                        
+                        // Obtener el idEquipos de la plantilla (el SP obtenerPlantillaCompleta no lo devuelve)
+                        // Hacemos una consulta directa para obtenerlo
+                        if (plantilla.idEquipos == 0)
+                        {
+                            var sql = @"SELECT idEquipos FROM Plantillas WHERE idPlantillas = @UnidPlantillas";
+                            _idEquiposDePlantilla = conexion.QueryFirstOrDefault<int?>(sql, new { UnidPlantillas = _idPlantillaSeleccionada.Value });
+                        }
+                        else
+                        {
+                            _idEquiposDePlantilla = plantilla.idEquipos;
+                        }
+                        
                         // Aquí puedes mapear los datos de plantilla a los controles del formulario
                         // Ejemplo (si existen controles): txtNombre.Text = plantilla.NombrePlantilla;
                     }

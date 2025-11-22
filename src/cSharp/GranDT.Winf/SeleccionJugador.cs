@@ -44,25 +44,36 @@ namespace GranDT.Winf
             try
             {
                 conexion = Conexion.GetConexion();
-                string sp = "traerFutbolistasXTipoXEquipo";
-
-                var parametros = new
-                {
-                    UnIdtipo = IdTipo,
-                    UnidEquipos = idEquipos
-                };
-
                 if (conexion.State != ConnectionState.Open)
                 {
                     conexion.Open();
                 }
-                var listaJugadores = conexion.Query<Futbolista>(
-                    sql: sp,
-                    param: parametros,
-                    commandType: CommandType.StoredProcedure
-                ).ToList();
 
-                dataGridView1.DataSource = listaJugadores;
+                List<Futbolista> listaJugadores;
+                
+                // Si IdTipo == 0 -> buscamos todos los tipos para el equipo (suplente)
+                if (IdTipo == 0)
+                {
+                    // Para suplentes, traemos todos los futbolistas del equipo sin filtrar por tipo
+                    var sql = @"SELECT * FROM Futbolista WHERE idEquipos = @UnidEquipos ORDER BY Apellido, Nombre";
+                    listaJugadores = conexion.Query<Futbolista>(sql, new { UnidEquipos = idEquipos }).ToList();
+                }
+                else
+                {
+                    // Para titulares, usar el método del repositorio que recibe idTipo e idEquipos
+                    var repoPlantilla = new RepoPlantilla(conexion);
+                    listaJugadores = repoPlantilla.traerFutbolistasXTipoXEquipo(IdTipo, idEquipos).ToList();
+                }
+
+                // Usar el BindingSource en lugar de asignar directamente al DataGridView
+                futbolistaBindingSource.DataSource = listaJugadores;
+                futbolistaBindingSource.ResetBindings(false);
+                
+                // Depuración: verificar que se obtuvieron datos
+                if (listaJugadores == null || listaJugadores.Count == 0)
+                {
+                    MessageBox.Show($"No se encontraron jugadores para Tipo: {IdTipo}, Equipo: {idEquipos}", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (MySqlConnector.MySqlException myEx)
             {
@@ -99,19 +110,20 @@ namespace GranDT.Winf
                 List<string> listaNombres;
                 if (IdTipo == 0)
                 {
+                    // Para suplentes, traemos todos los futbolistas del equipo
                     var sql = @"SELECT CONCAT(Apellido, ', ', Nombre) AS NombreCompleto FROM Futbolista WHERE idEquipos = @UnidEquipos ORDER BY Apellido, Nombre";
                     listaNombres = conexion.Query<string>(sql, new { UnidEquipos = idEquipos }).ToList();
                 }
                 else
                 {
+                    // El SP traerFutbolistasParaSeleccion devuelve solo NombreCompleto (string)
                     string sp = "traerFutbolistasParaSeleccion";
                     var parametros = new
                     {
-                        UnidTipo = IdTipo,
+                        UnidTipo = (int)IdTipo,
                         UnidEquipos = idEquipos
                     };
 
-                    // El SP devuelve una sola columna (NombreCompleto). La mapeamos a string.
                     listaNombres = conexion.Query<string>(
                         sql: sp,
                         param: parametros,
@@ -166,7 +178,7 @@ namespace GranDT.Winf
             }
 
             var apellido = partes[0].Trim();
-            var nombre = partes[1].Trim();
+            var nombre = partes[1].Trim(); 
 
             IDbConnection? conexion = null;
             try
@@ -175,8 +187,20 @@ namespace GranDT.Winf
                 if (conexion.State != ConnectionState.Open) conexion.Open();
 
                 // Buscar idFutbolista por Nombre+Apellido y por los filtros (tipo y equipo)
-                var consultaId = @"SELECT idFutbolista FROM Futbolista WHERE Apellido = @Apellido AND Nombre = @Nombre AND idTipo = @IdTipo AND idEquipos = @IdEquipos LIMIT 1";
-                var idF = conexion.QueryFirstOrDefault<int?>(consultaId, new { Apellido = apellido, Nombre = nombre, IdTipo = _idTipo, IdEquipos = _idEquipos });
+                // Si es suplente (_idTipo == 0), no filtramos por tipo
+                int? idF;
+                if (_idTipo == 0)
+                {
+                    // Para suplentes, solo filtramos por equipo
+                    var consultaId = @"SELECT idFutbolista FROM Futbolista WHERE Apellido = @Apellido AND Nombre = @Nombre AND idEquipos = @IdEquipos LIMIT 1";
+                    idF = conexion.QueryFirstOrDefault<int?>(consultaId, new { Apellido = apellido, Nombre = nombre, IdEquipos = _idEquipos });
+                }
+                else
+                {
+                    // Para titulares, filtramos por tipo y equipo
+                    var consultaId = @"SELECT idFutbolista FROM Futbolista WHERE Apellido = @Apellido AND Nombre = @Nombre AND idTipo = @IdTipo AND idEquipos = @IdEquipos LIMIT 1";
+                    idF = conexion.QueryFirstOrDefault<int?>(consultaId, new { Apellido = apellido, Nombre = nombre, IdTipo = _idTipo, IdEquipos = _idEquipos });
+                }
 
                 if (idF == null)
                 {
@@ -184,15 +208,18 @@ namespace GranDT.Winf
                     return;
                 }
 
-                // Llamar al SP altaPlantillaTitular para insertar en PlantillaTitular. Usamos plantilla id = 1 y esTitular = 1 (prueba)
-                var p = new DynamicParameters();
-                p.Add("UnidFutbolista", idF.Value);
-                p.Add("UnidPlantillas", 1);
-                p.Add("UnesTitular", 1);
+                // Usar el repositorio para dar de alta el jugador en la plantilla
+                // Usamos _idPlantilla (de la plantilla seleccionada) y _esSuplente (según el botón clickeado)
+                var repoPlantilla = new RepoPlantilla(conexion);
+                var esTitular = !_esSuplente;
+                repoPlantilla.AltaJugadorEnPlantilla(_idPlantilla, (uint)idF.Value, esTitular);
 
-                conexion.Execute("altaPlantillaTitular", p, commandType: CommandType.StoredProcedure);
-
-                MessageBox.Show($"Jugador agregado a la plantilla 1 como titular (idFutbolista={idF}).", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string tipoJugador = esTitular ? "titular" : "suplente";
+                MessageBox.Show($"Jugador agregado a la plantilla {_idPlantilla} como {tipoJugador} (idFutbolista={idF}).", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                // Cerrar el formulario después de agregar el jugador
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             catch (MySqlConnector.MySqlException myEx)
             {

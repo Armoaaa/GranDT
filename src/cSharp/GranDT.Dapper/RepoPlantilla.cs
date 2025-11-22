@@ -125,18 +125,11 @@ public class RepoPlantilla : Repo, IRepoPlantilla
     {
         var p = new DynamicParameters();
         p.Add("UnidTipo", idTipo);
-        p.Add("UndEquipos", idEquipos);
+        p.Add("UnidEquipos", idEquipos);
 
-        return _conexion.Query<Futbolista, Equipos, Tipo, Futbolista>(
+        return _conexion.Query<Futbolista>(
             _sptraerFutbolistasXTipoXEquipo,
-            (f, e, t) =>
-            {
-                f.Equipos = e;
-                f.Tipo = t;
-                return f;
-            },
             p,
-            splitOn: "IdEquipos,IdTipoTipo",
             commandType: CommandType.StoredProcedure
         ).ToList();
     }
