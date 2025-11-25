@@ -25,6 +25,7 @@ namespace GranDT.Winf
             _conexion = Conexion.GetConexion();
             _repoPlantilla = new RepoPlantilla(_conexion);
 
+
             // Cargar equipos en el ComboBox
             CargarEquipos();
         }

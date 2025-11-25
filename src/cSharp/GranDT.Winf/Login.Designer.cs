@@ -42,102 +42,116 @@
             // 
             // Contrasena
             // 
+            Contrasena.Anchor = AnchorStyles.None;
             Contrasena.AutoSize = true;
-            Contrasena.Location = new Point(285, 173);
+            Contrasena.Location = new Point(326, 231);
             Contrasena.Name = "Contrasena";
-            Contrasena.Size = new Size(57, 15);
+            Contrasena.Size = new Size(70, 20);
             Contrasena.TabIndex = 22;
             Contrasena.Text = "Password";
             // 
             // ContrasenaT
             // 
-            ContrasenaT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            ContrasenaT.Location = new Point(285, 191);
+            ContrasenaT.Anchor = AnchorStyles.None;
+            ContrasenaT.Location = new Point(326, 255);
+            ContrasenaT.Margin = new Padding(3, 4, 3, 4);
             ContrasenaT.Name = "ContrasenaT";
-            ContrasenaT.Size = new Size(230, 23);
+            ContrasenaT.Size = new Size(680, 27);
             ContrasenaT.TabIndex = 21;
-
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
-            label3.Location = new Point(285, 77);
+            label3.Location = new Point(326, 103);
             label3.Name = "label3";
-            label3.Size = new Size(105, 15);
+            label3.Size = new Size(132, 20);
             label3.TabIndex = 20;
             label3.Text = "Correo Electronico";
             // 
             // EmailT
             // 
-            EmailT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            EmailT.Location = new Point(285, 95);
+            EmailT.Anchor = AnchorStyles.None;
+            EmailT.Location = new Point(326, 127);
+            EmailT.Margin = new Padding(3, 4, 3, 4);
             EmailT.Name = "EmailT";
-            EmailT.Size = new Size(230, 23);
+            EmailT.Size = new Size(680, 27);
             EmailT.TabIndex = 19;
-
             // 
             // Atras
             // 
-            Atras.Location = new Point(285, 316);
+            Atras.Anchor = AnchorStyles.None;
+            Atras.BackColor = Color.Transparent;
+            Atras.BackgroundImage = Properties.Resources.Cancelar;
+            Atras.BackgroundImageLayout = ImageLayout.Zoom;
+            Atras.FlatStyle = FlatStyle.Flat;
+            Atras.ImageAlign = ContentAlignment.BottomCenter;
+            Atras.Location = new Point(326, 421);
+            Atras.Margin = new Padding(3, 4, 3, 4);
             Atras.Name = "Atras";
-            Atras.Size = new Size(104, 33);
+            Atras.Size = new Size(256, 87);
             Atras.TabIndex = 18;
-            Atras.Text = "Atras";
-            Atras.UseVisualStyleBackColor = true;
+            Atras.UseVisualStyleBackColor = false;
             Atras.Click += Atras_Click;
             // 
             // Reguistrarse
             // 
-            Reguistrarse.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            Reguistrarse.Location = new Point(411, 316);
+            Reguistrarse.Anchor = AnchorStyles.None;
+            Reguistrarse.BackColor = Color.Transparent;
+            Reguistrarse.BackgroundImage = Properties.Resources.Aceptar;
+            Reguistrarse.BackgroundImageLayout = ImageLayout.Zoom;
+            Reguistrarse.FlatStyle = FlatStyle.Flat;
+            Reguistrarse.Location = new Point(749, 421);
+            Reguistrarse.Margin = new Padding(3, 4, 3, 4);
             Reguistrarse.Name = "Reguistrarse";
-            Reguistrarse.Size = new Size(104, 33);
+            Reguistrarse.Size = new Size(256, 92);
             Reguistrarse.TabIndex = 17;
-            Reguistrarse.Text = "Login";
-            Reguistrarse.UseVisualStyleBackColor = true;
+            Reguistrarse.UseVisualStyleBackColor = false;
             Reguistrarse.Click += Reguistrarse_Click;
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Location = new Point(284, 121);
+            label1.Location = new Point(325, 161);
             label1.Name = "label1";
-            label1.Size = new Size(162, 15);
+            label1.Size = new Size(202, 20);
             label1.TabIndex = 24;
             label1.Text = "Confirmar Correo Electronico";
-
             // 
             // EmailC
             // 
-            EmailC.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            EmailC.Location = new Point(284, 139);
+            EmailC.Anchor = AnchorStyles.None;
+            EmailC.Location = new Point(325, 185);
+            EmailC.Margin = new Padding(3, 4, 3, 4);
             EmailC.Name = "EmailC";
-            EmailC.Size = new Size(230, 23);
+            EmailC.Size = new Size(680, 27);
             EmailC.TabIndex = 23;
-
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
-            label2.Location = new Point(285, 222);
+            label2.Location = new Point(326, 296);
             label2.Name = "label2";
-            label2.Size = new Size(114, 15);
+            label2.Size = new Size(140, 20);
             label2.TabIndex = 26;
             label2.Text = "Confirmar Password";
             // 
             // ContrasenaC
             // 
-            ContrasenaC.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            ContrasenaC.Location = new Point(285, 240);
+            ContrasenaC.Anchor = AnchorStyles.None;
+            ContrasenaC.Location = new Point(326, 320);
+            ContrasenaC.Margin = new Padding(3, 4, 3, 4);
             ContrasenaC.Name = "ContrasenaC";
-            ContrasenaC.Size = new Size(230, 23);
+            ContrasenaC.Size = new Size(680, 27);
             ContrasenaC.TabIndex = 25;
             // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1332, 703);
             Controls.Add(label2);
             Controls.Add(ContrasenaC);
             Controls.Add(label1);
@@ -148,6 +162,7 @@
             Controls.Add(EmailT);
             Controls.Add(Atras);
             Controls.Add(Reguistrarse);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";

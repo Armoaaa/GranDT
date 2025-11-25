@@ -19,9 +19,8 @@ namespace GranDT.Winf
         public SeleccionPlantilla()
         {
             InitializeComponent();
-            var screen = Screen.PrimaryScreen.WorkingArea;
-            this.Width = (int)(screen.Width * 0.6);  // 60% del ancho de pantalla
-            this.Height = (int)(screen.Height * 0.7); // 70% del alto de pantalla
+
+            // 70% del alto de pantalla
             this.StartPosition = FormStartPosition.CenterScreen;
             this.WindowState = FormWindowState.Normal;
             this.ShowInTaskbar = true;

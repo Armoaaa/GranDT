@@ -42,83 +42,89 @@
             // 
             SEquipos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             SEquipos.FormattingEnabled = true;
-            SEquipos.Location = new Point(300, 215);
+            SEquipos.Location = new Point(343, 287);
+            SEquipos.Margin = new Padding(3, 4, 3, 4);
             SEquipos.Name = "SEquipos";
-            SEquipos.Size = new Size(200, 23);
+            SEquipos.Size = new Size(646, 28);
             SEquipos.TabIndex = 0;
-
             // 
             // Confirmar
             // 
             Confirmar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            Confirmar.Location = new Point(425, 300);
+            Confirmar.BackColor = Color.Transparent;
+            Confirmar.BackgroundImage = Properties.Resources.Aceptar;
+            Confirmar.BackgroundImageLayout = ImageLayout.Zoom;
+            Confirmar.Location = new Point(343, 348);
+            Confirmar.Margin = new Padding(3, 4, 3, 4);
             Confirmar.Name = "Confirmar";
-            Confirmar.Size = new Size(75, 23);
+            Confirmar.Size = new Size(230, 71);
             Confirmar.TabIndex = 1;
-            Confirmar.Text = "Confirmar";
-            Confirmar.UseVisualStyleBackColor = true;
+            Confirmar.UseVisualStyleBackColor = false;
             Confirmar.Click += Confirmar_Click;
             // 
             // Cancelar
             // 
-            Cancelar.Location = new Point(320, 300);
+            Cancelar.BackColor = Color.Transparent;
+            Cancelar.BackgroundImage = Properties.Resources.Cancelar;
+            Cancelar.BackgroundImageLayout = ImageLayout.Zoom;
+            Cancelar.Location = new Point(759, 348);
+            Cancelar.Margin = new Padding(3, 4, 3, 4);
             Cancelar.Name = "Cancelar";
-            Cancelar.Size = new Size(75, 23);
+            Cancelar.Size = new Size(230, 71);
             Cancelar.TabIndex = 2;
-            Cancelar.Text = "Cancelar";
-            Cancelar.UseVisualStyleBackColor = true;
+            Cancelar.UseVisualStyleBackColor = false;
             Cancelar.Click += Cancelar_Click;
             // 
             // CoAS
             // 
             CoAS.AutoSize = true;
-            CoAS.Location = new Point(300, 197);
+            CoAS.Location = new Point(343, 263);
             CoAS.Name = "CoAS";
-            CoAS.Size = new Size(47, 15);
+            CoAS.Size = new Size(60, 20);
             CoAS.TabIndex = 3;
             CoAS.Text = "Equipo ";
             // 
             // TPresupuesto
             // 
             TPresupuesto.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            TPresupuesto.Location = new Point(300, 159);
+            TPresupuesto.Location = new Point(343, 212);
+            TPresupuesto.Margin = new Padding(3, 4, 3, 4);
             TPresupuesto.Name = "TPresupuesto";
-            TPresupuesto.Size = new Size(200, 23);
+            TPresupuesto.Size = new Size(646, 27);
             TPresupuesto.TabIndex = 4;
-
             // 
             // label123
             // 
             label123.AutoSize = true;
-            label123.Location = new Point(300, 141);
+            label123.Location = new Point(343, 188);
             label123.Name = "label123";
-            label123.Size = new Size(72, 15);
+            label123.Size = new Size(89, 20);
             label123.TabIndex = 5;
             label123.Text = "Presupuesto";
             // 
             // TNombre
             // 
             TNombre.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            TNombre.Location = new Point(300, 105);
+            TNombre.Location = new Point(343, 140);
+            TNombre.Margin = new Padding(3, 4, 3, 4);
             TNombre.Name = "TNombre";
-            TNombre.Size = new Size(200, 23);
+            TNombre.Size = new Size(646, 27);
             TNombre.TabIndex = 6;
-
             // 
             // label65
             // 
             label65.AutoSize = true;
-            label65.Location = new Point(300, 87);
+            label65.Location = new Point(343, 116);
             label65.Name = "label65";
-            label65.Size = new Size(51, 15);
+            label65.Size = new Size(64, 20);
             label65.TabIndex = 7;
             label65.Text = "Nombre";
             // 
             // AgregarPlantilla
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1332, 703);
             Controls.Add(label65);
             Controls.Add(TNombre);
             Controls.Add(label123);
@@ -127,6 +133,7 @@
             Controls.Add(Cancelar);
             Controls.Add(Confirmar);
             Controls.Add(SEquipos);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "AgregarPlantilla";
             Text = "EditorPlantilla";
             ResumeLayout(false);

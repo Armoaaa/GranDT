@@ -48,153 +48,174 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Location = new Point(265, 79);
+            label1.Location = new Point(303, 105);
             label1.Name = "label1";
-            label1.Size = new Size(51, 15);
+            label1.Size = new Size(64, 20);
             label1.TabIndex = 8;
             label1.Text = "Nombre";
             // 
             // NombreT
             // 
-            NombreT.Location = new Point(265, 97);
+            NombreT.Anchor = AnchorStyles.None;
+            NombreT.Location = new Point(303, 129);
+            NombreT.Margin = new Padding(3, 4, 3, 4);
             NombreT.Name = "NombreT";
-            NombreT.Size = new Size(166, 23);
+            NombreT.Size = new Size(256, 27);
             NombreT.TabIndex = 7;
             // 
             // Atras
             // 
-            Atras.Location = new Point(265, 339);
+            Atras.Anchor = AnchorStyles.None;
+            Atras.BackgroundImage = Properties.Resources.Cancelar;
+            Atras.BackgroundImageLayout = ImageLayout.Zoom;
+            Atras.FlatStyle = FlatStyle.Flat;
+            Atras.Location = new Point(303, 452);
+            Atras.Margin = new Padding(3, 4, 3, 4);
             Atras.Name = "Atras";
-            Atras.Size = new Size(104, 33);
+            Atras.Size = new Size(256, 87);
             Atras.TabIndex = 6;
-            Atras.Text = "Atras";
             Atras.UseVisualStyleBackColor = true;
             Atras.Click += Atras_Click;
             // 
             // Reguistrarse
             // 
-            Reguistrarse.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            Reguistrarse.Location = new Point(391, 339);
+            Reguistrarse.Anchor = AnchorStyles.None;
+            Reguistrarse.BackgroundImage = Properties.Resources.Registrarse;
+            Reguistrarse.BackgroundImageLayout = ImageLayout.Zoom;
+            Reguistrarse.FlatStyle = FlatStyle.Flat;
+            Reguistrarse.Location = new Point(727, 452);
+            Reguistrarse.Margin = new Padding(3, 4, 3, 4);
             Reguistrarse.Name = "Reguistrarse";
-            Reguistrarse.Size = new Size(104, 33);
+            Reguistrarse.Size = new Size(256, 87);
             Reguistrarse.TabIndex = 5;
-            Reguistrarse.Text = "Reguistrarse";
             Reguistrarse.UseVisualStyleBackColor = true;
             Reguistrarse.Click += Reguistrarse_Click;
             // 
             // ApellidoT
             // 
-            ApellidoT.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            ApellidoT.Location = new Point(329, 97);
+            ApellidoT.Anchor = AnchorStyles.None;
+            ApellidoT.Location = new Point(724, 129);
+            ApellidoT.Margin = new Padding(3, 4, 3, 4);
             ApellidoT.Name = "ApellidoT";
-            ApellidoT.Size = new Size(166, 23);
+            ApellidoT.Size = new Size(259, 27);
             ApellidoT.TabIndex = 9;
             // 
             // label2
             // 
-            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
-            label2.Location = new Point(332, 79);
+            label2.Location = new Point(727, 105);
             label2.Name = "label2";
-            label2.Size = new Size(51, 15);
+            label2.Size = new Size(66, 20);
             label2.TabIndex = 10;
             label2.Text = "Apellido";
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
-            label3.Location = new Point(265, 125);
+            label3.Location = new Point(303, 167);
             label3.Name = "label3";
-            label3.Size = new Size(105, 15);
+            label3.Size = new Size(132, 20);
             label3.TabIndex = 12;
             label3.Text = "Correo Electronico";
             // 
             // EmailT
             // 
-            EmailT.Location = new Point(265, 143);
+            EmailT.Anchor = AnchorStyles.None;
+            EmailT.Location = new Point(303, 191);
+            EmailT.Margin = new Padding(3, 4, 3, 4);
             EmailT.Name = "EmailT";
-            EmailT.Size = new Size(166, 23);
+            EmailT.Size = new Size(256, 27);
             EmailT.TabIndex = 11;
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
-            label4.Location = new Point(265, 171);
+            label4.Location = new Point(303, 228);
             label4.Name = "label4";
-            label4.Size = new Size(117, 15);
+            label4.Size = new Size(146, 20);
             label4.TabIndex = 14;
             label4.Text = "Fecha de nacimiento";
             // 
             // Contrasena
             // 
+            Contrasena.Anchor = AnchorStyles.None;
             Contrasena.AutoSize = true;
-            Contrasena.Location = new Point(265, 221);
+            Contrasena.Location = new Point(303, 295);
             Contrasena.Name = "Contrasena";
-            Contrasena.Size = new Size(57, 15);
+            Contrasena.Size = new Size(70, 20);
             Contrasena.TabIndex = 16;
             Contrasena.Text = "Password";
             // 
             // MaskFecha
             // 
-            MaskFecha.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            MaskFecha.Location = new Point(265, 190);
+            MaskFecha.Anchor = AnchorStyles.None;
+            MaskFecha.Location = new Point(303, 253);
+            MaskFecha.Margin = new Padding(3, 4, 3, 4);
             MaskFecha.Mask = "0000-00-00";
             MaskFecha.Name = "MaskFecha";
-            MaskFecha.Size = new Size(230, 23);
+            MaskFecha.Size = new Size(256, 27);
             MaskFecha.TabIndex = 17;
             MaskFecha.ValidatingType = typeof(DateTime);
             // 
             // ContrasenaT
             // 
-            ContrasenaT.Location = new Point(269, 239);
+            ContrasenaT.Anchor = AnchorStyles.None;
+            ContrasenaT.Location = new Point(307, 319);
+            ContrasenaT.Margin = new Padding(3, 4, 3, 4);
             ContrasenaT.Name = "ContrasenaT";
-            ContrasenaT.Size = new Size(167, 23);
+            ContrasenaT.Size = new Size(257, 27);
             ContrasenaT.TabIndex = 15;
             ContrasenaT.UseSystemPasswordChar = true;
             // 
             // label5
             // 
-            label5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
-            label5.Location = new Point(331, 221);
+            label5.Location = new Point(726, 295);
             label5.Name = "label5";
-            label5.Size = new Size(114, 15);
+            label5.Size = new Size(140, 20);
             label5.TabIndex = 30;
             label5.Text = "Confirmar Password";
             // 
             // ContrasenaC
             // 
-            ContrasenaC.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            ContrasenaC.Location = new Point(328, 239);
+            ContrasenaC.Anchor = AnchorStyles.None;
+            ContrasenaC.Location = new Point(723, 319);
+            ContrasenaC.Margin = new Padding(3, 4, 3, 4);
             ContrasenaC.Name = "ContrasenaC";
-            ContrasenaC.Size = new Size(167, 23);
+            ContrasenaC.Size = new Size(260, 27);
             ContrasenaC.TabIndex = 29;
             ContrasenaC.UseSystemPasswordChar = true;
             // 
             // label6
             // 
-            label6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
-            label6.Location = new Point(329, 125);
+            label6.Location = new Point(724, 167);
             label6.Name = "label6";
-            label6.Size = new Size(162, 15);
+            label6.Size = new Size(202, 20);
             label6.TabIndex = 28;
             label6.Text = "Confirmar Correo Electronico";
             // 
             // EmailC
             // 
-            EmailC.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            EmailC.Location = new Point(329, 143);
+            EmailC.Anchor = AnchorStyles.None;
+            EmailC.Location = new Point(724, 191);
+            EmailC.Margin = new Padding(3, 4, 3, 4);
             EmailC.Name = "EmailC";
-            EmailC.Size = new Size(166, 23);
+            EmailC.Size = new Size(259, 27);
             EmailC.TabIndex = 27;
             // 
             // Reguistro
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1332, 703);
             Controls.Add(label5);
             Controls.Add(ContrasenaC);
             Controls.Add(label6);
@@ -211,6 +232,7 @@
             Controls.Add(NombreT);
             Controls.Add(Atras);
             Controls.Add(Reguistrarse);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Reguistro";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "GranDT";

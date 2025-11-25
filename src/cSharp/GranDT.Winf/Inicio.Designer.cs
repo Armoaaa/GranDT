@@ -28,48 +28,54 @@ partial class Inicio
     /// </summary>
     private void InitializeComponent()
     {
-        Reguistrarse = new Button();
-        Login = new Button();
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
+        Login = new PictureBox();
+        Reguistrarse = new PictureBox();
+        ((System.ComponentModel.ISupportInitialize)Login).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)Reguistrarse).BeginInit();
         SuspendLayout();
-        // 
-        // Reguistrarse
-        // 
-        Reguistrarse.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-        Reguistrarse.Location = new Point(340, 180);
-        Reguistrarse.Name = "Reguistrarse";
-        Reguistrarse.Size = new Size(120, 42);
-        Reguistrarse.TabIndex = 0;
-        Reguistrarse.Text = "Reguistrarse";
-        Reguistrarse.UseVisualStyleBackColor = true;
-        Reguistrarse.Click += Reguistrarse_Click;
         // 
         // Login
         // 
-        Login.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-        Login.Location = new Point(340, 180);
+        Login.Image = (Image)resources.GetObject("Login.Image");
+        Login.Location = new Point(684, 430);
         Login.Name = "Login";
-        Login.Size = new Size(120, 42);
-        Login.TabIndex = 1;
-        Login.Text = "Login";
-        Login.UseVisualStyleBackColor = true;
-        Login.Click += Login_Click;
+        Login.Size = new Size(344, 103);
+        Login.SizeMode = PictureBoxSizeMode.Zoom;
+        Login.TabIndex = 2;
+        Login.TabStop = false;
+        Login.Click += Login_Click_1;
+        // 
+        // Reguistrarse
+        // 
+        Reguistrarse.Anchor = AnchorStyles.None;
+        Reguistrarse.Image = (Image)resources.GetObject("Reguistrarse.Image");
+        Reguistrarse.Location = new Point(318, 430);
+        Reguistrarse.Name = "Reguistrarse";
+        Reguistrarse.Size = new Size(344, 103);
+        Reguistrarse.SizeMode = PictureBoxSizeMode.Zoom;
+        Reguistrarse.TabIndex = 3;
+        Reguistrarse.TabStop = false;
+        Reguistrarse.Click += Reguistrarse_Click_1;
         // 
         // Inicio
         // 
-        AutoScaleDimensions = new SizeF(7F, 15F);
+        AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(800, 450);
-        Controls.Add(Login);
+        ClientSize = new Size(1332, 703);
         Controls.Add(Reguistrarse);
+        Controls.Add(Login);
+        Margin = new Padding(3, 4, 3, 4);
         Name = "Inicio";
         StartPosition = FormStartPosition.CenterScreen;
-        Text = "GranDT";
+        Text = " ";
         Load += Inicio_Load;
+        ((System.ComponentModel.ISupportInitialize)Login).EndInit();
+        ((System.ComponentModel.ISupportInitialize)Reguistrarse).EndInit();
         ResumeLayout(false);
     }
 
     #endregion
-
-    private Button Reguistrarse;
-    private Button Login;
+    private PictureBox Login;
+    private PictureBox Reguistrarse;
 }

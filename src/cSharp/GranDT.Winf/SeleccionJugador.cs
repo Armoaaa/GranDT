@@ -34,6 +34,8 @@ namespace GranDT.Winf
             _idPlantilla = idPlantilla;
             _esSuplente = esSuplente;
 
+
+
             // Cargar el grid y el listado
             CargarJugadoresDesdeSP(_idTipo, _idEquipos);
             CargarListadoFutbolistasParaSeleccion(_idTipo, _idEquipos);

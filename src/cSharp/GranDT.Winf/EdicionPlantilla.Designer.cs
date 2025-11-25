@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Lista = new Label();
             Confirmar = new Button();
             Delantero1 = new PictureBox();
             Delantero2 = new PictureBox();
@@ -86,183 +85,271 @@
             ((System.ComponentModel.ISupportInitialize)Suplente7).BeginInit();
             SuspendLayout();
             // 
-            // Lista
-            // 
-            Lista.AutoSize = true;
-            Lista.Location = new Point(676, 9);
-            Lista.Name = "Lista";
-            Lista.Size = new Size(60, 15);
-            Lista.TabIndex = 1;
-            Lista.Text = "Jugadores";
-            // 
             // Confirmar
             // 
-            Confirmar.Location = new Point(729, 440);
+            Confirmar.Anchor = AnchorStyles.None;
+            Confirmar.BackColor = Color.Transparent;
+            Confirmar.BackgroundImage = Properties.Resources.Aceptar;
+            Confirmar.BackgroundImageLayout = ImageLayout.Zoom;
+            Confirmar.FlatStyle = FlatStyle.Flat;
+            Confirmar.Location = new Point(1048, 597);
+            Confirmar.Margin = new Padding(3, 4, 3, 4);
             Confirmar.Name = "Confirmar";
-            Confirmar.Size = new Size(76, 70);
+            Confirmar.Size = new Size(258, 93);
             Confirmar.TabIndex = 2;
-            Confirmar.Text = "Confirmar";
-            Confirmar.UseVisualStyleBackColor = true;
+            Confirmar.UseVisualStyleBackColor = false;
             Confirmar.Click += Confirmar_Click;
             // 
             // Delantero1
             // 
-            Delantero1.Location = new Point(86, 42);
+            Delantero1.Anchor = AnchorStyles.None;
+            Delantero1.BackColor = Color.Transparent;
+            Delantero1.Image = Properties.Resources.Remera;
+            Delantero1.Location = new Point(675, 408);
+            Delantero1.Margin = new Padding(3, 4, 3, 4);
             Delantero1.Name = "Delantero1";
-            Delantero1.Size = new Size(70, 70);
+            Delantero1.Size = new Size(80, 93);
+            Delantero1.SizeMode = PictureBoxSizeMode.Zoom;
             Delantero1.TabIndex = 3;
             Delantero1.TabStop = false;
             Delantero1.Click += Delantero1_Click;
             // 
             // Delantero2
             // 
-            Delantero2.Location = new Point(187, 42);
+            Delantero2.Anchor = AnchorStyles.None;
+            Delantero2.BackColor = Color.Transparent;
+            Delantero2.Image = Properties.Resources.Remera;
+            Delantero2.Location = new Point(675, 111);
+            Delantero2.Margin = new Padding(3, 4, 3, 4);
             Delantero2.Name = "Delantero2";
-            Delantero2.Size = new Size(70, 70);
+            Delantero2.Size = new Size(80, 93);
+            Delantero2.SizeMode = PictureBoxSizeMode.Zoom;
             Delantero2.TabIndex = 4;
             Delantero2.TabStop = false;
             Delantero2.Click += Delantero2_Click;
             // 
             // Delantero3
             // 
-            Delantero3.Location = new Point(284, 42);
+            Delantero3.Anchor = AnchorStyles.None;
+            Delantero3.BackColor = Color.Transparent;
+            Delantero3.Image = Properties.Resources.Remera;
+            Delantero3.InitialImage = Properties.Resources.Remera;
+            Delantero3.Location = new Point(735, 254);
+            Delantero3.Margin = new Padding(3, 4, 3, 4);
             Delantero3.Name = "Delantero3";
-            Delantero3.Size = new Size(70, 70);
+            Delantero3.Size = new Size(80, 93);
+            Delantero3.SizeMode = PictureBoxSizeMode.Zoom;
             Delantero3.TabIndex = 5;
             Delantero3.TabStop = false;
             Delantero3.Click += Delantero3_Click;
             // 
             // Medio3
             // 
-            Medio3.Location = new Point(284, 132);
+            Medio3.Anchor = AnchorStyles.None;
+            Medio3.BackColor = Color.Transparent;
+            Medio3.Image = Properties.Resources.Remera;
+            Medio3.Location = new Point(490, 111);
+            Medio3.Margin = new Padding(3, 4, 3, 4);
             Medio3.Name = "Medio3";
-            Medio3.Size = new Size(70, 70);
+            Medio3.Size = new Size(80, 93);
+            Medio3.SizeMode = PictureBoxSizeMode.Zoom;
             Medio3.TabIndex = 8;
             Medio3.TabStop = false;
             Medio3.Click += Medio3_Click;
             // 
             // Medio2
             // 
-            Medio2.Location = new Point(187, 132);
+            Medio2.Anchor = AnchorStyles.None;
+            Medio2.BackColor = Color.Transparent;
+            Medio2.Image = Properties.Resources.Remera;
+            Medio2.Location = new Point(557, 254);
+            Medio2.Margin = new Padding(3, 4, 3, 4);
             Medio2.Name = "Medio2";
-            Medio2.Size = new Size(70, 70);
+            Medio2.Size = new Size(80, 93);
+            Medio2.SizeMode = PictureBoxSizeMode.Zoom;
             Medio2.TabIndex = 7;
             Medio2.TabStop = false;
             Medio2.Click += Medio2_Click;
             // 
             // Medio1
             // 
-            Medio1.Location = new Point(86, 132);
+            Medio1.Anchor = AnchorStyles.None;
+            Medio1.BackColor = Color.Transparent;
+            Medio1.Image = Properties.Resources.Remera;
+            Medio1.Location = new Point(490, 408);
+            Medio1.Margin = new Padding(3, 4, 3, 4);
             Medio1.Name = "Medio1";
-            Medio1.Size = new Size(70, 70);
+            Medio1.Size = new Size(80, 93);
+            Medio1.SizeMode = PictureBoxSizeMode.Zoom;
             Medio1.TabIndex = 6;
             Medio1.TabStop = false;
             Medio1.Click += Medio1_Click;
             // 
             // Defensa3
             // 
-            Defensa3.Location = new Point(234, 223);
+            Defensa3.Anchor = AnchorStyles.None;
+            Defensa3.BackColor = Color.Transparent;
+            Defensa3.Image = Properties.Resources.Remera;
+            Defensa3.Location = new Point(250, 325);
+            Defensa3.Margin = new Padding(3, 4, 3, 4);
             Defensa3.Name = "Defensa3";
-            Defensa3.Size = new Size(70, 70);
+            Defensa3.Size = new Size(80, 93);
+            Defensa3.SizeMode = PictureBoxSizeMode.Zoom;
             Defensa3.TabIndex = 11;
             Defensa3.TabStop = false;
             Defensa3.Click += Defensa3_Click;
             // 
             // Defensa2
             // 
-            Defensa2.Location = new Point(137, 223);
+            Defensa2.Anchor = AnchorStyles.None;
+            Defensa2.BackColor = Color.Transparent;
+            Defensa2.Image = Properties.Resources.Remera;
+            Defensa2.Location = new Point(207, 40);
+            Defensa2.Margin = new Padding(3, 4, 3, 4);
             Defensa2.Name = "Defensa2";
-            Defensa2.Size = new Size(70, 70);
+            Defensa2.Size = new Size(80, 93);
+            Defensa2.SizeMode = PictureBoxSizeMode.Zoom;
             Defensa2.TabIndex = 10;
             Defensa2.TabStop = false;
             Defensa2.Click += Defensa2_Click;
             // 
             // Defensa1
             // 
-            Defensa1.Location = new Point(36, 223);
+            Defensa1.Anchor = AnchorStyles.None;
+            Defensa1.BackColor = Color.Transparent;
+            Defensa1.Image = Properties.Resources.Remera;
+            Defensa1.Location = new Point(207, 468);
+            Defensa1.Margin = new Padding(3, 4, 3, 4);
             Defensa1.Name = "Defensa1";
-            Defensa1.Size = new Size(70, 70);
+            Defensa1.Size = new Size(80, 93);
+            Defensa1.SizeMode = PictureBoxSizeMode.Zoom;
             Defensa1.TabIndex = 9;
             Defensa1.TabStop = false;
             Defensa1.Click += Defensa1_Click;
             // 
             // Defensa4
             // 
-            Defensa4.Location = new Point(327, 223);
+            Defensa4.Anchor = AnchorStyles.None;
+            Defensa4.BackColor = Color.Transparent;
+            Defensa4.Image = Properties.Resources.Remera;
+            Defensa4.Location = new Point(250, 162);
+            Defensa4.Margin = new Padding(3, 4, 3, 4);
             Defensa4.Name = "Defensa4";
-            Defensa4.Size = new Size(70, 70);
+            Defensa4.Size = new Size(80, 93);
+            Defensa4.SizeMode = PictureBoxSizeMode.Zoom;
             Defensa4.TabIndex = 12;
             Defensa4.TabStop = false;
             Defensa4.Click += Defensa4_Click;
             // 
             // arquero
             // 
-            arquero.Location = new Point(187, 314);
+            arquero.Anchor = AnchorStyles.None;
+            arquero.BackColor = Color.Transparent;
+            arquero.Image = Properties.Resources.Remera;
+            arquero.Location = new Point(41, 254);
+            arquero.Margin = new Padding(3, 4, 3, 4);
             arquero.Name = "arquero";
-            arquero.Size = new Size(70, 70);
+            arquero.Size = new Size(80, 93);
+            arquero.SizeMode = PictureBoxSizeMode.Zoom;
             arquero.TabIndex = 13;
             arquero.TabStop = false;
             arquero.Click += arquero_Click;
             // 
             // Suplente3
             // 
-            Suplente3.Location = new Point(234, 440);
+            Suplente3.Anchor = AnchorStyles.None;
+            Suplente3.BackColor = Color.Transparent;
+            Suplente3.Image = Properties.Resources.Remera;
+            Suplente3.Location = new Point(1226, 40);
+            Suplente3.Margin = new Padding(3, 4, 3, 4);
             Suplente3.Name = "Suplente3";
-            Suplente3.Size = new Size(70, 70);
+            Suplente3.Size = new Size(80, 93);
+            Suplente3.SizeMode = PictureBoxSizeMode.Zoom;
             Suplente3.TabIndex = 16;
             Suplente3.TabStop = false;
             Suplente3.Click += Suplente3_Click;
             // 
             // Suplente2
             // 
-            Suplente2.Location = new Point(137, 440);
+            Suplente2.Anchor = AnchorStyles.None;
+            Suplente2.BackColor = Color.Transparent;
+            Suplente2.Image = Properties.Resources.Remera;
+            Suplente2.Location = new Point(1127, 40);
+            Suplente2.Margin = new Padding(3, 4, 3, 4);
             Suplente2.Name = "Suplente2";
-            Suplente2.Size = new Size(70, 70);
+            Suplente2.Size = new Size(80, 93);
+            Suplente2.SizeMode = PictureBoxSizeMode.Zoom;
             Suplente2.TabIndex = 15;
             Suplente2.TabStop = false;
             Suplente2.Click += Suplente2_Click;
             // 
             // Suplente1
             // 
-            Suplente1.Location = new Point(36, 440);
+            Suplente1.Anchor = AnchorStyles.None;
+            Suplente1.BackColor = Color.Transparent;
+            Suplente1.BorderStyle = BorderStyle.FixedSingle;
+            Suplente1.Image = Properties.Resources.Remera;
+            Suplente1.Location = new Point(1024, 40);
+            Suplente1.Margin = new Padding(3, 4, 3, 4);
             Suplente1.Name = "Suplente1";
-            Suplente1.Size = new Size(70, 70);
+            Suplente1.Size = new Size(80, 93);
+            Suplente1.SizeMode = PictureBoxSizeMode.Zoom;
             Suplente1.TabIndex = 14;
             Suplente1.TabStop = false;
             Suplente1.Click += Suplente1_Click;
             // 
             // Suplente6
             // 
-            Suplente6.Location = new Point(526, 440);
+            Suplente6.Anchor = AnchorStyles.None;
+            Suplente6.BackColor = Color.Transparent;
+            Suplente6.Image = Properties.Resources.Remera;
+            Suplente6.Location = new Point(1226, 187);
+            Suplente6.Margin = new Padding(3, 4, 3, 4);
             Suplente6.Name = "Suplente6";
-            Suplente6.Size = new Size(70, 70);
+            Suplente6.Size = new Size(80, 93);
+            Suplente6.SizeMode = PictureBoxSizeMode.Zoom;
             Suplente6.TabIndex = 19;
             Suplente6.TabStop = false;
             Suplente6.Click += Suplente6_Click;
             // 
             // Suplente5
             // 
-            Suplente5.Location = new Point(429, 440);
+            Suplente5.Anchor = AnchorStyles.None;
+            Suplente5.BackColor = Color.Transparent;
+            Suplente5.Image = Properties.Resources.Remera;
+            Suplente5.Location = new Point(1127, 187);
+            Suplente5.Margin = new Padding(3, 4, 3, 4);
             Suplente5.Name = "Suplente5";
-            Suplente5.Size = new Size(70, 70);
+            Suplente5.Size = new Size(80, 93);
+            Suplente5.SizeMode = PictureBoxSizeMode.Zoom;
             Suplente5.TabIndex = 18;
             Suplente5.TabStop = false;
             Suplente5.Click += Suplente5_Click;
             // 
             // Suplente4
             // 
-            Suplente4.Location = new Point(328, 440);
+            Suplente4.Anchor = AnchorStyles.None;
+            Suplente4.BackColor = Color.Transparent;
+            Suplente4.Image = Properties.Resources.Remera;
+            Suplente4.Location = new Point(1024, 187);
+            Suplente4.Margin = new Padding(3, 4, 3, 4);
             Suplente4.Name = "Suplente4";
-            Suplente4.Size = new Size(70, 70);
+            Suplente4.Size = new Size(80, 93);
+            Suplente4.SizeMode = PictureBoxSizeMode.Zoom;
             Suplente4.TabIndex = 17;
             Suplente4.TabStop = false;
             Suplente4.Click += Suplente4_Click;
             // 
             // Suplente7
             // 
-            Suplente7.Location = new Point(617, 440);
+            Suplente7.Anchor = AnchorStyles.None;
+            Suplente7.BackColor = Color.Transparent;
+            Suplente7.Image = Properties.Resources.Remera;
+            Suplente7.Location = new Point(1127, 325);
+            Suplente7.Margin = new Padding(3, 4, 3, 4);
             Suplente7.Name = "Suplente7";
-            Suplente7.Size = new Size(70, 70);
+            Suplente7.Size = new Size(80, 93);
+            Suplente7.SizeMode = PictureBoxSizeMode.Zoom;
             Suplente7.TabIndex = 20;
             Suplente7.TabStop = false;
             Suplente7.Click += Suplente7_Click;
@@ -270,170 +357,171 @@
             // DelantTxt1
             // 
             DelantTxt1.AutoSize = true;
-            DelantTxt1.Location = new Point(86, 114);
+            DelantTxt1.Location = new Point(675, 504);
             DelantTxt1.Name = "DelantTxt1";
-            DelantTxt1.Size = new Size(38, 15);
+            DelantTxt1.Size = new Size(50, 20);
             DelantTxt1.TabIndex = 21;
             DelantTxt1.Text = "label2";
             // 
             // DelantTxt2
             // 
             DelantTxt2.AutoSize = true;
-            DelantTxt2.Location = new Point(187, 114);
+            DelantTxt2.Location = new Point(675, 207);
             DelantTxt2.Name = "DelantTxt2";
-            DelantTxt2.Size = new Size(38, 15);
+            DelantTxt2.Size = new Size(50, 20);
             DelantTxt2.TabIndex = 22;
             DelantTxt2.Text = "label3";
             // 
             // DelantTxt3
             // 
             DelantTxt3.AutoSize = true;
-            DelantTxt3.Location = new Point(284, 114);
+            DelantTxt3.Location = new Point(735, 350);
             DelantTxt3.Name = "DelantTxt3";
-            DelantTxt3.Size = new Size(38, 15);
+            DelantTxt3.Size = new Size(50, 20);
             DelantTxt3.TabIndex = 23;
             DelantTxt3.Text = "label4";
             // 
             // MedioTxt3
             // 
             MedioTxt3.AutoSize = true;
-            MedioTxt3.Location = new Point(284, 205);
+            MedioTxt3.Location = new Point(490, 208);
             MedioTxt3.Name = "MedioTxt3";
-            MedioTxt3.Size = new Size(38, 15);
+            MedioTxt3.Size = new Size(50, 20);
             MedioTxt3.TabIndex = 26;
             MedioTxt3.Text = "label4";
             // 
             // MedioTxt2
             // 
             MedioTxt2.AutoSize = true;
-            MedioTxt2.Location = new Point(187, 205);
+            MedioTxt2.Location = new Point(557, 351);
             MedioTxt2.Name = "MedioTxt2";
-            MedioTxt2.Size = new Size(38, 15);
+            MedioTxt2.Size = new Size(50, 20);
             MedioTxt2.TabIndex = 25;
             MedioTxt2.Text = "label3";
             // 
             // MedioTxt1
             // 
             MedioTxt1.AutoSize = true;
-            MedioTxt1.Location = new Point(86, 205);
+            MedioTxt1.Location = new Point(490, 505);
             MedioTxt1.Name = "MedioTxt1";
-            MedioTxt1.Size = new Size(38, 15);
+            MedioTxt1.Size = new Size(50, 20);
             MedioTxt1.TabIndex = 24;
             MedioTxt1.Text = "label2";
             // 
             // DefensaTxt3
             // 
             DefensaTxt3.AutoSize = true;
-            DefensaTxt3.Location = new Point(234, 296);
+            DefensaTxt3.Location = new Point(250, 423);
             DefensaTxt3.Name = "DefensaTxt3";
-            DefensaTxt3.Size = new Size(38, 15);
+            DefensaTxt3.Size = new Size(50, 20);
             DefensaTxt3.TabIndex = 29;
             DefensaTxt3.Text = "label4";
             // 
             // DefensaTxt2
             // 
             DefensaTxt2.AutoSize = true;
-            DefensaTxt2.Location = new Point(137, 296);
+            DefensaTxt2.Location = new Point(207, 138);
             DefensaTxt2.Name = "DefensaTxt2";
-            DefensaTxt2.Size = new Size(38, 15);
+            DefensaTxt2.Size = new Size(50, 20);
             DefensaTxt2.TabIndex = 28;
             DefensaTxt2.Text = "label3";
             // 
             // DefensaTxt1
             // 
             DefensaTxt1.AutoSize = true;
-            DefensaTxt1.Location = new Point(36, 296);
+            DefensaTxt1.Location = new Point(207, 566);
             DefensaTxt1.Name = "DefensaTxt1";
-            DefensaTxt1.Size = new Size(38, 15);
+            DefensaTxt1.Size = new Size(50, 20);
             DefensaTxt1.TabIndex = 27;
             DefensaTxt1.Text = "label2";
             // 
             // DefensaTxt4
             // 
             DefensaTxt4.AutoSize = true;
-            DefensaTxt4.Location = new Point(328, 296);
+            DefensaTxt4.Location = new Point(251, 260);
             DefensaTxt4.Name = "DefensaTxt4";
-            DefensaTxt4.Size = new Size(38, 15);
+            DefensaTxt4.Size = new Size(50, 20);
             DefensaTxt4.TabIndex = 31;
             DefensaTxt4.Text = "label4";
             // 
             // ArqueroTxt
             // 
             ArqueroTxt.AutoSize = true;
-            ArqueroTxt.Location = new Point(187, 387);
+            ArqueroTxt.Location = new Point(41, 351);
             ArqueroTxt.Name = "ArqueroTxt";
-            ArqueroTxt.Size = new Size(38, 15);
+            ArqueroTxt.Size = new Size(50, 20);
             ArqueroTxt.TabIndex = 30;
             ArqueroTxt.Text = "label6";
             // 
             // SuplenteTxt1
             // 
             SuplenteTxt1.AutoSize = true;
-            SuplenteTxt1.Location = new Point(36, 422);
+            SuplenteTxt1.Location = new Point(1024, 16);
             SuplenteTxt1.Name = "SuplenteTxt1";
-            SuplenteTxt1.Size = new Size(38, 15);
+            SuplenteTxt1.Size = new Size(50, 20);
             SuplenteTxt1.TabIndex = 38;
             SuplenteTxt1.Text = "label4";
             // 
             // SuplenteTxt2
             // 
             SuplenteTxt2.AutoSize = true;
-            SuplenteTxt2.Location = new Point(137, 422);
+            SuplenteTxt2.Location = new Point(1127, 16);
             SuplenteTxt2.Name = "SuplenteTxt2";
-            SuplenteTxt2.Size = new Size(38, 15);
+            SuplenteTxt2.Size = new Size(50, 20);
             SuplenteTxt2.TabIndex = 37;
             SuplenteTxt2.Text = "label4";
             // 
             // SuplenteTxt3
             // 
             SuplenteTxt3.AutoSize = true;
-            SuplenteTxt3.Location = new Point(234, 422);
+            SuplenteTxt3.Location = new Point(1226, 16);
             SuplenteTxt3.Name = "SuplenteTxt3";
-            SuplenteTxt3.Size = new Size(38, 15);
+            SuplenteTxt3.Size = new Size(50, 20);
             SuplenteTxt3.TabIndex = 36;
             SuplenteTxt3.Text = "label3";
             // 
             // SuplenteTxt4
             // 
             SuplenteTxt4.AutoSize = true;
-            SuplenteTxt4.Location = new Point(328, 422);
+            SuplenteTxt4.Location = new Point(1024, 163);
             SuplenteTxt4.Name = "SuplenteTxt4";
-            SuplenteTxt4.Size = new Size(38, 15);
+            SuplenteTxt4.Size = new Size(50, 20);
             SuplenteTxt4.TabIndex = 35;
             SuplenteTxt4.Text = "label2";
             // 
             // SuplenteTxt5
             // 
             SuplenteTxt5.AutoSize = true;
-            SuplenteTxt5.Location = new Point(429, 422);
+            SuplenteTxt5.Location = new Point(1127, 163);
             SuplenteTxt5.Name = "SuplenteTxt5";
-            SuplenteTxt5.Size = new Size(38, 15);
+            SuplenteTxt5.Size = new Size(50, 20);
             SuplenteTxt5.TabIndex = 34;
             SuplenteTxt5.Text = "label4";
             // 
             // SuplenteTxt6
             // 
             SuplenteTxt6.AutoSize = true;
-            SuplenteTxt6.Location = new Point(526, 422);
+            SuplenteTxt6.Location = new Point(1226, 163);
             SuplenteTxt6.Name = "SuplenteTxt6";
-            SuplenteTxt6.Size = new Size(38, 15);
+            SuplenteTxt6.Size = new Size(50, 20);
             SuplenteTxt6.TabIndex = 33;
             SuplenteTxt6.Text = "label3";
             // 
             // SuplenteTxt7
             // 
             SuplenteTxt7.AutoSize = true;
-            SuplenteTxt7.Location = new Point(617, 422);
+            SuplenteTxt7.Location = new Point(1127, 301);
             SuplenteTxt7.Name = "SuplenteTxt7";
-            SuplenteTxt7.Size = new Size(38, 15);
+            SuplenteTxt7.Size = new Size(50, 20);
             SuplenteTxt7.TabIndex = 32;
             SuplenteTxt7.Text = "label2";
             // 
             // EdicionPlantilla
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(809, 539);
+            BackgroundImage = Properties.Resources.CampoEditar;
+            ClientSize = new Size(1332, 703);
             Controls.Add(SuplenteTxt1);
             Controls.Add(SuplenteTxt2);
             Controls.Add(SuplenteTxt3);
@@ -471,9 +559,9 @@
             Controls.Add(Delantero2);
             Controls.Add(Delantero1);
             Controls.Add(Confirmar);
-            Controls.Add(Lista);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "EdicionPlantilla";
-            Text = "Plantilla";
+            Text = " ";
             Load += Plantilla_Load;
             ((System.ComponentModel.ISupportInitialize)Delantero1).EndInit();
             ((System.ComponentModel.ISupportInitialize)Delantero2).EndInit();
@@ -498,7 +586,6 @@
         }
 
         #endregion
-        private Label Lista;
         private Button Confirmar;
         private PictureBox Delantero1;
         private PictureBox Delantero2;
