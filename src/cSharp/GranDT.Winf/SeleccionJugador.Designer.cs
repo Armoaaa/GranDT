@@ -50,11 +50,10 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idFutbolistaDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, apellidoDataGridViewTextBoxColumn, apodoDataGridViewTextBoxColumn, fechadeNacimientoDataGridViewTextBoxColumn, cotizacionDataGridViewTextBoxColumn, puntuacionesDataGridViewTextBoxColumn });
             dataGridView1.DataSource = futbolistaBindingSource;
-            dataGridView1.Location = new Point(14, 13);
-            dataGridView1.Margin = new Padding(3, 4, 3, 4);
+            dataGridView1.Location = new Point(219, 96);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(934, 464);
+            dataGridView1.Size = new Size(928, 348);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -120,10 +119,9 @@
             // 
             // Confirmar
             // 
-            Confirmar.Location = new Point(690, 517);
-            Confirmar.Margin = new Padding(3, 4, 3, 4);
+            Confirmar.Location = new Point(1007, 474);
             Confirmar.Name = "Confirmar";
-            Confirmar.Size = new Size(160, 67);
+            Confirmar.Size = new Size(140, 50);
             Confirmar.TabIndex = 1;
             Confirmar.Text = "Confirmar";
             Confirmar.UseVisualStyleBackColor = true;
@@ -132,23 +130,22 @@
             // FutbolistaListado
             // 
             FutbolistaListado.FormattingEnabled = true;
-            FutbolistaListado.Location = new Point(14, 553);
-            FutbolistaListado.Margin = new Padding(3, 4, 3, 4);
+            FutbolistaListado.Location = new Point(219, 474);
             FutbolistaListado.Name = "FutbolistaListado";
-            FutbolistaListado.Size = new Size(231, 28);
+            FutbolistaListado.Size = new Size(203, 23);
             FutbolistaListado.TabIndex = 2;
             FutbolistaListado.SelectedIndexChanged += FutbolistaListado_SelectedIndexChanged;
             // 
             // SeleccionJugador
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1332, 703);
+            ClientSize = new Size(1334, 711);
             Controls.Add(FutbolistaListado);
             Controls.Add(Confirmar);
             Controls.Add(dataGridView1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "SeleccionJugador";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "SeleccionJugador";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)futbolistaBindingSource).EndInit();

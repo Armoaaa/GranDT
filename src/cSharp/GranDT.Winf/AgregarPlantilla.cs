@@ -64,17 +64,13 @@ namespace GranDT.Winf
                     return;
                 }
 
-                if (!decimal.TryParse(TPresupuesto.Text, out decimal presupuesto))
-                {
-                    MessageBox.Show("El presupuesto debe ser un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+
 
                 // Crear plantilla
                 var plantilla = new Plantilla
                 {
                     NombrePlantilla = TNombre.Text.Trim(),
-                    Presupuesto = presupuesto,
+                    Presupuesto = 65000000,
                     IdUsuario = (uint)Login.SesionActual.IdUsuario,
                     idEquipos = (int)(uint)SEquipos.SelectedValue,
                     CantidadJugadores = 18 // Siempre 18 como solicitado

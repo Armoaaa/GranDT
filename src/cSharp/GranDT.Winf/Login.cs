@@ -59,12 +59,7 @@ namespace GranDT.Winf
         {
             public static int IdUsuario { get; set; }
         }
-        // var usuario = _repositorio.loginUsuario(email, contrasena);
-        //if (usuario != null)
-        //{
-        //    SesionActual.IdUsuario = usuario.IdUsuario;
-        //    SesionActual.Nombre = usuario.Nombre;
-        //}
+
         private void Atras_Click(object sender, EventArgs e)
         {
             Inicio InicioForm = new Inicio();

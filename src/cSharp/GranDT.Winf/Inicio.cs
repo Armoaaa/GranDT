@@ -8,9 +8,6 @@ public partial class Inicio : Form
 
     }
 
-    
-
-
     private void Inicio_Load(object sender, EventArgs e)
     {
 

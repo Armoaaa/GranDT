@@ -52,15 +52,10 @@ CALL altaUsuario('BELEN', 'DOMINGUEZ', 'asd@attttt.com', '1999-05-10', '23doming
 
 CALL altaPlantilla(95000000.00, 'Super Boca', @idUsuario1, @idEquipos1, 0, @idPlantilla1);
 -- Titulares
-CALL altaPlantillaTitular(1, @idPlantilla1, 1);  -- Romero (Arquero)
-CALL altaPlantillaTitular(2, @idPlantilla1, 1);  -- Advíncula (Defensor)
-CALL altaPlantillaTitular(3, @idPlantilla1, 1);  -- Rojo (Defensor)
-CALL altaPlantillaTitular(4, @idPlantilla1, 1);  -- Figal (Defensor)
-CALL altaPlantillaTitular(5, @idPlantilla1, 1);  -- Fabra (Defensor)
-CALL altaPlantillaTitular(6, @idPlantilla1, 1);  -- Pol Fernández (Mediocampista)
-CALL altaPlantillaTitular(7, @idPlantilla1, 1);  -- Medina (Mediocampista)
-CALL altaPlantillaTitular(8, @idPlantilla1, 1);  -- Equi Fernández (Mediocampista)
-
--- SUPLENTES -----------------------------------------------------
-CALL altaPlantillaTitular(9,  @idPlantilla1, 0); -- Suplente 1
-CALL altaPlantillaTitular(10, @idPlantilla1, 0); -- Suplente 2
+CALL altaPlantillaTitular(@idFut1, @idPlantilla1, 1);
+CALL altaPlantillaTitular(@idFut2, @idPlantilla1, 1);
+CALL altaPlantillaTitular(@idFut3, @idPlantilla1, 1);
+CALL altaPlantillaTitular(@idFut4, @idPlantilla1, 1);
+CALL altaPlantillaTitular(@idFut5, @idPlantilla1, 1);
+CALL altaPlantillaTitular(@idFut6, @idPlantilla1, 1);
+CALL altaPlantillaTitular(@idFut7, @idPlantilla1, 1);

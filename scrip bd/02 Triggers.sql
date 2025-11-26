@@ -130,6 +130,35 @@ BEGIN
 END;
 //
 DELIMITER ;
+DELIMITER //
+
+CREATE TRIGGER BIPT_ValidarCotizacion
+BEFORE INSERT ON PlantillaTitular
+FOR EACH ROW
+BEGIN
+    DECLARE CotizacionNueva DECIMAL(11,2);
+    DECLARE CotizacionTotalActual DECIMAL(15,2); -- Usar un tamaño mayor para la suma
+    DECLARE LimiteCotizacion DECIMAL(15,2) DEFAULT 65000000.00;
+
+    -- 1. Obtener la cotización del futbolista que se está intentando añadir
+    SELECT Cotizacion INTO CotizacionNueva
+    FROM Futbolista
+    WHERE idFutbolista = NEW.idFutbolista;
+
+    -- 2. Obtener la suma de la cotización de los futbolistas ya existentes en la plantilla
+    SELECT COALESCE(SUM(f.Cotizacion), 0) INTO CotizacionTotalActual
+    FROM PlantillaTitular pt
+    INNER JOIN Futbolista f ON f.idFutbolista = pt.idFutbolista
+    WHERE pt.idPlantillas = NEW.idPlantillas;
+
+    -- 3. Validar el límite
+    IF (CotizacionTotalActual + CotizacionNueva) > LimiteCotizacion THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La cotización total de la plantilla (actual + nuevo futbolista) excede el límite de 65.000.000.';
+    END IF;
+END;
+//
+
+DELIMITER ;
 
 
 -- prueba de si el test respeta los triggers
