@@ -42,7 +42,7 @@
             // 
             SEquipos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             SEquipos.FormattingEnabled = true;
-            SEquipos.Location = new Point(300, 215);
+            SEquipos.Location = new Point(301, 265);
             SEquipos.Name = "SEquipos";
             SEquipos.Size = new Size(566, 23);
             SEquipos.TabIndex = 0;
@@ -54,9 +54,9 @@
             Confirmar.BackgroundImage = Properties.Resources.Aceptar;
             Confirmar.BackgroundImageLayout = ImageLayout.Zoom;
             Confirmar.FlatStyle = FlatStyle.Flat;
-            Confirmar.Location = new Point(300, 261);
+            Confirmar.Location = new Point(292, 325);
             Confirmar.Name = "Confirmar";
-            Confirmar.Size = new Size(201, 53);
+            Confirmar.Size = new Size(222, 83);
             Confirmar.TabIndex = 1;
             Confirmar.UseVisualStyleBackColor = false;
             Confirmar.Click += Confirmar_Click;
@@ -67,9 +67,9 @@
             Cancelar.BackgroundImage = Properties.Resources.Cancelar;
             Cancelar.BackgroundImageLayout = ImageLayout.Zoom;
             Cancelar.FlatStyle = FlatStyle.Flat;
-            Cancelar.Location = new Point(664, 261);
+            Cancelar.Location = new Point(637, 325);
             Cancelar.Name = "Cancelar";
-            Cancelar.Size = new Size(201, 53);
+            Cancelar.Size = new Size(220, 83);
             Cancelar.TabIndex = 2;
             Cancelar.UseVisualStyleBackColor = false;
             Cancelar.Click += Cancelar_Click;
@@ -77,18 +77,24 @@
             // CoAS
             // 
             CoAS.AutoSize = true;
-            CoAS.Location = new Point(300, 197);
+            CoAS.BackColor = Color.Transparent;
+            CoAS.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Bold | FontStyle.Italic);
+            CoAS.ForeColor = SystemColors.Control;
+            CoAS.Location = new Point(529, 233);
             CoAS.Name = "CoAS";
-            CoAS.Size = new Size(47, 15);
+            CoAS.Size = new Size(85, 29);
             CoAS.TabIndex = 3;
             CoAS.Text = "Equipo ";
             // 
             // label123
             // 
             label123.AutoSize = true;
+            label123.BackColor = Color.Transparent;
+            label123.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Bold | FontStyle.Italic);
+            label123.ForeColor = SystemColors.Control;
             label123.Location = new Point(300, 141);
             label123.Name = "label123";
-            label123.Size = new Size(72, 15);
+            label123.Size = new Size(132, 29);
             label123.TabIndex = 5;
             label123.Text = "Presupuesto";
             // 
@@ -103,18 +109,24 @@
             // label65
             // 
             label65.AutoSize = true;
-            label65.Location = new Point(300, 87);
+            label65.BackColor = Color.Transparent;
+            label65.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Bold | FontStyle.Italic);
+            label65.ForeColor = SystemColors.Control;
+            label65.Location = new Point(301, 73);
             label65.Name = "label65";
-            label65.Size = new Size(51, 15);
+            label65.Size = new Size(91, 29);
             label65.TabIndex = 7;
             label65.Text = "Nombre";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(311, 156);
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Bold | FontStyle.Italic);
+            label1.ForeColor = SystemColors.Control;
+            label1.Location = new Point(502, 173);
             label1.Name = "label1";
-            label1.Size = new Size(61, 15);
+            label1.Size = new Size(135, 29);
             label1.TabIndex = 8;
             label1.Text = "65.000.000";
             // 
@@ -122,6 +134,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.Fondo_generico;
             ClientSize = new Size(1166, 527);
             Controls.Add(label1);
             Controls.Add(label65);

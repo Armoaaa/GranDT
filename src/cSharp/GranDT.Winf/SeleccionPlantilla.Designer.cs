@@ -37,43 +37,45 @@
             // SPlantilla
             // 
             SPlantilla.FormattingEnabled = true;
-            SPlantilla.Location = new Point(389, 136);
-            SPlantilla.Margin = new Padding(3, 4, 3, 4);
+            SPlantilla.Location = new Point(392, 137);
             SPlantilla.Name = "SPlantilla";
-            SPlantilla.Size = new Size(137, 28);
+            SPlantilla.Size = new Size(313, 23);
             SPlantilla.TabIndex = 2;
             SPlantilla.SelectedIndexChanged += SPlantilla_SelectedIndexChanged;
             // 
             // Confirmar
             // 
             Confirmar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            Confirmar.Location = new Point(864, 396);
-            Confirmar.Margin = new Padding(3, 4, 3, 4);
+            Confirmar.BackColor = Color.Transparent;
+            Confirmar.BackgroundImage = Properties.Resources.ConfirmarSeleccion;
+            Confirmar.BackgroundImageLayout = ImageLayout.Zoom;
+            Confirmar.FlatStyle = FlatStyle.Flat;
+            Confirmar.Location = new Point(634, 240);
             Confirmar.Name = "Confirmar";
-            Confirmar.Size = new Size(162, 31);
+            Confirmar.Size = new Size(255, 89);
             Confirmar.TabIndex = 3;
-            Confirmar.Text = "Confirmar seleccion";
-            Confirmar.UseVisualStyleBackColor = true;
+            Confirmar.UseVisualStyleBackColor = false;
             Confirmar.Click += Confirmar_Click;
             // 
             // Crear
             // 
-            Crear.Location = new Point(286, 396);
-            Crear.Margin = new Padding(3, 4, 3, 4);
+            Crear.BackColor = Color.Transparent;
+            Crear.BackgroundImage = Properties.Resources.CrearPlantilla;
+            Crear.BackgroundImageLayout = ImageLayout.Zoom;
+            Crear.FlatStyle = FlatStyle.Flat;
+            Crear.Location = new Point(273, 240);
             Crear.Name = "Crear";
-            Crear.Size = new Size(153, 31);
+            Crear.Size = new Size(253, 89);
             Crear.TabIndex = 4;
-            Crear.Text = "Crear plantilla";
-            Crear.UseVisualStyleBackColor = true;
+            Crear.UseVisualStyleBackColor = false;
             Crear.Click += Crear_Click;
             // 
             // Cerrar
             // 
             Cerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            Cerrar.Location = new Point(1201, 16);
-            Cerrar.Margin = new Padding(3, 4, 3, 4);
+            Cerrar.Location = new Point(1051, 12);
             Cerrar.Name = "Cerrar";
-            Cerrar.Size = new Size(118, 31);
+            Cerrar.Size = new Size(103, 23);
             Cerrar.TabIndex = 5;
             Cerrar.Text = "Cerrar cuenta";
             Cerrar.UseVisualStyleBackColor = true;
@@ -81,14 +83,14 @@
             // 
             // SeleccionPlantilla
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1332, 703);
+            BackgroundImage = Properties.Resources.Fondo_generico;
+            ClientSize = new Size(1166, 527);
             Controls.Add(Cerrar);
             Controls.Add(Crear);
             Controls.Add(Confirmar);
             Controls.Add(SPlantilla);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "SeleccionPlantilla";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Equipos";

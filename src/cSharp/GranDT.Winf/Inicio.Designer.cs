@@ -37,10 +37,12 @@ partial class Inicio
         // 
         // Login
         // 
+        Login.BackColor = Color.Transparent;
         Login.Image = (Image)resources.GetObject("Login.Image");
-        Login.Location = new Point(684, 430);
+        Login.Location = new Point(598, 322);
+        Login.Margin = new Padding(3, 2, 3, 2);
         Login.Name = "Login";
-        Login.Size = new Size(344, 103);
+        Login.Size = new Size(301, 77);
         Login.SizeMode = PictureBoxSizeMode.Zoom;
         Login.TabIndex = 2;
         Login.TabStop = false;
@@ -49,10 +51,12 @@ partial class Inicio
         // Reguistrarse
         // 
         Reguistrarse.Anchor = AnchorStyles.None;
+        Reguistrarse.BackColor = Color.Transparent;
         Reguistrarse.Image = (Image)resources.GetObject("Reguistrarse.Image");
-        Reguistrarse.Location = new Point(318, 430);
+        Reguistrarse.Location = new Point(278, 322);
+        Reguistrarse.Margin = new Padding(3, 2, 3, 2);
         Reguistrarse.Name = "Reguistrarse";
-        Reguistrarse.Size = new Size(344, 103);
+        Reguistrarse.Size = new Size(301, 77);
         Reguistrarse.SizeMode = PictureBoxSizeMode.Zoom;
         Reguistrarse.TabIndex = 3;
         Reguistrarse.TabStop = false;
@@ -60,12 +64,12 @@ partial class Inicio
         // 
         // Inicio
         // 
-        AutoScaleDimensions = new SizeF(8F, 20F);
+        AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(1332, 703);
+        BackgroundImage = Properties.Resources.Fondo_generico;
+        ClientSize = new Size(1166, 527);
         Controls.Add(Reguistrarse);
         Controls.Add(Login);
-        Margin = new Padding(3, 4, 3, 4);
         Name = "Inicio";
         StartPosition = FormStartPosition.CenterScreen;
         Text = " ";

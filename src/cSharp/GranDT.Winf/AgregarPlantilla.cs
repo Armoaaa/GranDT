@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GranDT.Core;
+using GranDT.Dapper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,8 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GranDT.Core;
-using GranDT.Dapper;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GranDT.Winf
 {
@@ -20,10 +21,12 @@ namespace GranDT.Winf
         public AgregarPlantilla()
         {
             InitializeComponent();
-            
+
             // Inicializar conexión y repo
             _conexion = Conexion.GetConexion();
             _repoPlantilla = new RepoPlantilla(_conexion);
+            Confirmar.FlatAppearance.BorderSize = 0;
+            Cancelar.FlatAppearance.BorderSize = 0;
 
 
             // Cargar equipos en el ComboBox
@@ -35,7 +38,7 @@ namespace GranDT.Winf
             try
             {
                 var equipos = _repoPlantilla.TraerEquipos()?.ToList() ?? new List<Equipos>();
-                
+
                 if (equipos.Any())
                 {
                     SEquipos.DisplayMember = "Nombre";
@@ -102,5 +105,9 @@ namespace GranDT.Winf
             seleccionForm.FormClosed += (s, args) => this.Close();
         }
 
+        private void AgregarPlantilla_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

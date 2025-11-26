@@ -22,6 +22,10 @@ namespace GranDT.Winf
         {
             InitializeComponent();
             Confirmar.FlatAppearance.BorderSize = 0;
+            btnAltaEquipo.FlatAppearance.BorderSize = 0;
+            btnAltaFutbolista.FlatAppearance.BorderSize = 0;
+            btnAltaPuntuacion.FlatAppearance.BorderSize = 0;
+
         }
 
         // Constructor que recibe la id de la plantilla seleccionada

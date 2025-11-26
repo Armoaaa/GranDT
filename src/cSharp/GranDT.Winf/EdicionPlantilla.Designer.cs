@@ -90,40 +90,49 @@
             // 
             // btnAltaFutbolista
             // 
+            btnAltaFutbolista.BackColor = Color.Transparent;
+            btnAltaFutbolista.BackgroundImage = Properties.Resources.AltaAltaFutbolista;
+            btnAltaFutbolista.BackgroundImageLayout = ImageLayout.Zoom;
             btnAltaFutbolista.Enabled = false;
-            btnAltaFutbolista.Location = new Point(271, 594);
+            btnAltaFutbolista.FlatStyle = FlatStyle.Flat;
+            btnAltaFutbolista.Location = new Point(1080, 471);
             btnAltaFutbolista.Margin = new Padding(3, 2, 3, 2);
             btnAltaFutbolista.Name = "btnAltaFutbolista";
-            btnAltaFutbolista.Size = new Size(107, 16);
+            btnAltaFutbolista.Size = new Size(226, 80);
             btnAltaFutbolista.TabIndex = 0;
-            btnAltaFutbolista.Text = "Alta Futbolista";
-            btnAltaFutbolista.UseVisualStyleBackColor = true;
+            btnAltaFutbolista.UseVisualStyleBackColor = false;
             btnAltaFutbolista.Visible = false;
             btnAltaFutbolista.Click += AltaFutbolista_Click;
             // 
             // btnAltaEquipo
             // 
+            btnAltaEquipo.BackColor = Color.Transparent;
+            btnAltaEquipo.BackgroundImage = Properties.Resources.AltaEquipo;
+            btnAltaEquipo.BackgroundImageLayout = ImageLayout.Zoom;
             btnAltaEquipo.Enabled = false;
-            btnAltaEquipo.Location = new Point(386, 594);
+            btnAltaEquipo.FlatStyle = FlatStyle.Flat;
+            btnAltaEquipo.Location = new Point(1080, 555);
             btnAltaEquipo.Margin = new Padding(3, 2, 3, 2);
             btnAltaEquipo.Name = "btnAltaEquipo";
-            btnAltaEquipo.Size = new Size(107, 16);
+            btnAltaEquipo.Size = new Size(226, 69);
             btnAltaEquipo.TabIndex = 0;
-            btnAltaEquipo.Text = "Alta Equipo";
-            btnAltaEquipo.UseVisualStyleBackColor = true;
+            btnAltaEquipo.UseVisualStyleBackColor = false;
             btnAltaEquipo.Visible = false;
             btnAltaEquipo.Click += AltaEquipo_Click;
             // 
             // btnAltaPuntuacion
             // 
+            btnAltaPuntuacion.BackColor = Color.Transparent;
+            btnAltaPuntuacion.BackgroundImage = Properties.Resources.AltaPuntuacion;
+            btnAltaPuntuacion.BackgroundImageLayout = ImageLayout.Zoom;
             btnAltaPuntuacion.Enabled = false;
-            btnAltaPuntuacion.Location = new Point(501, 594);
+            btnAltaPuntuacion.FlatStyle = FlatStyle.Flat;
+            btnAltaPuntuacion.Location = new Point(1080, 401);
             btnAltaPuntuacion.Margin = new Padding(3, 2, 3, 2);
             btnAltaPuntuacion.Name = "btnAltaPuntuacion";
-            btnAltaPuntuacion.Size = new Size(107, 16);
+            btnAltaPuntuacion.Size = new Size(226, 67);
             btnAltaPuntuacion.TabIndex = 0;
-            btnAltaPuntuacion.Text = "Alta Puntuación";
-            btnAltaPuntuacion.UseVisualStyleBackColor = true;
+            btnAltaPuntuacion.UseVisualStyleBackColor = false;
             btnAltaPuntuacion.Visible = false;
             btnAltaPuntuacion.Click += AltaPuntuacion_Click;
             // 
@@ -365,28 +374,37 @@
             // 
             // lstTitulares
             // 
+            lstTitulares.BackColor = Color.Teal;
+            lstTitulares.BorderStyle = BorderStyle.FixedSingle;
+            lstTitulares.Font = new Font("Comic Sans MS", 10F, FontStyle.Bold | FontStyle.Italic);
+            lstTitulares.ForeColor = SystemColors.Info;
             lstTitulares.Location = new Point(1041, 31);
             lstTitulares.Margin = new Padding(3, 2, 3, 2);
             lstTitulares.Name = "lstTitulares";
-            lstTitulares.Size = new Size(139, 214);
+            lstTitulares.Size = new Size(139, 211);
             lstTitulares.TabIndex = 1;
             // 
             // lstSuplentes
             // 
+            lstSuplentes.BackColor = Color.Teal;
+            lstSuplentes.BorderStyle = BorderStyle.FixedSingle;
+            lstSuplentes.Font = new Font("Comic Sans MS", 10F, FontStyle.Bold | FontStyle.Italic);
+            lstSuplentes.ForeColor = SystemColors.Info;
             lstSuplentes.Location = new Point(1186, 31);
             lstSuplentes.Margin = new Padding(3, 2, 3, 2);
             lstSuplentes.Name = "lstSuplentes";
-            lstSuplentes.Size = new Size(139, 214);
+            lstSuplentes.Size = new Size(139, 211);
             lstSuplentes.TabIndex = 3;
             // 
             // lblTotalCotizacion
             // 
             lblTotalCotizacion.AutoSize = true;
             lblTotalCotizacion.BackColor = Color.Transparent;
-            lblTotalCotizacion.ForeColor = Color.Black;
-            lblTotalCotizacion.Location = new Point(1041, 250);
+            lblTotalCotizacion.Font = new Font("Comic Sans MS", 10F, FontStyle.Bold | FontStyle.Italic);
+            lblTotalCotizacion.ForeColor = Color.White;
+            lblTotalCotizacion.Location = new Point(1096, 280);
             lblTotalCotizacion.Name = "lblTotalCotizacion";
-            lblTotalCotizacion.Size = new Size(117, 15);
+            lblTotalCotizacion.Size = new Size(162, 20);
             lblTotalCotizacion.TabIndex = 4;
             lblTotalCotizacion.Text = "Total cotización: 0.00";
             // 
@@ -394,10 +412,11 @@
             // 
             lblPresupuestoRestante.AutoSize = true;
             lblPresupuestoRestante.BackColor = Color.Transparent;
-            lblPresupuestoRestante.ForeColor = Color.Black;
-            lblPresupuestoRestante.Location = new Point(1041, 275);
+            lblPresupuestoRestante.Font = new Font("Comic Sans MS", 10F, FontStyle.Bold | FontStyle.Italic);
+            lblPresupuestoRestante.ForeColor = Color.White;
+            lblPresupuestoRestante.Location = new Point(1041, 300);
             lblPresupuestoRestante.Name = "lblPresupuestoRestante";
-            lblPresupuestoRestante.Size = new Size(192, 15);
+            lblPresupuestoRestante.Size = new Size(273, 20);
             lblPresupuestoRestante.TabIndex = 5;
             lblPresupuestoRestante.Text = "Presupuesto restante: 65,000,000.00";
             // 

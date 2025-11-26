@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="CampoEditar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Recursos\Imagenes\CampoEditar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Cancelar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\Imagenes\Cancelar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Aceptar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Recursos\Imagenes\Aceptar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Remera3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\Imagenes\Remera3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Registrarse" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Recursos\Imagenes\Registrarse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,16 +130,37 @@
   <data name="Iniciar_sesion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Recursos\Imagenes\Iniciar_sesion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CrearPlantilla1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\Imagenes\CrearPlantilla.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fondo generico" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\Imagenes\Fondo generico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Remera" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Recursos\Imagenes\Remera.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Cancelar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Recursos\Imagenes\Cancelar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CrearPlantilla" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\Imagenes\CrearPlantilla.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Remera2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Recursos\Imagenes\Remera2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Remera3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Recursos\Imagenes\Remera3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ConfirmarSeleccion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\Imagenes\ConfirmarSeleccion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CampoEditar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\Imagenes\CampoEditar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Aceptar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\Imagenes\Aceptar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AltaPuntuacion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\Imagenes\AltaPuntuacion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AltaEquipo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\Imagenes\AltaEquipo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AltaAltaFutbolista" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Recursos\Imagenes\AltaAltaFutbolista.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

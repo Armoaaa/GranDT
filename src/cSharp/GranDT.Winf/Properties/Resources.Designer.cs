@@ -73,6 +73,36 @@ namespace GranDT.Winf.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AltaAltaFutbolista {
+            get {
+                object obj = ResourceManager.GetObject("AltaAltaFutbolista", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AltaEquipo {
+            get {
+                object obj = ResourceManager.GetObject("AltaEquipo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AltaPuntuacion {
+            get {
+                object obj = ResourceManager.GetObject("AltaPuntuacion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CampoEditar {
             get {
                 object obj = ResourceManager.GetObject("CampoEditar", resourceCulture);
@@ -86,6 +116,46 @@ namespace GranDT.Winf.Properties {
         internal static System.Drawing.Bitmap Cancelar {
             get {
                 object obj = ResourceManager.GetObject("Cancelar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ConfirmarSeleccion {
+            get {
+                object obj = ResourceManager.GetObject("ConfirmarSeleccion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CrearPlantilla {
+            get {
+                object obj = ResourceManager.GetObject("CrearPlantilla", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CrearPlantilla1 {
+            get {
+                object obj = ResourceManager.GetObject("CrearPlantilla1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Fondo_generico {
+            get {
+                object obj = ResourceManager.GetObject("Fondo generico", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

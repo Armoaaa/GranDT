@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GranDT.Core;
+using GranDT.Dapper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,8 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GranDT.Dapper;
-using GranDT.Core;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GranDT.Winf
 {
@@ -24,6 +25,8 @@ namespace GranDT.Winf
             this.StartPosition = FormStartPosition.CenterScreen;
             this.WindowState = FormWindowState.Normal;
             this.ShowInTaskbar = true;
+            Confirmar.FlatAppearance.BorderSize = 0;
+            Crear.FlatAppearance.BorderSize = 0;
         }
 
         private void Equipos_Load(object sender, EventArgs e)
