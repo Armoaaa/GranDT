@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Reguistro));
             label1 = new Label();
             NombreT = new TextBox();
             Atras = new Button();
@@ -247,6 +248,7 @@
             Controls.Add(NombreT);
             Controls.Add(Atras);
             Controls.Add(Reguistrarse);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Reguistro";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "GranDT";

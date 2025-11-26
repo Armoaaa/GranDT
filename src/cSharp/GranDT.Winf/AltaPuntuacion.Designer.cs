@@ -28,96 +28,103 @@ namespace GranDT.Winf
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.cboFutbolista = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtFechaNro = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtPuntos = new System.Windows.Forms.TextBox();
-            this.buttonGuardar = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaPuntuacion));
+            label1 = new Label();
+            cboFutbolista = new ComboBox();
+            label2 = new Label();
+            txtFechaNro = new TextBox();
+            label3 = new Label();
+            txtPuntos = new TextBox();
+            buttonGuardar = new Button();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Futbolista";
+            label1.AutoSize = true;
+            label1.Location = new Point(21, 14);
+            label1.Name = "label1";
+            label1.Size = new Size(59, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Futbolista";
             // 
             // cboFutbolista
             // 
-            this.cboFutbolista.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFutbolista.FormattingEnabled = true;
-            this.cboFutbolista.Location = new System.Drawing.Point(24, 42);
-            this.cboFutbolista.Name = "cboFutbolista";
-            this.cboFutbolista.Size = new System.Drawing.Size(322, 28);
-            this.cboFutbolista.TabIndex = 1;
+            cboFutbolista.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboFutbolista.FormattingEnabled = true;
+            cboFutbolista.Location = new Point(21, 32);
+            cboFutbolista.Margin = new Padding(3, 2, 3, 2);
+            cboFutbolista.Name = "cboFutbolista";
+            cboFutbolista.Size = new Size(282, 23);
+            cboFutbolista.TabIndex = 1;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 82);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Fecha Nro";
+            label2.AutoSize = true;
+            label2.Location = new Point(21, 62);
+            label2.Name = "label2";
+            label2.Size = new Size(61, 15);
+            label2.TabIndex = 2;
+            label2.Text = "Fecha Nro";
             // 
             // txtFechaNro
             // 
-            this.txtFechaNro.Location = new System.Drawing.Point(24, 105);
-            this.txtFechaNro.Name = "txtFechaNro";
-            this.txtFechaNro.Size = new System.Drawing.Size(100, 27);
-            this.txtFechaNro.TabIndex = 3;
+            txtFechaNro.Location = new Point(21, 79);
+            txtFechaNro.Margin = new Padding(3, 2, 3, 2);
+            txtFechaNro.Name = "txtFechaNro";
+            txtFechaNro.Size = new Size(88, 23);
+            txtFechaNro.TabIndex = 3;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 145);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Puntos";
+            label3.AutoSize = true;
+            label3.Location = new Point(21, 109);
+            label3.Name = "label3";
+            label3.Size = new Size(44, 15);
+            label3.TabIndex = 4;
+            label3.Text = "Puntos";
             // 
             // txtPuntos
             // 
-            this.txtPuntos.Location = new System.Drawing.Point(24, 168);
-            this.txtPuntos.Name = "txtPuntos";
-            this.txtPuntos.Size = new System.Drawing.Size(100, 27);
-            this.txtPuntos.TabIndex = 5;
+            txtPuntos.Location = new Point(21, 126);
+            txtPuntos.Margin = new Padding(3, 2, 3, 2);
+            txtPuntos.Name = "txtPuntos";
+            txtPuntos.Size = new Size(88, 23);
+            txtPuntos.TabIndex = 5;
             // 
             // buttonGuardar
             // 
-            this.buttonGuardar.Location = new System.Drawing.Point(24, 210);
-            this.buttonGuardar.Name = "buttonGuardar";
-            this.buttonGuardar.Size = new System.Drawing.Size(122, 34);
-            this.buttonGuardar.TabIndex = 6;
-            this.buttonGuardar.Text = "Guardar";
-            this.buttonGuardar.UseVisualStyleBackColor = true;
-            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
+            buttonGuardar.Location = new Point(21, 158);
+            buttonGuardar.Margin = new Padding(3, 2, 3, 2);
+            buttonGuardar.Name = "buttonGuardar";
+            buttonGuardar.Size = new Size(107, 26);
+            buttonGuardar.TabIndex = 6;
+            buttonGuardar.Text = "Guardar";
+            buttonGuardar.UseVisualStyleBackColor = true;
+            buttonGuardar.Click += buttonGuardar_Click;
             // 
             // AltaPuntuacion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 266);
-            this.Controls.Add(this.buttonGuardar);
-            this.Controls.Add(this.txtPuntos);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtFechaNro);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.cboFutbolista);
-            this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "AltaPuntuacion";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Alta Puntuación";
-            this.Load += new System.EventHandler(this.AltaPuntuacion_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(327, 200);
+            Controls.Add(buttonGuardar);
+            Controls.Add(txtPuntos);
+            Controls.Add(label3);
+            Controls.Add(txtFechaNro);
+            Controls.Add(label2);
+            Controls.Add(cboFutbolista);
+            Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "AltaPuntuacion";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "GranDT";
+            Load += AltaPuntuacion_Load;
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

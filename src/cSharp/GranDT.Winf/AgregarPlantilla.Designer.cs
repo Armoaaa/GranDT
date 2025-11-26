@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarPlantilla));
             SEquipos = new ComboBox();
             Confirmar = new Button();
             Cancelar = new Button();
@@ -144,9 +145,10 @@
             Controls.Add(Cancelar);
             Controls.Add(Confirmar);
             Controls.Add(SEquipos);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AgregarPlantilla";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "EditorPlantilla";
+            Text = "GranDT";
             ResumeLayout(false);
             PerformLayout();
         }

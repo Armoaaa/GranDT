@@ -28,53 +28,58 @@ namespace GranDT.Winf
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonGuardar = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaEquipo));
+            txtNombre = new TextBox();
+            label1 = new Label();
+            buttonGuardar = new Button();
+            SuspendLayout();
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(24, 46);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(322, 27);
-            this.txtNombre.TabIndex = 0;
+            txtNombre.Location = new Point(21, 34);
+            txtNombre.Margin = new Padding(3, 2, 3, 2);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(282, 23);
+            txtNombre.TabIndex = 0;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Nombre";
+            label1.AutoSize = true;
+            label1.Location = new Point(21, 14);
+            label1.Name = "label1";
+            label1.Size = new Size(51, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Nombre";
             // 
             // buttonGuardar
             // 
-            this.buttonGuardar.Location = new System.Drawing.Point(24, 90);
-            this.buttonGuardar.Name = "buttonGuardar";
-            this.buttonGuardar.Size = new System.Drawing.Size(122, 34);
-            this.buttonGuardar.TabIndex = 2;
-            this.buttonGuardar.Text = "Guardar";
-            this.buttonGuardar.UseVisualStyleBackColor = true;
-            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
+            buttonGuardar.Location = new Point(21, 68);
+            buttonGuardar.Margin = new Padding(3, 2, 3, 2);
+            buttonGuardar.Name = "buttonGuardar";
+            buttonGuardar.Size = new Size(107, 26);
+            buttonGuardar.TabIndex = 2;
+            buttonGuardar.Text = "Guardar";
+            buttonGuardar.UseVisualStyleBackColor = true;
+            buttonGuardar.Click += buttonGuardar_Click;
             // 
             // AltaEquipo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 149);
-            this.Controls.Add(this.buttonGuardar);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtNombre);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "AltaEquipo";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Alta Equipo";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(327, 112);
+            Controls.Add(buttonGuardar);
+            Controls.Add(label1);
+            Controls.Add(txtNombre);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "AltaEquipo";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "GranDT";
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

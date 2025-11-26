@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeleccionJugador));
             dataGridView1 = new DataGridView();
             idFutbolistaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -47,6 +48,7 @@
             // dataGridView1
             // 
             dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.BackgroundColor = Color.Honeydew;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idFutbolistaDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, apellidoDataGridViewTextBoxColumn, apodoDataGridViewTextBoxColumn, fechadeNacimientoDataGridViewTextBoxColumn, cotizacionDataGridViewTextBoxColumn, puntuacionesDataGridViewTextBoxColumn });
             dataGridView1.DataSource = futbolistaBindingSource;
@@ -119,12 +121,15 @@
             // 
             // Confirmar
             // 
-            Confirmar.Location = new Point(1007, 474);
+            Confirmar.BackColor = Color.Transparent;
+            Confirmar.BackgroundImage = Properties.Resources.Aceptar;
+            Confirmar.BackgroundImageLayout = ImageLayout.Zoom;
+            Confirmar.FlatStyle = FlatStyle.Flat;
+            Confirmar.Location = new Point(902, 474);
             Confirmar.Name = "Confirmar";
-            Confirmar.Size = new Size(140, 50);
+            Confirmar.Size = new Size(245, 77);
             Confirmar.TabIndex = 1;
-            Confirmar.Text = "Confirmar";
-            Confirmar.UseVisualStyleBackColor = true;
+            Confirmar.UseVisualStyleBackColor = false;
             Confirmar.Click += Confirmar_Click;
             // 
             // FutbolistaListado
@@ -140,13 +145,15 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.Fondo_generico;
             ClientSize = new Size(1334, 711);
             Controls.Add(FutbolistaListado);
             Controls.Add(Confirmar);
             Controls.Add(dataGridView1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "SeleccionJugador";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "SeleccionJugador";
+            Text = "GranDT";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)futbolistaBindingSource).EndInit();
             ResumeLayout(false);

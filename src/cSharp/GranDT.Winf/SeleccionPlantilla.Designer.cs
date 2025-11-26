@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeleccionPlantilla));
             SPlantilla = new ComboBox();
             Confirmar = new Button();
             Crear = new Button();
@@ -91,9 +92,10 @@
             Controls.Add(Crear);
             Controls.Add(Confirmar);
             Controls.Add(SPlantilla);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "SeleccionPlantilla";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Equipos";
+            Text = "GranDT";
             Load += Equipos_Load;
             ResumeLayout(false);
         }

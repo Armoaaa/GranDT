@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             Contrasena = new Label();
             ContrasenaT = new TextBox();
             label3 = new Label();
@@ -175,9 +176,10 @@
             Controls.Add(EmailT);
             Controls.Add(Atras);
             Controls.Add(Reguistrarse);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Login";
+            Text = "GranDT";
             Load += Login_Load;
             ResumeLayout(false);
             PerformLayout();

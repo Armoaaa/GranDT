@@ -70,9 +70,10 @@ partial class Inicio
         ClientSize = new Size(1166, 527);
         Controls.Add(Reguistrarse);
         Controls.Add(Login);
+        Icon = (Icon)resources.GetObject("$this.Icon");
         Name = "Inicio";
         StartPosition = FormStartPosition.CenterScreen;
-        Text = " ";
+        Text = " GranDT";
         Load += Inicio_Load;
         ((System.ComponentModel.ISupportInitialize)Login).EndInit();
         ((System.ComponentModel.ISupportInitialize)Reguistrarse).EndInit();

@@ -33,7 +33,7 @@ namespace GranDT.Winf
             _idEquipos = idEquipos;
             _idPlantilla = idPlantilla;
             _esSuplente = esSuplente;
-
+            Confirmar.FlatAppearance.BorderSize = 0;
 
 
             // Cargar el grid y el listado

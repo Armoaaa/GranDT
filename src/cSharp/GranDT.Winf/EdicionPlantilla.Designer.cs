@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EdicionPlantilla));
             Confirmar = new Button();
             btnAltaFutbolista = new Button();
             btnAltaEquipo = new Button();
@@ -452,8 +453,9 @@
             Controls.Add(btnAltaEquipo);
             Controls.Add(btnAltaFutbolista);
             Controls.Add(Confirmar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "EdicionPlantilla";
-            Text = " ";
+            Text = " GranDT";
             Load += Plantilla_Load;
             ((System.ComponentModel.ISupportInitialize)Delantero1).EndInit();
             ((System.ComponentModel.ISupportInitialize)Delantero2).EndInit();

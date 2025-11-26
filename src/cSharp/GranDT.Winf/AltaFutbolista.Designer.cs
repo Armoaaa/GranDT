@@ -28,167 +28,178 @@ namespace GranDT.Winf
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtApellido = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.buttonGuardar = new System.Windows.Forms.Button();
-            this.txtApodo = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dateNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtCotizacion = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cboTipo = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cboEquipo = new System.Windows.Forms.ComboBox();
-            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaFutbolista));
+            txtNombre = new TextBox();
+            txtApellido = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
+            buttonGuardar = new Button();
+            txtApodo = new TextBox();
+            label3 = new Label();
+            dateNacimiento = new DateTimePicker();
+            label4 = new Label();
+            txtCotizacion = new TextBox();
+            label5 = new Label();
+            cboTipo = new ComboBox();
+            label6 = new Label();
+            cboEquipo = new ComboBox();
+            SuspendLayout();
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(24, 36);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(322, 27);
-            this.txtNombre.TabIndex = 0;
+            txtNombre.Location = new Point(21, 27);
+            txtNombre.Margin = new Padding(3, 2, 3, 2);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(282, 23);
+            txtNombre.TabIndex = 0;
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(24, 86);
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(322, 27);
-            this.txtApellido.TabIndex = 1;
+            txtApellido.Location = new Point(21, 64);
+            txtApellido.Margin = new Padding(3, 2, 3, 2);
+            txtApellido.Name = "txtApellido";
+            txtApellido.Size = new Size(282, 23);
+            txtApellido.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Nombre";
+            label1.AutoSize = true;
+            label1.Location = new Point(21, 10);
+            label1.Name = "label1";
+            label1.Size = new Size(51, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Nombre";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 63);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Apellido";
+            label2.AutoSize = true;
+            label2.Location = new Point(21, 47);
+            label2.Name = "label2";
+            label2.Size = new Size(51, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Apellido";
             // 
             // buttonGuardar
             // 
-            this.buttonGuardar.Location = new System.Drawing.Point(24, 330);
-            this.buttonGuardar.Name = "buttonGuardar";
-            this.buttonGuardar.Size = new System.Drawing.Size(122, 34);
-            this.buttonGuardar.TabIndex = 4;
-            this.buttonGuardar.Text = "Guardar";
-            this.buttonGuardar.UseVisualStyleBackColor = true;
-            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
+            buttonGuardar.Location = new Point(21, 248);
+            buttonGuardar.Margin = new Padding(3, 2, 3, 2);
+            buttonGuardar.Name = "buttonGuardar";
+            buttonGuardar.Size = new Size(107, 26);
+            buttonGuardar.TabIndex = 4;
+            buttonGuardar.Text = "Guardar";
+            buttonGuardar.UseVisualStyleBackColor = true;
+            buttonGuardar.Click += buttonGuardar_Click;
             // 
             // txtApodo
             // 
-            this.txtApodo.Location = new System.Drawing.Point(24, 136);
-            this.txtApodo.Name = "txtApodo";
-            this.txtApodo.Size = new System.Drawing.Size(322, 27);
-            this.txtApodo.TabIndex = 5;
+            txtApodo.Location = new Point(21, 102);
+            txtApodo.Margin = new Padding(3, 2, 3, 2);
+            txtApodo.Name = "txtApodo";
+            txtApodo.Size = new Size(282, 23);
+            txtApodo.TabIndex = 5;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 113);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 20);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Apodo";
+            label3.AutoSize = true;
+            label3.Location = new Point(21, 85);
+            label3.Name = "label3";
+            label3.Size = new Size(43, 15);
+            label3.TabIndex = 6;
+            label3.Text = "Apodo";
             // 
             // dateNacimiento
             // 
-            this.dateNacimiento.Location = new System.Drawing.Point(24, 186);
-            this.dateNacimiento.Name = "dateNacimiento";
-            this.dateNacimiento.Size = new System.Drawing.Size(322, 27);
-            this.dateNacimiento.TabIndex = 7;
+            dateNacimiento.Location = new Point(21, 140);
+            dateNacimiento.Margin = new Padding(3, 2, 3, 2);
+            dateNacimiento.Name = "dateNacimiento";
+            dateNacimiento.Size = new Size(282, 23);
+            dateNacimiento.TabIndex = 7;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 163);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(120, 20);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Fecha nacimiento";
+            label4.AutoSize = true;
+            label4.Location = new Point(21, 122);
+            label4.Name = "label4";
+            label4.Size = new Size(101, 15);
+            label4.TabIndex = 8;
+            label4.Text = "Fecha nacimiento";
             // 
             // txtCotizacion
             // 
-            this.txtCotizacion.Location = new System.Drawing.Point(24, 236);
-            this.txtCotizacion.Name = "txtCotizacion";
-            this.txtCotizacion.Size = new System.Drawing.Size(322, 27);
-            this.txtCotizacion.TabIndex = 9;
+            txtCotizacion.Location = new Point(21, 177);
+            txtCotizacion.Margin = new Padding(3, 2, 3, 2);
+            txtCotizacion.Name = "txtCotizacion";
+            txtCotizacion.Size = new Size(282, 23);
+            txtCotizacion.TabIndex = 9;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 213);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 20);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Cotización";
+            label5.AutoSize = true;
+            label5.Location = new Point(21, 160);
+            label5.Name = "label5";
+            label5.Size = new Size(63, 15);
+            label5.TabIndex = 10;
+            label5.Text = "Cotización";
             // 
             // cboTipo
             // 
-            this.cboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipo.FormattingEnabled = true;
-            this.cboTipo.Location = new System.Drawing.Point(24, 286);
-            this.cboTipo.Name = "cboTipo";
-            this.cboTipo.Size = new System.Drawing.Size(120, 28);
-            this.cboTipo.TabIndex = 11;
+            cboTipo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboTipo.FormattingEnabled = true;
+            cboTipo.Location = new Point(21, 214);
+            cboTipo.Margin = new Padding(3, 2, 3, 2);
+            cboTipo.Name = "cboTipo";
+            cboTipo.Size = new Size(106, 23);
+            cboTipo.TabIndex = 11;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 263);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 20);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Tipo";
+            label6.AutoSize = true;
+            label6.Location = new Point(21, 197);
+            label6.Name = "label6";
+            label6.Size = new Size(31, 15);
+            label6.TabIndex = 12;
+            label6.Text = "Tipo";
             // 
             // cboEquipo
             // 
-            this.cboEquipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboEquipo.FormattingEnabled = true;
-            this.cboEquipo.Location = new System.Drawing.Point(200, 286);
-            this.cboEquipo.Name = "cboEquipo";
-            this.cboEquipo.Size = new System.Drawing.Size(146, 28);
-            this.cboEquipo.TabIndex = 13;
+            cboEquipo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboEquipo.FormattingEnabled = true;
+            cboEquipo.Location = new Point(175, 214);
+            cboEquipo.Margin = new Padding(3, 2, 3, 2);
+            cboEquipo.Name = "cboEquipo";
+            cboEquipo.Size = new Size(128, 23);
+            cboEquipo.TabIndex = 13;
             // 
             // AltaFutbolista
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 386);
-            this.Controls.Add(this.cboEquipo);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.cboTipo);
-            this.Controls.Add(this.txtCotizacion);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.dateNacimiento);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtApodo);
-            this.Controls.Add(this.buttonGuardar);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtApellido);
-            this.Controls.Add(this.txtNombre);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "AltaFutbolista";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Alta Futbolista";
-            this.Load += new System.EventHandler(this.AltaFutbolista_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(327, 290);
+            Controls.Add(cboEquipo);
+            Controls.Add(label6);
+            Controls.Add(cboTipo);
+            Controls.Add(txtCotizacion);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(dateNacimiento);
+            Controls.Add(label3);
+            Controls.Add(txtApodo);
+            Controls.Add(buttonGuardar);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(txtApellido);
+            Controls.Add(txtNombre);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "AltaFutbolista";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "GranDT";
+            Load += AltaFutbolista_Load;
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
